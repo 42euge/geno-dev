@@ -1,3 +1,15 @@
+---
+name: geno-dev-commit-rewrite
+description: >-
+  Rewrite git commit history into a clean narrative (backup + soft reset + restage).
+  Use when user says /gt-dev-commit-rewrite.
+argument-hint: "[branch] [--onto <base>]"
+license: MIT
+metadata:
+  author: 42euge
+  version: "0.1.0"
+---
+
 # Rewrite Commit History
 
 Rewrite git commit history so it tells a clear, logical narrative — as if the work was done in clean, intentional steps from the start.

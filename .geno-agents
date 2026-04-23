@@ -1,0 +1,5 @@
+role: geno-dev
+description: Developer utilities — task execution, commit rewriting
+capabilities:
+  - dev-tools
+  - git-history

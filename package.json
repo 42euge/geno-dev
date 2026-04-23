@@ -1,0 +1,12 @@
+{
+  "name": "geno-dev",
+  "version": "0.1.0",
+  "description": "Developer utilities — task execution, commit rewriting",
+  "skills": {
+    "geno-dev": "skills/geno-dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/42euge/geno-dev"
+  }
+}
