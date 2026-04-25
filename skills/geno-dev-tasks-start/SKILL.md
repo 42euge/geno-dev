@@ -2,7 +2,7 @@
 name: geno-dev-tasks-start
 description: >-
   Pick up a task from lab notes, assess scope, plan if needed, execute, and mark done.
-  Use when user says /gt-dev-tasks-start.
+  Use when user says /geno-dev-tasks-start.
 argument-hint: "[task description or number]"
 license: MIT
 metadata:
@@ -27,7 +27,7 @@ The user optionally provides a task description or number as `$ARGUMENTS`. If em
 - Check `geno-tools/labnotes/plans/` for any existing plans related to the task
 - Read any CLAUDE.md or project instructions for project context
 
-If `geno-tools/labnotes/` doesn't exist, tell the user to run `/gt-lab-notes create` first and stop.
+If `geno-tools/labnotes/` doesn't exist, tell the user to run `/geno-notes create` first and stop.
 
 ### 2. Select the task
 

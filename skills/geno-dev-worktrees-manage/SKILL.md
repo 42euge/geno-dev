@@ -2,7 +2,7 @@
 name: geno-dev-worktrees-manage
 description: >-
   Manage git worktrees — list, create, switch, and prune.
-  Use when user says /gt-dev-worktrees-manage.
+  Use when user says /geno-dev-worktrees-manage.
 argument-hint: "[list|create|switch|prune] [args...]"
 license: MIT
 metadata:
@@ -77,7 +77,7 @@ Show a table of all worktrees:
 
 If in workspace mode, also scan `<workspace>/.geno/worktrees/` for worktrees belonging to other repos in the workspace and show them grouped by repo.
 
-If there are no worktrees beyond the main one, say so and suggest `create` to get started. If no workspace is set up, mention that `/gt-dev-workspaces-init` can create one.
+If there are no worktrees beyond the main one, say so and suggest `create` to get started. If no workspace is set up, mention that `/geno-dev-workspaces-init` can create one.
 
 ---
 

@@ -7,10 +7,10 @@ Developer and infrastructure skills for Claude Code: task execution from lab not
 | Skill name | Sub-skillset | Skill | Slash command |
 |-----------|-------------|-------|---------------|
 | `geno-dev` | — | — | — (umbrella) |
-| `geno-dev-tasks-start` | tasks | start | `/gt-dev-tasks-start` |
-| `geno-dev-commits-rewrite` | commits | rewrite | `/gt-dev-commits-rewrite` |
-| `geno-dev-worktrees-manage` | worktrees | manage | `/gt-dev-worktrees-manage` |
-| `geno-dev-workspaces-init` | workspaces | init | `/gt-dev-workspaces-init` |
+| `geno-dev-tasks-start` | tasks | start | `/geno-dev-tasks-start` |
+| `geno-dev-commits-rewrite` | commits | rewrite | `/geno-dev-commits-rewrite` |
+| `geno-dev-worktrees-manage` | worktrees | manage | `/geno-dev-worktrees-manage` |
+| `geno-dev-workspaces-init` | workspaces | init | `/geno-dev-workspaces-init` |
 
 ## Compliance
 
@@ -50,7 +50,7 @@ Every SKILL.md must include:
 name: geno-dev-{sub-skillset}-{skill-slug}   # must match folder name
 description: >-
   What this skill does.
-  Use when user says /gt-dev-{sub-skillset}-{skill-slug}.
+  Use when user says /geno-dev-{sub-skillset}-{skill-slug}.
 license: MIT
 metadata:
   author: 42euge

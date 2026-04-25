@@ -2,7 +2,7 @@
 
 ## Start Task
 
-**`/gt-dev-tasks-start [description]`**
+**`/geno-dev-tasks-start [description]`**
 
 Pick up a task from the project's `geno-tools/labnotes/tasks.md` and start working on it.
 
@@ -20,13 +20,13 @@ The user optionally provides a task description or number. If empty, shows the t
 6. **Complete** — marks done in `tasks.md`, summarizes work, suggests next task
 
 !!! tip
-    If `geno-tools/labnotes/` doesn't exist, the skill will prompt you to run `/gt-lab-notes create` first.
+    If `geno-tools/labnotes/` doesn't exist, the skill will prompt you to run `/geno-notes create` first.
 
 ---
 
 ## Rewrite Commit History
 
-**`/gt-dev-commits-rewrite [branch] [--onto <base>]`**
+**`/geno-dev-commits-rewrite [branch] [--onto <base>]`**
 
 Rewrite git commit history so it tells a clear, logical narrative — as if the work was done in clean, intentional steps from the start.
 
@@ -58,9 +58,9 @@ Rewrite git commit history so it tells a clear, logical narrative — as if the 
 
 ## Manage Worktrees
 
-**`/gt-dev-worktrees-manage [list|create|switch|prune] [args...]`**
+**`/geno-dev-worktrees-manage [list|create|switch|prune] [args...]`**
 
-Manage git worktrees for the current repository. Workspace-aware — if you're inside a workspace created by `/gt-dev-workspaces-init`, worktrees are placed at `<workspace>/.geno/worktrees/<repo>/<branch>/`. Otherwise, inline at `<repo>/.geno/worktrees/<branch>/`.
+Manage git worktrees for the current repository. Workspace-aware — if you're inside a workspace created by `/geno-dev-workspaces-init`, worktrees are placed at `<workspace>/.geno/worktrees/<repo>/<branch>/`. Otherwise, inline at `<repo>/.geno/worktrees/<branch>/`.
 
 ### Subcommands
 
@@ -82,7 +82,7 @@ This skill never edits a project's `.gitignore`, `CLAUDE.md`, or any tracked fil
 
 ## Create Workspace
 
-**`/gt-dev-workspaces-init [config|list|<freeform text>]`**
+**`/geno-dev-workspaces-init [config|list|<freeform text>]`**
 
 Create isolated development workspaces by cloning repos into color-coded folders. Accepts freeform text — the skill infers whether it's a GitHub issue, JIRA ticket, repo names, or a feature idea.
 
@@ -114,4 +114,4 @@ Workspace settings at `~/.geno/config.yaml` (auto-created on first use):
 `list` scans all configured color folders for workspaces. Shows metadata from `.geno/workspace.yaml`, tags legacy `*-WS/` dirs and unmanaged `*-ws/` dirs.
 
 !!! tip
-    Workspaces and worktrees work together: create a workspace with `/gt-dev-workspaces-init`, then use `/gt-dev-worktrees-manage` inside it for branch-level isolation.
+    Workspaces and worktrees work together: create a workspace with `/geno-dev-workspaces-init`, then use `/geno-dev-worktrees-manage` inside it for branch-level isolation.
