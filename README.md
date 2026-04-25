@@ -1,6 +1,6 @@
 # geno-dev
 
-Developer and infrastructure skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Task execution from lab notes and git commit history rewriting.
+Developer and infrastructure skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Task execution from lab notes, git commit history rewriting, worktree management, and workspace creation.
 
 ## Install
 
@@ -12,8 +12,10 @@ npx skills add 42euge/geno-dev
 
 | Command | Description |
 |---|---|
-| `/gt-dev-task-start [description]` | Pick up a task from lab notes, assess scope, plan if needed, execute, and mark done |
-| `/gt-dev-commit-rewrite` | Rewrite git commit history into a clean narrative (backup branch + soft reset + restage) |
+| `/geno-dev-tasks-start [description]` | Pick up a task from lab notes, assess scope, plan if needed, execute, and mark done |
+| `/geno-dev-commits-rewrite` | Rewrite git commit history into a clean narrative (backup branch + soft reset + restage) |
+| `/geno-dev-worktrees-manage [list\|create\|switch\|prune]` | Manage git worktrees — list, create, switch, and prune |
+| `/geno-dev-workspaces-init [config\|list\|<text>]` | Create development workspaces from issues, tickets, repos, or ideas |
 
 ## Repository structure
 
@@ -24,9 +26,13 @@ geno-dev/
 ├── skills/
 │   ├── geno-dev/         # umbrella skill
 │   │   └── SKILL.md
-│   ├── geno-dev-commit-rewrite/
+│   ├── geno-dev-commits-rewrite/
 │   │   └── SKILL.md
-│   └── geno-dev-task-start/
+│   ├── geno-dev-tasks-start/
+│   │   └── SKILL.md
+│   ├── geno-dev-workspaces-init/
+│   │   └── SKILL.md
+│   └── geno-dev-worktrees-manage/
 │       └── SKILL.md
 └── config/defaults/
     └── colab.json

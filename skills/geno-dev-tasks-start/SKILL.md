@@ -1,8 +1,8 @@
 ---
-name: geno-dev-task-start
+name: geno-dev-tasks-start
 description: >-
   Pick up a task from lab notes, assess scope, plan if needed, execute, and mark done.
-  Use when user says /gt-dev-task-start.
+  Use when user says /geno-dev-tasks-start.
 argument-hint: "[task description or number]"
 license: MIT
 metadata:
@@ -12,7 +12,7 @@ metadata:
 
 # Start Task
 
-Pick up a task from the project's `geno-tools/labnotes/tasks.md` and start working on it.
+Pick up a task from geno-notes and start working on it.
 
 ## Input
 
@@ -22,12 +22,12 @@ The user optionally provides a task description or number as `$ARGUMENTS`. If em
 
 ### 1. Load context
 
-- Read `geno-tools/labnotes/tasks.md` in the current working directory
-- Read `geno-tools/labnotes/notes.md` for recent context
-- Check `geno-tools/labnotes/plans/` for any existing plans related to the task
+- Read `geno-notes tasks` in the current working directory
+- Read `geno-notes journal` for recent context
+- Check `geno-notes plans/` for any existing plans related to the task
 - Read any CLAUDE.md or project instructions for project context
 
-If `geno-tools/labnotes/` doesn't exist, tell the user to run `/gt-lab-notes create` first and stop.
+If no geno-notes scope exists (neither `./geno/geno-notes/` nor `~/.geno/geno-notes/`), tell the user to run `geno-notes init --project` first and stop.
 
 ### 2. Select the task
 
@@ -51,7 +51,7 @@ Use the `EnterPlanMode` tool to switch into plan mode. While in plan mode:
 - Design an approach and present it to the user
 - Resolve any open questions
 
-Also save the plan to `geno-tools/labnotes/plans/<task-slug>.md` for future reference, with:
+Also save the plan to `geno-notes plans/<task-slug>.md` for future reference, with:
 
 ```markdown
 # Plan: <task description>
@@ -68,7 +68,7 @@ Once the user approves, use `ExitPlanMode` to leave plan mode and proceed to ste
 ### 5. Execute
 
 - Work through the task (or the plan steps if one was created)
-- As you make progress, append timestamped notes to `geno-tools/labnotes/notes.md` at key milestones (not every small step — just meaningful progress points)
+- As you make progress, append timestamped notes to `geno-notes journal` at key milestones (not every small step — just meaningful progress points)
 - If you hit a blocker or need a decision, stop and ask the user
 
 ### 6. Complete

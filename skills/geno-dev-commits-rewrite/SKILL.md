@@ -1,8 +1,8 @@
 ---
-name: geno-dev-commit-rewrite
+name: geno-dev-commits-rewrite
 description: >-
   Rewrite git commit history into a clean narrative (backup + soft reset + restage).
-  Use when user says /gt-dev-commit-rewrite.
+  Use when user says /geno-dev-commits-rewrite.
 argument-hint: "[branch] [--onto <base>]"
 license: MIT
 metadata:
@@ -35,8 +35,8 @@ Rewrite git commit history so it tells a clear, logical narrative — as if the 
 ### 2. Understand the work
 
 - Read through all the diffs in the commit range (`git diff <base>..HEAD` or full diff from root)
-- Read `geno-tools/labnotes/notes.md` if it exists for context on what was done and in what order
-- Read `geno-tools/labnotes/tasks.md` if it exists to understand the logical units of work
+- Read geno-notes journal if it exists for context on what was done and in what order
+- Read geno-notes tasks if they exist to understand the logical units of work
 - Identify the logical narrative: what are the natural "chapters" of this work?
 
 ### 3. Plan the new history
