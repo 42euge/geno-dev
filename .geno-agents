@@ -1,5 +1,7 @@
 role: geno-dev
-description: Developer utilities — task execution, commit rewriting
+description: Developer utilities — task execution, commit rewriting, worktree management, workspace creation
 capabilities:
   - dev-tools
   - git-history
+  - git-worktrees
+  - workspaces

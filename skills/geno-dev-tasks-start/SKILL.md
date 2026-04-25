@@ -1,8 +1,8 @@
 ---
-name: geno-dev-task-start
+name: geno-dev-tasks-start
 description: >-
   Pick up a task from lab notes, assess scope, plan if needed, execute, and mark done.
-  Use when user says /gt-dev-task-start.
+  Use when user says /gt-dev-tasks-start.
 argument-hint: "[task description or number]"
 license: MIT
 metadata:
