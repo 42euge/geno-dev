@@ -4,7 +4,7 @@
 
 **`/geno-dev-tasks-start [description]`**
 
-Pick up a task from the project's `geno-tools/labnotes/tasks.md` and start working on it.
+Pick up a task from geno-notes and start working on it.
 
 ### Input
 
@@ -20,7 +20,7 @@ The user optionally provides a task description or number. If empty, shows the t
 6. **Complete** — marks done in `tasks.md`, summarizes work, suggests next task
 
 !!! tip
-    If `geno-tools/labnotes/` doesn't exist, the skill will prompt you to run `/geno-notes create` first.
+    If no geno-notes scope exists, the skill will prompt you to run `geno-notes init --project` first.
 
 ---
 
