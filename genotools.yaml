@@ -1,0 +1,6 @@
+name: geno-dev
+version: "0.1.0"
+description: >-
+  Developer and infrastructure utilities — task execution from lab notes,
+  git commit history rewriting, worktree management, workspace creation,
+  and session forking.
