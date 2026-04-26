@@ -6,7 +6,6 @@ repo_name: 42euge/geno-dev
 
 theme:
   name: material
-  custom_dir: docs/overrides
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -25,8 +24,6 @@ theme:
   font:
     text: Inter
     code: JetBrains Mono
-  logo: assets/logo.svg
-  favicon: assets/logo.svg
   icon:
     repo: fontawesome/brands/github
   features:
@@ -40,11 +37,9 @@ theme:
     - announce.dismiss
 
 nav:
-  - Overview: index.md
+  - Home: index.md
+  - Getting Started: getting-started.md
   - Commands: commands.md
-
-extra_css:
-  - stylesheets/extra.css
 
 markdown_extensions:
   - admonition
