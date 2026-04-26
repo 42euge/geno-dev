@@ -1,7 +1,7 @@
 {
   "name": "geno-dev",
   "version": "0.1.0",
-  "description": "Developer utilities — task execution, commit rewriting, worktree management, workspace creation",
+  "description": "Developer utilities — task execution, commit rewriting, worktree management, workspace creation, agentic loops",
   "skills": {
     "geno-dev": "skills/geno-dev"
   },
