@@ -1,20 +1,20 @@
-# geno-dev
+---
+name: geno-dev
+description: >-
+  Developer and infrastructure utilities — task execution from lab notes,
+  git commit history rewriting, worktree management, workspace creation,
+  and session forking.
+  Use when user says /geno-dev-tasks-start, /geno-dev-commits-rewrite,
+  /geno-dev-worktrees-manage, /geno-dev-workspaces-init, or /geno-dev-sessions-fork.
+license: MIT
+metadata:
+  author: 42euge
+  version: "0.1.0"
+---
 
-Developer and infrastructure skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Task execution from lab notes, git commit history rewriting, worktree management, workspace creation, and session forking.
+# geno-dev — Developer Utilities
 
-Part of the [geno-tools](https://42euge.github.io/geno-tools) ecosystem.
-
-## Install
-
-```bash
-geno-tools install dev
-```
-
-Or from within a Claude Code session:
-
-```
-/gt-install dev
-```
+Dev and infrastructure skills for Claude Code. Task execution, git history rewriting, worktree management, workspace creation, and session forking.
 
 ## Commands
 
@@ -28,4 +28,4 @@ Or from within a Claude Code session:
 
 ## Runtime
 
-No venv, no scripts — pure markdown workflows.
+No venv or scripts — pure markdown workflows.

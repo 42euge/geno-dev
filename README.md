@@ -5,7 +5,13 @@ Developer and infrastructure skills for [Claude Code](https://docs.anthropic.com
 ## Install
 
 ```bash
-npx skills add 42euge/geno-dev
+geno-tools install dev
+```
+
+Or from within a Claude Code session:
+
+```
+/gt-install dev
 ```
 
 ## Commands
