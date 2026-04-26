@@ -30,9 +30,9 @@ This skill NEVER modifies a project's tracked files — no `.gitignore` edits, n
 
 Before ANY operation, run `git worktree list --porcelain` and classify each entry by its path:
 
-1. **Claude Code worktrees** — path contains `/.claude/worktrees/`
-   NEVER modify, remove, or interact with these. They are managed by Claude Code's agent isolation system.
-   In listings, label them `[claude-code]`.
+1. **Agent-managed worktrees** — path contains `/.claude/worktrees/`
+   NEVER modify, remove, or interact with these. They are managed by the coding agent's isolation system.
+   In listings, label them `[agent-managed]`.
 
 2. **geno-tools meta-harness worktrees** — path starts with `$HOME/.geno/`
    These are global skillset worktrees managed by geno-tools (e.g. `~/.geno/geno-dev/worktrees/exp-1`). Show in listings labeled `[geno-tools]`. Never prune without explicit user confirmation and a warning that these are managed by geno-tools. Never create worktrees inside `~/.geno/`.
@@ -108,11 +108,11 @@ If there are no worktrees beyond the main one, say so and suggest `create` to ge
 ### Subcommand: switch \<name-or-branch\>
 
 1. Find the worktree matching `<name-or-branch>` (fuzzy match against branch names and directory names from the worktree list).
-2. If the match is a Claude Code worktree, refuse and explain why.
+2. If the match is an agent-managed worktree, refuse and explain why.
 3. Print the absolute path.
-4. Tell the user: "Run `cd <path>` in your terminal to switch, or start a new Claude Code session in that directory."
+4. Tell the user: "Run `cd <path>` in your terminal to switch, or start a new agent session in that directory."
 
-Note: Claude Code cannot change the user's shell working directory. This subcommand is informational — it helps the user find and navigate to worktrees.
+Note: Coding agents cannot change the user's shell working directory. This subcommand is informational — it helps the user find and navigate to worktrees.
 
 ---
 
@@ -122,7 +122,7 @@ Note: Claude Code cannot change the user's shell working directory. This subcomm
    - Worktrees whose branch has been merged into main/master
    - Worktrees whose branch no longer exists on the remote (use `git branch -vv` to check tracking)
    - Worktrees marked as prunable by git (directory was manually deleted)
-2. Exclude all Claude Code worktrees — never touch.
+2. Exclude all agent-managed worktrees — never touch.
 3. For geno-tools worktrees, include in the candidate list but add a `[geno-tools]` warning label.
 4. Present the list to the user via `AskUserQuestion`:
    - Show each candidate with path, branch, and reason for pruning

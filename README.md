@@ -1,11 +1,11 @@
 # geno-dev
 
-Developer and infrastructure skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Task execution from lab notes, git commit history rewriting, worktree management, workspace creation, and session forking.
+Developer and infrastructure skills for AI coding agents. Task execution from lab notes, git commit history rewriting, worktree management, workspace creation, and session forking.
 
 ## Install
 
 ```bash
-npx skills add 42euge/geno-dev
+geno-tools install dev
 ```
 
 ## Commands
@@ -16,7 +16,7 @@ npx skills add 42euge/geno-dev
 | `/geno-dev-commits-rewrite` | Rewrite git commit history into a clean narrative (backup branch + soft reset + restage) |
 | `/geno-dev-worktrees-manage [list\|create\|switch\|prune]` | Manage git worktrees — list, create, switch, and prune |
 | `/geno-dev-workspaces-init [config\|list\|<text>]` | Create development workspaces from issues, tickets, repos, or ideas |
-| `/geno-dev-sessions-fork [session]` | Fork a Claude Code session — extract context to continue in a new session |
+| `/geno-dev-sessions-fork [session]` | Fork an agent session — extract context to continue in a new session |
 
 ## Repository structure
 

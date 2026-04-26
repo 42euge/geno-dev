@@ -1,57 +1,20 @@
 # geno-dev
 
-Developer and infrastructure skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Task execution from lab notes, git commit history rewriting, worktree management, and workspace creation.
+Developer and infrastructure skills for AI coding agents. Task execution from lab notes, git commit history rewriting, worktree management, and workspace creation.
 
 Part of the [geno-tools](https://42euge.github.io/geno-tools) ecosystem.
 
-<div class="feature-grid" markdown>
+## Features
 
-<div class="feature-card" markdown>
-<span class="card-icon">:material-clipboard-check:</span>
-
-### Task execution
-
-Pick up tasks from lab notes, assess scope, plan if needed, execute, and mark done — all from a single slash command.
-
-[See command :material-arrow-right:](commands.md#start-task)
-</div>
-
-<div class="feature-card" markdown>
-<span class="card-icon">:material-source-branch:</span>
-
-### Commit rewriting
-
-Rewrite messy git history into a clean narrative — backup, soft reset, restage in logical chapters.
-
-[See command :material-arrow-right:](commands.md#rewrite-commit-history)
-</div>
-
-<div class="feature-card" markdown>
-<span class="card-icon">:material-git:</span>
-
-### Worktree management
-
-Manage git worktrees — create for feature branches, list with status, and prune stale ones. Automatically protects Claude Code and geno-tools worktrees.
-
-[See command :material-arrow-right:](commands.md#manage-worktrees)
-</div>
-
-<div class="feature-card" markdown>
-<span class="card-icon">:material-folder-multiple:</span>
-
-### Workspace creation
-
-Create isolated development workspaces from GitHub issues, JIRA tickets, or feature ideas. Clone repos into color-coded folders with metadata tracking.
-
-[See command :material-arrow-right:](commands.md#create-workspace)
-</div>
-
-</div>
+- **Task execution** — pick up tasks from lab notes, assess scope, plan if needed, execute, and mark done
+- **Commit rewriting** — rewrite messy git history into a clean narrative with backup, soft reset, and restage
+- **Worktree management** — manage git worktrees: create for feature branches, list with status, and prune stale ones
+- **Workspace creation** — create isolated development workspaces from GitHub issues, JIRA tickets, or feature ideas
 
 ## Install
 
 ```bash
-npx skills add 42euge/geno-dev
+geno-tools install dev
 ```
 
 ## Commands

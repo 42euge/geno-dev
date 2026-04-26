@@ -73,7 +73,7 @@ Manage git worktrees for the current repository. Workspace-aware — if you're i
 
 The skill automatically detects and protects:
 
-- **Claude Code worktrees** (`.claude/worktrees/`) — never modified or removed
+- **Agent-managed worktrees** (`.claude/worktrees/`) — never modified or removed
 - **geno-tools meta-harness worktrees** (`~/.geno/`) — warned before any action
 
 This skill never edits a project's `.gitignore`, `CLAUDE.md`, or any tracked files.
@@ -84,7 +84,7 @@ This skill never edits a project's `.gitignore`, `CLAUDE.md`, or any tracked fil
 
 **`/geno-dev-sessions-fork [session] [--output <file>] [--max-messages <N>]`**
 
-Fork a Claude Code session — extract the full context (environment, files touched, conversation history) and produce a structured markdown document for continuing work in a new session.
+Fork an agent session — extract the full context (environment, files touched, conversation history) and produce a structured markdown document for continuing work in a new session.
 
 ### Prerequisites
 
