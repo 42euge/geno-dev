@@ -1,6 +1,6 @@
 # geno-dev — developer utilities skillset
 
-Developer and infrastructure skills for Claude Code: task execution from lab notes, git commit history rewriting, worktree management, and workspace creation.
+Developer and infrastructure skills for Claude Code: task execution from lab notes, git commit history rewriting, worktree management, workspace creation, and session forking.
 
 ## Skills
 
@@ -11,6 +11,7 @@ Developer and infrastructure skills for Claude Code: task execution from lab not
 | `geno-dev-commits-rewrite` | commits | rewrite | `/geno-dev-commits-rewrite` |
 | `geno-dev-worktrees-manage` | worktrees | manage | `/geno-dev-worktrees-manage` |
 | `geno-dev-workspaces-init` | workspaces | init | `/geno-dev-workspaces-init` |
+| `geno-dev-sessions-fork` | sessions | fork | `/geno-dev-sessions-fork` |
 
 ## Compliance
 

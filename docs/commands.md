@@ -80,6 +80,36 @@ This skill never edits a project's `.gitignore`, `CLAUDE.md`, or any tracked fil
 
 ---
 
+## Fork Session
+
+**`/geno-dev-sessions-fork [session] [--output <file>] [--max-messages <N>]`**
+
+Fork a Claude Code session — extract the full context (environment, files touched, conversation history) and produce a structured markdown document for continuing work in a new session.
+
+### Prerequisites
+
+- `geno-mon` must be installed and available on `$PATH`
+
+### Workflow
+
+1. **Discover** — runs `geno-mon list` to show recent sessions
+2. **Select** — uses the user's argument or asks them to pick
+3. **Extract** — runs `geno-mon fork <session>` to produce the context document
+4. **Deliver** — writes to file or displays, with instructions on how to use it
+
+### Options
+
+| Flag | Description |
+|---|---|
+| `<session>` | Session number, partial ID, or JSONL path (default: latest) |
+| `-o <file>` | Write output to a file instead of stdout |
+| `-m <N>` | Maximum user messages to include (default: 50) |
+
+!!! tip
+    The fork output includes environment, files modified/read, commands run, and full conversation history — everything a new session needs to continue where the original left off.
+
+---
+
 ## Create Workspace
 
 **`/geno-dev-workspaces-init [config|list|<freeform text>]`**
