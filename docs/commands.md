@@ -84,7 +84,7 @@ This skill never edits a project's `.gitignore`, `CLAUDE.md`, or any tracked fil
 
 **`/geno-dev-sessions-fork [session] [--output <file>] [--max-messages <N>]`**
 
-Fork a Claude Code session — extract the full context (environment, files touched, conversation history) and produce a structured markdown document for continuing work in a new session.
+Fork an agent session — extract the full context (environment, files touched, conversation history) and produce a structured markdown document for continuing work in a new session.
 
 ### Prerequisites
 

@@ -1,7 +1,7 @@
 ---
 name: geno-dev-sessions-fork
 description: >-
-  Fork a Claude Code session — extract its full context and start a new session
+  Fork an agent session — extract its full context and start a new session
   that continues where the original left off.
   Use when user says /geno-dev-sessions-fork.
 license: MIT
@@ -12,7 +12,7 @@ metadata:
 
 # geno-dev-sessions-fork
 
-Fork a Claude Code session: extract the full context (environment, files touched, conversation history) and produce a structured markdown document suitable for continuing the work in a new session.
+Fork an agent session: extract the full context (environment, files touched, conversation history) and produce a structured markdown document suitable for continuing the work in a new session.
 
 ## Usage
 
@@ -63,7 +63,7 @@ The fork output is a structured markdown document with these sections:
 
 - If `--output <file>` was given, confirm the file was written
 - Otherwise, display the context to the user
-- Suggest how to use it: paste into a new Claude Code session prefixed with "Continue the work described in this context"
+- Suggest how to use it: paste into a new agent session prefixed with "Continue the work described in this context"
 
 ## Options
 
