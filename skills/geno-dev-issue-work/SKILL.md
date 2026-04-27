@@ -83,13 +83,7 @@ Use `AskUserQuestion` to ask the user where to work:
 
 **Worktree path:**
 
-Create a branch and worktree using `EnterWorktree` (if available) or manually:
-
-```
-git worktree add ../<slug> -b <branch-name>
-```
-
-Then work inside the new worktree directory for all subsequent steps.
+Delegate to `/geno-dev-worktrees-manage create` to create the worktree. It handles safety checks (protected worktrees, zero footprint policy) and picks the correct worktree location based on the workspace configuration. Pass the branch name from step 6 as the argument. Then work inside the new worktree directory for all subsequent steps.
 
 **In-place path:**
 
