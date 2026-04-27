@@ -74,16 +74,37 @@ Use `AskUserQuestion` to ask the user how they want to work on this:
 - **Normal mode** — interactive back-and-forth. You implement, ask questions when stuck, and the user reviews as you go. Best for exploratory or ambiguous issues.
 - **Loop mode** — autonomous execution with periodic status updates. You work independently, checking in at key milestones. Best for well-defined issues with clear acceptance criteria.
 
-### 5. Set up the branch
+### 5. Choose workspace strategy
+
+Use `AskUserQuestion` to ask the user where to work:
+
+- **Worktree** — create an isolated git worktree so the current working tree stays clean. Best when the user has in-progress work on the current branch or wants parallel development.
+- **In-place** — work directly in the current repo clone. Simpler, but changes the working tree state.
+
+**Worktree path:**
+
+Create a branch and worktree using `EnterWorktree` (if available) or manually:
+
+```
+git worktree add ../<slug> -b <branch-name>
+```
+
+Then work inside the new worktree directory for all subsequent steps.
+
+**In-place path:**
+
+Continue in the current directory. Create a feature branch as usual.
+
+### 6. Set up the branch
 
 Create a feature branch from the default branch:
 
-- **GitHub:** `git checkout -b <number>-<slug>` (e.g., `19-add-dep-management`)
-- **JIRA:** `git checkout -b <KEY>-<slug>` (e.g., `PROJ-1234-migrate-db-schema`)
+- **GitHub:** `<number>-<slug>` (e.g., `19-add-dep-management`)
+- **JIRA:** `<KEY>-<slug>` (e.g., `PROJ-1234-migrate-db-schema`)
 
 Where `<slug>` is a short kebab-case summary of the issue title. Push with `-u` to set up tracking.
 
-### 6a. Normal mode
+### 7a. Normal mode
 
 Work interactively:
 
@@ -93,7 +114,7 @@ Work interactively:
 - Ask the user when you hit ambiguity or need a decision
 - When done, create a PR with `gh pr create`. For GitHub issues, link with `Closes #N`. For JIRA tickets, include the ticket key in the PR title (e.g., `PROJ-1234: Fix auth token`) and body. Present the URL.
 
-### 6b. Loop mode
+### 7b. Loop mode
 
 Work autonomously using `ScheduleWakeup` to self-pace:
 
