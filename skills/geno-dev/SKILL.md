@@ -3,10 +3,11 @@ name: geno-dev
 description: >-
   Developer and infrastructure utilities — task execution from lab notes,
   git commit history rewriting, worktree management, workspace creation,
-  session forking, end-to-end feature shipping, and issue-driven development.
+  session forking, end-to-end feature shipping, issue-driven development, and agentic loops.
   Use when user says /geno-dev-tasks-start, /geno-dev-commits-rewrite,
   /geno-dev-worktrees-manage, /geno-dev-workspaces-init, /geno-dev-sessions-fork,
-  /geno-dev-feature-ship, or /geno-dev-issue-work.
+  /geno-dev-feature-ship, /geno-dev-issue-work, /geno-dev-loops-turbocharge,
+  or /geno-dev-loops-cruise.
 license: MIT
 metadata:
   author: 42euge
@@ -15,7 +16,7 @@ metadata:
 
 # geno-dev — Developer Utilities
 
-Dev and infrastructure skills for AI coding agents. Task execution, git history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, and issue-driven development.
+Dev and infrastructure skills for AI coding agents. Task execution, git history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, and agentic loops.
 
 ## Commands
 
@@ -28,6 +29,8 @@ Dev and infrastructure skills for AI coding agents. Task execution, git history 
 | `/geno-dev-sessions-fork [session]` | Fork an agent session — extract context to continue in a new session |
 | `/geno-dev-feature-ship [description\|issue URL]` | End-to-end: scope, issue, branch, implement, and PR |
 | `/geno-dev-issue-work [number\|query\|URL]` | Pick a GitHub issue or JIRA ticket and work on it (normal or loop mode) |
+| `/geno-dev-loops-turbocharge [task] [--spec <file>]` | Spec-driven convergence loop — iterate until all acceptance criteria pass |
+| `/geno-dev-loops-cruise [task] [--plan <file>]` | Plan-driven sequential loop — execute a plan one step at a time |
 
 ## Runtime
 

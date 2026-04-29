@@ -1,6 +1,6 @@
 # geno-dev — developer utilities skillset
 
-Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, workspace creation, and session forking.
+Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, and agentic loops.
 
 ## Skills
 
@@ -12,6 +12,8 @@ Developer and infrastructure skills for AI coding agents: task execution from la
 | geno-dev-worktrees-manage | worktrees | /geno-dev-worktrees-manage |
 | geno-dev-workspaces-init | workspaces | /geno-dev-workspaces-init |
 | geno-dev-sessions-fork | sessions | /geno-dev-sessions-fork |
+| geno-dev-loops-turbocharge | loops | /geno-dev-loops-turbocharge |
+| geno-dev-loops-cruise | loops | /geno-dev-loops-cruise |
 
 ## Repo structure
 
@@ -28,7 +30,9 @@ geno-dev/
 │   ├── geno-dev-sessions-fork/
 │   ├── geno-dev-tasks-start/
 │   ├── geno-dev-workspaces-init/
-│   └── geno-dev-worktrees-manage/
+│   ├── geno-dev-worktrees-manage/
+│   ├── geno-dev-loops-turbocharge/
+│   └── geno-dev-loops-cruise/
 ├── docs/                # MkDocs Material site
 │   ├── index.md
 │   ├── getting-started.md
@@ -49,6 +53,8 @@ Pure markdown skillset — no Python package, no venv, no scripts. Each skill is
 - **worktrees-manage**: Workspace-aware git worktree management with safety protections for Claude Code and geno-tools worktrees.
 - **workspaces-init**: Creates isolated development workspaces from GitHub issues, JIRA tickets, repo names, or feature ideas, with color-coded folder organization.
 - **sessions-fork**: Extracts full session context via geno-mon for continuation in a new session.
+- **loops-turbocharge**: Spec-driven convergence loop — iterates until all acceptance criteria pass.
+- **loops-cruise**: Plan-driven sequential loop — executes a plan one step at a time via agent subagents.
 
 ## Conventions
 
