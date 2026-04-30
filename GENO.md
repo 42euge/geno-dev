@@ -14,6 +14,7 @@ Developer and infrastructure skills for AI coding agents: task execution from la
 | geno-dev-sessions-fork | sessions | /geno-dev-sessions-fork |
 | geno-dev-loops-turbocharge | loops | /geno-dev-loops-turbocharge |
 | geno-dev-loops-cruise | loops | /geno-dev-loops-cruise |
+| geno-dev-prs-check | prs | /geno-dev-prs-check |
 
 ## Repo structure
 
@@ -32,10 +33,13 @@ geno-dev/
 │   ├── geno-dev-workspaces-init/
 │   ├── geno-dev-worktrees-manage/
 │   ├── geno-dev-loops-turbocharge/
-│   └── geno-dev-loops-cruise/
+│   ├── geno-dev-loops-cruise/
+│   └── geno-dev-prs-check/
 ├── docs/                # MkDocs Material site
 │   ├── index.md
 │   ├── getting-started.md
+│   ├── concepts.md
+│   ├── workflows.md
 │   └── commands.md
 ├── config/defaults/     # default configuration files
 │   └── colab.json
@@ -55,6 +59,7 @@ Pure markdown skillset — no Python package, no venv, no scripts. Each skill is
 - **sessions-fork**: Extracts full session context via geno-mon for continuation in a new session.
 - **loops-turbocharge**: Spec-driven convergence loop — iterates until all acceptance criteria pass.
 - **loops-cruise**: Plan-driven sequential loop — executes a plan one step at a time via agent subagents.
+- **prs-check**: Checks open PRs, classifies by status (closeable/stale/blocked/draft/approved), renders a table with links.
 
 ## Conventions
 

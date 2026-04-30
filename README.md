@@ -19,6 +19,7 @@ geno-tools install geno-dev
 | `/geno-dev-sessions-fork [session]` | Fork an agent session — extract context to continue in a new session |
 | `/geno-dev-loops-turbocharge [task] [--spec <file>]` | Spec-driven convergence loop — iterate until all acceptance criteria pass |
 | `/geno-dev-loops-cruise [task] [--plan <file>]` | Plan-driven sequential loop — execute a plan one step at a time |
+| `/geno-dev-prs-check [repo\|--all]` | Check open PRs and flag ones that may need closing |
 
 ## Repository structure
 
@@ -44,11 +45,15 @@ geno-dev/
 │   │   └── SKILL.md
 │   ├── geno-dev-loops-turbocharge/
 │   │   └── SKILL.md
-│   └── geno-dev-loops-cruise/
+│   ├── geno-dev-loops-cruise/
+│   │   └── SKILL.md
+│   └── geno-dev-prs-check/
 │       └── SKILL.md
 ├── docs/
 │   ├── index.md
 │   ├── getting-started.md
+│   ├── concepts.md
+│   ├── workflows.md
 │   └── commands.md
 └── config/defaults/
     └── colab.json

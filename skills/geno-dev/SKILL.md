@@ -7,7 +7,7 @@ description: >-
   Use when user says /geno-dev-tasks-start, /geno-dev-commits-rewrite,
   /geno-dev-worktrees-manage, /geno-dev-workspaces-init, /geno-dev-sessions-fork,
   /geno-dev-feature-ship, /geno-dev-issue-work, /geno-dev-loops-turbocharge,
-  or /geno-dev-loops-cruise.
+  /geno-dev-loops-cruise, or /geno-dev-prs-check.
 license: MIT
 metadata:
   author: 42euge
@@ -16,7 +16,7 @@ metadata:
 
 # geno-dev — Developer Utilities
 
-Dev and infrastructure skills for AI coding agents. Task execution, git history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, and agentic loops.
+Dev and infrastructure skills for AI coding agents. Task execution, git history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, agentic loops, and PR checking.
 
 ## Commands
 
@@ -31,6 +31,7 @@ Dev and infrastructure skills for AI coding agents. Task execution, git history 
 | `/geno-dev-issue-work [number\|query\|URL]` | Pick a GitHub issue or JIRA ticket and work on it (normal or loop mode) |
 | `/geno-dev-loops-turbocharge [task] [--spec <file>]` | Spec-driven convergence loop — iterate until all acceptance criteria pass |
 | `/geno-dev-loops-cruise [task] [--plan <file>]` | Plan-driven sequential loop — execute a plan one step at a time |
+| `/geno-dev-prs-check [repo\|--all]` | Check open PRs and flag ones that may need closing |
 
 ## Runtime
 
