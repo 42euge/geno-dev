@@ -16,6 +16,8 @@ Developer and infrastructure skills for AI coding agents: task execution from la
 | geno-dev-loops-cruise | loops | /geno-dev-loops-cruise |
 | geno-dev-prs-check | prs | /geno-dev-prs-check |
 | geno-dev-scheduling-snooze | scheduling | /geno-dev-scheduling-snooze |
+| geno-dev-feature-ship | feature-ship | /geno-dev-feature-ship |
+| geno-dev-issue-work | issue-work | /geno-dev-issue-work |
 
 ## Repo structure
 
@@ -36,7 +38,9 @@ geno-dev/
 │   ├── geno-dev-loops-turbocharge/
 │   ├── geno-dev-loops-cruise/
 │   ├── geno-dev-prs-check/
-│   └── geno-dev-scheduling-snooze/
+│   ├── geno-dev-scheduling-snooze/
+│   ├── geno-dev-feature-ship/
+│   └── geno-dev-issue-work/
 ├── docs/                # MkDocs Material site
 │   ├── index.md
 │   ├── getting-started.md
@@ -69,3 +73,5 @@ Pure markdown skillset — no Python package, no venv, no scripts. Each skill is
 - Skill directories live under `skills/` and must contain a `SKILL.md` with valid frontmatter.
 - The `.geno/` directory and `CLAUDE.local.md` are never committed — they hold machine-local state.
 - This skill never modifies a project's `.gitignore` or tracked config files.
+- **Prefix aliasing**: Slash commands use the canonical `geno-` prefix in source (e.g., `/geno-dev-tasks-start`). Short `/gt-` aliases are configured per-install by geno-tools and are not part of the skill source.
+- **Adding a new skill**: Create a directory under `skills/` named after the skill, add a `SKILL.md` with valid frontmatter (name, description, argument-hint, license, metadata), then register the skill in the skills table and repo structure tree in this file.
