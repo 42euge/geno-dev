@@ -12,6 +12,7 @@ Developer and infrastructure skills for Claude Code: task execution from lab not
 | `geno-dev-worktrees-manage` | worktrees | manage | `/geno-dev-worktrees-manage` |
 | `geno-dev-workspaces-init` | workspaces | init | `/geno-dev-workspaces-init` |
 | `geno-dev-sessions-fork` | sessions | fork | `/geno-dev-sessions-fork` |
+| `geno-dev-prs-check` | prs | check | `/geno-dev-prs-check` |
 
 ## Compliance
 

@@ -31,4 +31,6 @@ npx skills add 42euge/geno-dev
 ## Next steps
 
 - [Getting Started](getting-started.md) -- install, prerequisites, first use
+- [Concepts](concepts.md) -- how workspaces, worktrees, and tasks connect
+- [Workflows](workflows.md) -- end-to-end examples
 - [Commands](commands.md) -- detailed reference for each slash command

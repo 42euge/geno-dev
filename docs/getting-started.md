@@ -6,6 +6,13 @@
 - [npx skills](https://github.com/nichochar/skills) available on your PATH
 - Git installed
 
+### Optional (for specific skills)
+
+| Tool | Needed by | What it is | Install |
+|------|-----------|-----------|---------|
+| [geno-notes](https://github.com/42euge/geno-notes) | `/geno-dev-tasks-start` | Project journal — tasks, notes, plans | `npx skills add 42euge/geno-notes` |
+| [geno-mon](https://github.com/42euge/geno-mon) | `/geno-dev-sessions-fork` | Session monitor for Claude Code | See [geno-mon docs](https://github.com/42euge/geno-mon) |
+
 ## Install
 
 ```bash
@@ -54,5 +61,7 @@ Workspaces and worktrees are designed to work together for branch-level isolatio
 
 ## What's next
 
-- See [Commands](commands.md) for detailed usage of each slash command
-- Check [geno-tools docs](https://42euge.github.io/geno-tools) for the broader ecosystem
+- [Concepts](concepts.md) — understand workspaces, worktrees, and tasks
+- [Workflows](workflows.md) — end-to-end examples
+- [Commands](commands.md) — detailed reference for each slash command
+- [geno-tools docs](https://42euge.github.io/geno-tools) — the broader ecosystem

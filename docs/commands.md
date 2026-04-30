@@ -1,5 +1,7 @@
 # Commands
 
+Detailed reference for each geno-dev slash command. For conceptual background see [Concepts](concepts.md); for end-to-end examples see [Workflows](workflows.md).
+
 ## Start Task
 
 **`/geno-dev-tasks-start [description]`**
@@ -21,6 +23,8 @@ The user optionally provides a task description or number. If empty, shows the t
 
 !!! tip
     If no geno-notes scope exists, the skill will prompt you to run `geno-notes init --project` first.
+
+**See also:** [Tasks concept](concepts.md#tasks) · [Issue to PR workflow](workflows.md#issue-to-pr)
 
 ---
 
@@ -54,6 +58,8 @@ Rewrite git commit history so it tells a clear, logical narrative — as if the 
 - 3–8 commits is usually the sweet spot
 - Explain the "why", not just the "what"
 
+**See also:** [Commits as Narrative](concepts.md#commits-as-narrative) · [Issue to PR workflow](workflows.md#issue-to-pr)
+
 ---
 
 ## Manage Worktrees
@@ -77,6 +83,8 @@ The skill automatically detects and protects:
 - **geno-tools meta-harness worktrees** (`~/.geno/`) — warned before any action
 
 This skill never edits a project's `.gitignore`, `CLAUDE.md`, or any tracked files.
+
+**See also:** [Worktrees concept](concepts.md#worktrees) · [Multi-repo workspace workflow](workflows.md#multi-repo-workspace) · [Worktree cleanup workflow](workflows.md#worktree-cleanup)
 
 ---
 
@@ -107,6 +115,8 @@ Fork a Claude Code session — extract the full context (environment, files touc
 
 !!! tip
     The fork output includes environment, files modified/read, commands run, and full conversation history — everything a new session needs to continue where the original left off.
+
+**See also:** [Sessions concept](concepts.md#sessions) · [Session handoff workflow](workflows.md#session-handoff)
 
 ---
 
@@ -145,3 +155,45 @@ Workspace settings at `~/.geno/config.yaml` (auto-created on first use):
 
 !!! tip
     Workspaces and worktrees work together: create a workspace with `/geno-dev-workspaces-init`, then use `/geno-dev-worktrees-manage` inside it for branch-level isolation.
+
+**See also:** [Workspaces concept](concepts.md#workspaces) · [Structuring code folders](concepts.md#structuring-code-folders) · [Issue to PR workflow](workflows.md#issue-to-pr)
+
+---
+
+## Check PRs
+
+**`/geno-dev-prs-check [repo|--all]`**
+
+Check open pull requests for repos in the current session. Produces a table highlighting PRs that may need to be closed — stale branches, drafts, or PRs with deleted head branches.
+
+### Input
+
+- Empty — checks the current repo (from `git remote -v`)
+- A repo name or `owner/repo` — checks that specific repo
+- `--all` — if inside a workspace, checks all repos in `.geno/workspace.yaml`
+
+### Status Tags
+
+Each PR is classified with a status tag:
+
+| Tag | Meaning |
+|-----|---------|
+| `CLOSEABLE` | Head branch deleted or already merged — PR is stale |
+| `STALE` | No updates in 30+ days |
+| `BLOCKED` | Changes requested or merge conflicts |
+| `DRAFT` | Marked as draft |
+| `APPROVED` | Approved and ready to merge |
+| `OPEN` | Normal open PR |
+
+### Output
+
+A markdown table sorted by priority (closeable first), always including a link:
+
+```
+| # | Title | Author | Branch | Age | Status | Link |
+|---|-------|--------|--------|-----|--------|------|
+| 47 | Remove legacy auth middleware | 42euge | fix/auth → main | 45d | CLOSEABLE | https://... |
+| 52 | Add worktree safety checks | 42euge | feature/wt → main | 12d | APPROVED | https://... |
+```
+
+Followed by a summary line with counts per status and a hint for closing stale PRs.

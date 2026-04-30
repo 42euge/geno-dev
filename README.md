@@ -17,6 +17,7 @@ npx skills add 42euge/geno-dev
 | `/geno-dev-worktrees-manage [list\|create\|switch\|prune]` | Manage git worktrees — list, create, switch, and prune |
 | `/geno-dev-workspaces-init [config\|list\|<text>]` | Create development workspaces from issues, tickets, repos, or ideas |
 | `/geno-dev-sessions-fork [session]` | Fork a Claude Code session — extract context to continue in a new session |
+| `/geno-dev-prs-check [repo\|--all]` | Check open PRs and flag ones that may need closing |
 
 ## Repository structure
 
@@ -35,7 +36,9 @@ geno-dev/
 │   │   └── SKILL.md
 │   ├── geno-dev-workspaces-init/
 │   │   └── SKILL.md
-│   └── geno-dev-worktrees-manage/
+│   ├── geno-dev-worktrees-manage/
+│   │   └── SKILL.md
+│   └── geno-dev-prs-check/
 │       └── SKILL.md
 └── config/defaults/
     └── colab.json
