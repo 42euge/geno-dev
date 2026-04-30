@@ -2,62 +2,41 @@
 
 ## Prerequisites
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and configured
-- [npx skills](https://github.com/nichochar/skills) available on your PATH
-- Git installed
+- A supported coding CLI (Claude Code, Gemini CLI, Codex, or OpenCode)
+- [geno-tools](https://42euge.github.io/geno-tools) installed
 
 ### Optional (for specific skills)
 
 | Tool | Needed by | What it is | Install |
 |------|-----------|-----------|---------|
-| [geno-notes](https://github.com/42euge/geno-notes) | `/geno-dev-tasks-start` | Project journal — tasks, notes, plans | `npx skills add 42euge/geno-notes` |
+| [geno-notes](https://github.com/42euge/geno-notes) | `/geno-dev-tasks-start` | Project journal — tasks, notes, plans | `geno-tools install geno-notes` |
 | [geno-mon](https://github.com/42euge/geno-mon) | `/geno-dev-sessions-fork` | Session monitor for Claude Code | See [geno-mon docs](https://github.com/42euge/geno-mon) |
 
-## Install
+## Installation
 
 ```bash
-npx skills add 42euge/geno-dev
+geno-tools install geno-dev
 ```
 
-This registers all geno-dev skills with Claude Code (and other supported agents). No venv or runtime dependencies are needed — geno-dev is pure markdown workflows.
+Or from within an agent session:
+
+```
+/geno-tools install geno-dev
+```
 
 ## First use
 
-Once installed, the following slash commands are available in any Claude Code session:
+Once installed, the geno-dev skills are available as slash commands in your agent session:
 
-| Command | What it does |
-|---|---|
-| `/geno-dev-tasks-start` | Pick up a task from lab notes and execute it |
-| `/geno-dev-commits-rewrite` | Rewrite git history into a clean narrative |
-| `/geno-dev-worktrees-manage` | Manage git worktrees (list, create, switch, prune) |
-| `/geno-dev-workspaces-init` | Create development workspaces from issues, tickets, or ideas |
-| `/geno-dev-sessions-fork` | Fork a session to continue in a new one |
+- `/geno-dev-tasks-start` — pick up a task from lab notes and execute it
+- `/geno-dev-commits-rewrite` — rewrite messy git history into a clean narrative
+- `/geno-dev-worktrees-manage` — create, list, switch, and prune git worktrees
+- `/geno-dev-workspaces-init` — create isolated development workspaces
+- `/geno-dev-sessions-fork` — fork a session to continue work in a new context
 
-## Quick example
+## Runtime
 
-Start a task from your lab notes:
-
-```
-/geno-dev-tasks-start fix the auth token bug
-```
-
-The skill will load your geno-notes tasks, find the matching task, assess its scope, plan if needed, execute, and mark it done.
-
-## Workspace workflow
-
-Create an isolated workspace for a GitHub issue:
-
-```
-/geno-dev-workspaces-init https://github.com/42euge/geno-dev/issues/42
-```
-
-Then use worktree management inside the workspace:
-
-```
-/geno-dev-worktrees-manage create feature/fix-auth
-```
-
-Workspaces and worktrees are designed to work together for branch-level isolation within project-level organization.
+geno-dev is a pure markdown skillset — no Python venv, no scripts, no external dependencies beyond git. All skills are self-contained SKILL.md files with structured agent instructions.
 
 ## What's next
 

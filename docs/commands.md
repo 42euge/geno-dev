@@ -92,7 +92,7 @@ This skill never edits a project's `.gitignore`, `CLAUDE.md`, or any tracked fil
 
 **`/geno-dev-sessions-fork [session] [--output <file>] [--max-messages <N>]`**
 
-Fork a Claude Code session — extract the full context (environment, files touched, conversation history) and produce a structured markdown document for continuing work in a new session.
+Fork an agent session — extract the full context (environment, files touched, conversation history) and produce a structured markdown document for continuing work in a new session.
 
 ### Prerequisites
 
@@ -157,6 +157,70 @@ Workspace settings at `~/.geno/config.yaml` (auto-created on first use):
     Workspaces and worktrees work together: create a workspace with `/geno-dev-workspaces-init`, then use `/geno-dev-worktrees-manage` inside it for branch-level isolation.
 
 **See also:** [Workspaces concept](concepts.md#workspaces) · [Structuring code folders](concepts.md#structuring-code-folders) · [Issue to PR workflow](workflows.md#issue-to-pr)
+
+---
+
+## Turbocharge Loop
+
+**`/geno-dev-loops-turbocharge [task] [--spec <file>] [--max <n>]`**
+
+Spec-driven convergence loop. Takes a testable specification (test suite, acceptance criteria, type contract) and iterates until every criterion passes.
+
+### Input
+
+- A task pattern to fuzzy-match against geno-notes tasks (optional)
+- `--spec <file>` — path to the spec file (test suite, criteria list, type definitions)
+- `--max <n>` — maximum iterations (default: 8)
+
+If no spec is provided, the skill asks for a test file, acceptance criteria, or API contract.
+
+### Workflow
+
+1. **Load context** — finds geno-notes task, reads spec, creates session directory at `.geno/loops/turbocharge/<timestamp>/`
+2. **Validate spec (baseline)** — runs spec check, records which criteria pass and fail
+3. **Identify gaps** — prioritizes: quick wins, blockers, isolated fixes, then hard items
+4. **Implement fixes** — makes targeted changes for the top gaps. Small and focused per iteration
+5. **Re-validate** — runs spec check again, logs newly-passing criteria as geno-notes milestones
+6. **Loop or complete** — if all pass, done. If not, schedules next iteration (60–120s). Stops at max iterations
+
+### Spec types supported
+
+| Spec type | Validation |
+|---|---|
+| Test file (`.test.*`) | Test runner (`npm test`, `pytest`, etc.) |
+| Type definitions (`.d.ts`, `.pyi`) | Type checker (`tsc`, `mypy`, etc.) |
+| Acceptance criteria (`.md`) | Manual criterion-by-criterion check |
+| API contract (OpenAPI, protobuf) | Contract validation or diff |
+
+!!! tip
+    Best for TDD workflows: write your tests first, then run `/geno-dev-loops-turbocharge --spec tests/my-feature.test.ts` and let it grind until green.
+
+---
+
+## Cruise Loop
+
+**`/geno-dev-loops-cruise [task] [--plan <file>]`**
+
+Plan-driven sequential execution. Takes a plan with numbered steps and executes them one at a time, each in a fresh agent with checkpoint handoff.
+
+### Input
+
+- A task pattern to fuzzy-match against geno-notes tasks (optional)
+- `--plan <file>` — path to a plan file with numbered steps
+
+If no plan is provided, checks `geno-notes plans/` for the task's plan, then asks the user.
+
+### Workflow
+
+1. **Load context** — finds geno-notes task, reads plan, creates session directory at `.geno/loops/cruise/<timestamp>/`
+2. **Parse plan** — extracts numbered steps, creates a checklist, identifies dependencies
+3. **Pick next step** — selects the first uncompleted step, reads previous checkpoint
+4. **Execute step** — spawns an agent with the step description + previous checkpoint. Agent writes result to `checkpoints/step_<n>.md`
+5. **Verify + log** — reads checkpoint, spot-checks changes, logs geno-notes milestone
+6. **Loop or complete** — if more steps, repeat. If all done, write summary. If a step fails twice, stop and ask user
+
+!!! tip
+    Pairs well with plan mode: use `/geno-dev-tasks-start` to plan a complex task, then run `/geno-dev-loops-cruise --plan geno/geno-notes/plans/<task>.md` to execute it.
 
 ---
 
