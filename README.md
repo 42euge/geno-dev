@@ -1,6 +1,6 @@
 # geno-dev
 
-Developer and infrastructure skills for AI coding agents. Task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, and agentic loops.
+Developer and infrastructure skills for AI coding agents. Task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, agentic loops, and scheduled snoozing.
 
 ## Install
 
@@ -20,6 +20,7 @@ geno-tools install geno-dev
 | `/geno-dev-loops-turbocharge [task] [--spec <file>]` | Spec-driven convergence loop — iterate until all acceptance criteria pass |
 | `/geno-dev-loops-cruise [task] [--plan <file>]` | Plan-driven sequential loop — execute a plan one step at a time |
 | `/geno-dev-prs-check [repo\|--all]` | Check open PRs and flag ones that may need closing |
+| `/geno-dev-scheduling-snooze <time> [prompt]` | Snooze session until a specified time, then execute a prompt |
 
 ## Repository structure
 
@@ -47,7 +48,9 @@ geno-dev/
 │   │   └── SKILL.md
 │   ├── geno-dev-loops-cruise/
 │   │   └── SKILL.md
-│   └── geno-dev-prs-check/
+│   ├── geno-dev-prs-check/
+│   │   └── SKILL.md
+│   └── geno-dev-scheduling-snooze/
 │       └── SKILL.md
 ├── docs/
 │   ├── index.md

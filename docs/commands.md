@@ -261,3 +261,45 @@ A markdown table sorted by priority (closeable first), always including a link:
 ```
 
 Followed by a summary line with counts per status and a hint for closing stale PRs.
+
+---
+
+## Snooze
+
+**`/geno-dev-scheduling-snooze <time> [prompt]`**
+
+Delay the current session's work until a specified time. Parses natural language time expressions and schedules a wakeup via `ScheduleWakeup`.
+
+### Input
+
+A time expression followed by an optional prompt describing what to do on wakeup.
+
+| Format | Examples |
+|---|---|
+| Absolute clock time | `3:30 AM`, `15:30`, `3:30am` |
+| Relative duration | `in 2 hours`, `45m`, `2h` |
+| Named time | `tomorrow at 9am`, `tonight at midnight` |
+
+### Workflow
+
+1. **Parse time** — extracts time expression, resolves to seconds from now
+2. **Resolve prompt** — uses provided prompt or asks the user
+3. **Chain if needed** — if delay exceeds 3600s (ScheduleWakeup max), chains hourly wakeups that re-snooze until the target
+4. **Schedule** — calls ScheduleWakeup with computed delay and prompt
+5. **Confirm** — reports target time, delay, chain count, and wakeup action
+
+### Examples
+
+```
+/geno-dev-scheduling-snooze 3:30 AM start working on the auth refactor
+→ Snoozing until 3:30 AM PDT (in 3h 19m). On wake: "start working on the auth refactor"
+
+/geno-dev-scheduling-snooze 45m run the benchmark suite
+→ Snoozing for 45 minutes. On wake: "run the benchmark suite"
+
+/geno-dev-scheduling-snooze in 10 minutes
+→ (asks what to do on wakeup, then schedules)
+```
+
+!!! tip
+    For delays longer than 1 hour, the skill automatically chains hourly wakeups. Each hop re-checks the clock and re-snoozes until the target time is reached.

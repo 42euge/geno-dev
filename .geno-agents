@@ -1,8 +1,9 @@
 role: geno-dev
-description: Developer utilities — task execution, commit rewriting, worktree management, workspace creation, agentic loops
+description: Developer utilities — task execution, commit rewriting, worktree management, workspace creation, agentic loops, scheduling
 capabilities:
   - dev-tools
   - git-history
   - git-worktrees
   - workspaces
   - agentic-loops
+  - scheduling

@@ -1,6 +1,6 @@
 # geno-dev — developer utilities skillset
 
-Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, and agentic loops.
+Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, agentic loops, and scheduled snoozing.
 
 ## Skills
 
@@ -15,6 +15,7 @@ Developer and infrastructure skills for AI coding agents: task execution from la
 | geno-dev-loops-turbocharge | loops | /geno-dev-loops-turbocharge |
 | geno-dev-loops-cruise | loops | /geno-dev-loops-cruise |
 | geno-dev-prs-check | prs | /geno-dev-prs-check |
+| geno-dev-scheduling-snooze | scheduling | /geno-dev-scheduling-snooze |
 
 ## Repo structure
 
@@ -34,7 +35,8 @@ geno-dev/
 │   ├── geno-dev-worktrees-manage/
 │   ├── geno-dev-loops-turbocharge/
 │   ├── geno-dev-loops-cruise/
-│   └── geno-dev-prs-check/
+│   ├── geno-dev-prs-check/
+│   └── geno-dev-scheduling-snooze/
 ├── docs/                # MkDocs Material site
 │   ├── index.md
 │   ├── getting-started.md
@@ -60,6 +62,7 @@ Pure markdown skillset — no Python package, no venv, no scripts. Each skill is
 - **loops-turbocharge**: Spec-driven convergence loop — iterates until all acceptance criteria pass.
 - **loops-cruise**: Plan-driven sequential loop — executes a plan one step at a time via agent subagents.
 - **prs-check**: Checks open PRs, classifies by status (closeable/stale/blocked/draft/approved), renders a table with links.
+- **scheduling-snooze**: Delays session work until a specified time using natural language, with chained wakeups for long delays.
 
 ## Conventions
 
