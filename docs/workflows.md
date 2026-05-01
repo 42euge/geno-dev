@@ -121,7 +121,7 @@ Each repo gets its own commits, rewrite, and PR. The workspace just keeps them t
 
 ## Session Handoff
 
-Continuing interrupted work in a fresh Claude Code session.
+Continuing interrupted work in a fresh agent session.
 
 ### 1. Fork the session
 
@@ -156,7 +156,7 @@ The output includes everything a new session needs:
 
 ### 3. Continue in a new session
 
-Start a new Claude Code session in the same directory and paste the context document. The new session picks up where the old one left off — same files, same branch, same decisions.
+Start a new agent session in the same directory and paste the context document. The new session picks up where the old one left off — same files, same branch, same decisions.
 
 ---
 

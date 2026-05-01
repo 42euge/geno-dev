@@ -110,9 +110,9 @@ If there are no worktrees beyond the main one, say so and suggest `create` to ge
 1. Find the worktree matching `<name-or-branch>` (fuzzy match against branch names and directory names from the worktree list).
 2. If the match is a Claude Code worktree, refuse and explain why.
 3. Print the absolute path.
-4. Tell the user: "Run `cd <path>` in your terminal to switch, or start a new Claude Code session in that directory."
+4. Tell the user: "Run `cd <path>` in your terminal to switch, or start a new agent session in that directory."
 
-Note: Claude Code cannot change the user's shell working directory. This subcommand is informational — it helps the user find and navigate to worktrees.
+Note: The agent cannot change the user's shell working directory. This subcommand is informational — it helps the user find and navigate to worktrees.
 
 ---
 

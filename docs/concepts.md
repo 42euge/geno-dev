@@ -131,7 +131,7 @@ When you run `/geno-dev-tasks-start`, the skill:
 Plans are saved to `geno-notes/plans/<task-slug>.md` for continuity across sessions.
 
 !!! info "Prerequisite"
-    `/geno-dev-tasks-start` requires geno-notes. Run `geno-notes init --project` in your repo to set up a project-scope journal. Install: `npx skills add 42euge/geno-notes`
+    `/geno-dev-tasks-start` requires geno-notes. Run `geno-notes init --project` in your repo to set up a project-scope journal. Install: `geno-tools install geno-notes`
 
 **Managed by:** [`/geno-dev-tasks-start`](commands.md#start-task)
 
@@ -152,7 +152,7 @@ A `backup-before-rewrite` branch is always created before modifying history. The
 
 ## Sessions
 
-A Claude Code session accumulates rich context — files touched, commands run, decisions made. When a session ends or needs to be handed off, `/geno-dev-sessions-fork` extracts that context into a portable markdown document.
+An agent session accumulates rich context — files touched, commands run, decisions made. When a session ends or needs to be handed off, `/geno-dev-sessions-fork` extracts that context into a portable markdown document.
 
 The output includes:
 
