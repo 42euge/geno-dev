@@ -264,6 +264,41 @@ Followed by a summary line with counts per status and a hint for closing stale P
 
 ---
 
+## Audit Branches
+
+**`/geno-dev-branches-audit [repo|--all]`**
+
+Audit all branches across a workspace or repo. For each branch, determines whether a PR exists, what state it's in, and what action is needed.
+
+### Input
+
+- Empty — audits the current repo
+- A repo name or `owner/repo` — audits that specific repo
+- `--all` — if inside a workspace, audits all repos in `.geno/workspace.yaml`
+
+### Status Tags
+
+| Tag | Meaning |
+|-----|---------|
+| `PR MERGED` | PR was merged but branch still exists (cleanup candidate) |
+| `PR CLOSED` | PR was closed without merge, branch still exists |
+| `PR APPROVED` | PR approved, ready to merge |
+| `PR BLOCKED` | Changes requested or merge conflicts |
+| `PR DRAFT` | PR is a draft |
+| `PR OPEN` | Normal open PR |
+| `NEEDS PR` | Has commits ahead of default, no PR exists |
+| `STALE` | No PR, no updates in 30+ days |
+| `NO CHANGES` | Branch has zero commits ahead of default (delete candidate) |
+
+### Output
+
+A table per repo showing branch name, commits ahead, age, worktree path, PR link, and status tag. Followed by grouped suggested actions with copy-pasteable commands.
+
+!!! tip
+    Complements `/geno-dev-prs-check` which only looks at open PRs. This skill finds branches that *don't* have PRs yet, and branches whose PRs have already been merged or closed.
+
+---
+
 ## Snooze
 
 **`/geno-dev-scheduling-snooze <time> [prompt]`**
