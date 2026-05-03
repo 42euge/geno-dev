@@ -13,6 +13,7 @@ Developer and infrastructure skills for AI coding agents: task execution from la
 | geno-dev-workspaces-init | workspaces | /geno-dev-workspaces-init |
 | geno-dev-sessions-fork | sessions | /geno-dev-sessions-fork |
 | geno-dev-loops-turbocharge | loops | /geno-dev-loops-turbocharge |
+| geno-dev-loops-drift | loops | /geno-dev-loops-drift |
 | geno-dev-loops-cruise | loops | /geno-dev-loops-cruise |
 | geno-dev-loops-boost | loops | /geno-dev-loops-boost |
 | geno-dev-loops-ignition | loops | /geno-dev-loops-ignition |
@@ -40,6 +41,7 @@ geno-dev/
 │   ├── geno-dev-workspaces-init/
 │   ├── geno-dev-worktrees-manage/
 │   ├── geno-dev-loops-turbocharge/
+│   ├── geno-dev-loops-drift/
 │   ├── geno-dev-loops-cruise/
 │   ├── geno-dev-loops-boost/
 │   ├── geno-dev-loops-ignition/
@@ -72,6 +74,7 @@ Pure markdown skillset — no Python package, no venv, no scripts. Each skill is
 - **workspaces-init**: Creates isolated development workspaces from GitHub issues, JIRA tickets, repo names, or feature ideas, with color-coded folder organization.
 - **sessions-fork**: Extracts full session context via geno-mon for continuation in a new session.
 - **loops-turbocharge**: Spec-driven convergence loop — iterates until all acceptance criteria pass.
+- **loops-drift**: Question-driven exploration loop — maintains a prioritized question queue for archaeology and debugging.
 - **loops-cruise**: Plan-driven sequential loop — executes a plan one step at a time via agent subagents.
 - **loops-boost**: Pomodoro focus loop — time-boxed work blocks with periodic reflection and logging.
 - **loops-ignition**: Cold-start bootstrap loop — turns a high-level goal into a blueprint, scaffold, implementation, and verified first slice.

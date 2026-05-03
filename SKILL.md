@@ -9,9 +9,9 @@ description: >-
   Use when user says /geno-dev-tasks-start, /geno-dev-commits-rewrite,
   /geno-dev-worktrees-manage, /geno-dev-workspaces-init, /geno-dev-sessions-fork,
   /geno-dev-feature-ship, /geno-dev-issue-work, /geno-dev-loops-turbocharge,
-  /geno-dev-loops-cruise, /geno-dev-loops-boost, /geno-dev-loops-ignition, /geno-dev-prs-check,
-  /geno-dev-branches-audit, /geno-dev-scheduling-snooze, or
-  /geno-dev-skills-retro.
+  /geno-dev-loops-drift, /geno-dev-loops-cruise, /geno-dev-loops-boost,
+  /geno-dev-loops-ignition, /geno-dev-prs-check, /geno-dev-branches-audit,
+  /geno-dev-scheduling-snooze, or /geno-dev-skills-retro.
 license: MIT
 metadata:
   author: 42euge
@@ -33,6 +33,7 @@ Dev and infrastructure skills for AI coding agents. Task execution, git history 
 | `/geno-dev-sessions-fork [session]` | Fork an agent session — extract context to continue in a new session |
 | `/geno-dev-feature-ship [description\|issue URL]` | End-to-end: scope, issue, branch, implement, and PR |
 | `/geno-dev-issue-work [number\|query\|URL]` | Pick a GitHub issue or JIRA ticket and work on it (normal or loop mode) |
+| `/geno-dev-loops-drift [question]` | Question-driven exploration loop — maintains a prioritized question queue |
 | `/geno-dev-loops-turbocharge [task] [--spec <file>]` | Spec-driven convergence loop — iterate until all acceptance criteria pass |
 | `/geno-dev-loops-cruise [task] [--plan <file>]` | Plan-driven sequential loop — execute a plan one step at a time |
 | `/geno-dev-loops-boost [task]` | Pomodoro focus loop — time-boxed work blocks with reflection |
