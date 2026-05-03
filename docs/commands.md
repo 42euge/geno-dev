@@ -160,6 +160,70 @@ Workspace settings at `~/.geno/config.yaml` (auto-created on first use):
 
 ---
 
+## Ship Feature
+
+**`/geno-dev-feature-ship [description|issue URL]`**
+
+Take a feature idea from scoping through implementation to a pull request.
+
+### Input
+
+- A freeform feature description
+- An existing GitHub issue URL
+
+If no argument is provided, the skill asks what the user wants to build.
+
+### Workflow
+
+1. **Scope the feature** — clarify requirements with the user, or fetch the linked GitHub issue
+2. **Create the issue** — draft and create a GitHub issue when starting from a freeform idea
+3. **Create the branch** — branch from the default branch with a descriptive name
+4. **Implement** — explore, plan if needed, code, document, and verify
+5. **Open the PR** — create a pull request that links back to the issue
+6. **Wrap up** — summarize what shipped and note any follow-up scope
+
+!!! tip
+    Use this when the work starts as an idea. If the issue already exists and you want to execute it directly, use `/geno-dev-issue-work`.
+
+**See also:** [Issue to PR workflow](workflows.md#issue-to-pr)
+
+---
+
+## Work on Issue
+
+**`/geno-dev-issue-work [number|query|URL]`**
+
+Pick a GitHub issue or JIRA ticket and execute it with either interactive or autonomous flow.
+
+### Input
+
+- A GitHub issue number
+- A JIRA key like `PROJ-1234`
+- A GitHub or JIRA URL
+- A search query for finding the issue
+
+### Workflow
+
+1. **Detect source** — determine GitHub vs. JIRA from the argument
+2. **Select the issue** — fetch directly or search and let the user choose
+3. **Read context** — summarize the issue body, constraints, and comments
+4. **Choose execution mode** — normal interactive mode or autonomous loop mode
+5. **Choose workspace strategy** — worktree or in-place
+6. **Create the branch** — branch from the default branch using the issue number or ticket key
+7. **Implement and ship** — do the work, verify it, and open the PR
+
+### Modes
+
+- **Normal mode** — interactive back-and-forth, best for ambiguous work
+- **Loop mode** — autonomous execution with periodic check-ins, best for well-defined work
+
+!!! tip
+    Prefer a separate worktree when your current checkout is dirty or you want parallel issue work without disturbing the main clone.
+
+**See also:** [Issue to PR workflow](workflows.md#issue-to-pr) · [Manage Worktrees](#manage-worktrees)
+
+---
+
 ## Turbocharge Loop
 
 **`/geno-dev-loops-turbocharge [task] [--spec <file>] [--max <n>]`**
@@ -221,6 +285,48 @@ If no plan is provided, checks `geno-notes plans/` for the task's plan, then ask
 
 !!! tip
     Pairs well with plan mode: use `/geno-dev-tasks-start` to plan a complex task, then run `/geno-dev-loops-cruise --plan geno/geno-notes/plans/<task>.md` to execute it.
+
+---
+
+## Overdrive Loop
+
+**`/geno-dev-loops-overdrive [task] [--brief <file>] [--for <duration>] [--max <n>]`**
+
+Long-horizon adaptive execution. Rotates through Planner, Implementer, and Reviewer roles in fresh agents, using checkpoint handoffs to sustain multi-hour work without silent context drift.
+
+### Input
+
+- A task pattern to fuzzy-match against geno-notes tasks (optional)
+- `--brief <file>` — seed the loop from an issue brief, plan, spec, or notes file
+- `--for <duration>` — target run length; defaults to `4h` and typically ranges from `2h` to `12h`
+- `--max <n>` — maximum cycles; overrides the duration-derived default
+
+### Workflow
+
+1. **Load context** — activate the task, summarize or copy the brief, detect repo state, and create `.geno/loops/overdrive/<timestamp>/`
+2. **Capture baseline** — record current constraints, branch state, and verification targets
+3. **Planner cycle** — choose the next bounded sprint slice and define what success looks like
+4. **Implementer cycle** — make focused progress on that slice and log milestones
+5. **Reviewer cycle** — verify the actual changes, record findings, and decide whether to continue, stop, or re-plan
+6. **Repeat rotation** — continue Planner -> Implementer -> Reviewer until complete, blocked, or at max cycles
+
+### Role rotation
+
+- **Planner** — reads the active task and previous checkpoint, then picks the next 1-3 concrete slices
+- **Implementer** — executes the highest-priority slice and records what changed
+- **Reviewer** — validates the work, looks for regressions or scope drift, and drives the next handoff
+
+### Duration mapping
+
+| Duration | Default cycles |
+|---|---|
+| `2h` | 4 |
+| `4h` | 8 |
+| `8h` | 16 |
+| `12h` | 24 |
+
+!!! tip
+    Use Overdrive when the work is too long or dynamic for Cruise, but still goal-oriented enough that each cycle should end with a concrete decision or verification result.
 
 ---
 
