@@ -9,7 +9,8 @@ description: >-
   Use when user says /geno-dev-tasks-start, /geno-dev-commits-rewrite,
   /geno-dev-worktrees-manage, /geno-dev-workspaces-init, /geno-dev-sessions-fork,
   /geno-dev-feature-ship, /geno-dev-issue-work, /geno-dev-loops-turbocharge,
-  /geno-dev-loops-cruise, /geno-dev-loops-ignition, /geno-dev-prs-check,
+  /geno-dev-loops-cruise, /geno-dev-loops-ignition,
+  /geno-dev-loops-control-tower, /geno-dev-prs-check,
   /geno-dev-branches-audit, /geno-dev-scheduling-snooze, or
   /geno-dev-skills-retro.
 license: MIT
@@ -36,6 +37,7 @@ Dev and infrastructure skills for AI coding agents. Task execution, git history 
 | `/geno-dev-loops-turbocharge [task] [--spec <file>]` | Spec-driven convergence loop — iterate until all acceptance criteria pass |
 | `/geno-dev-loops-cruise [task] [--plan <file>]` | Plan-driven sequential loop — execute a plan one step at a time |
 | `/geno-dev-loops-ignition [goal] [--blueprint <file>]` | Cold-start bootstrap loop — turn a high-level goal into a blueprint and verified first slice |
+| `/geno-dev-loops-control-tower [task] [--brief <file>]` | Meta loop — route work to the right loop, supervise it, and intervene when it drifts |
 | `/geno-dev-prs-check [repo\|--all]` | Check open PRs and flag ones that may need closing |
 | `/geno-dev-branches-audit [repo\|--all]` | Audit all branches — find ones needing PRs, ready to merge, or stale |
 | `/geno-dev-scheduling-snooze <time> [prompt]` | Snooze session until a specified time, then execute a prompt |

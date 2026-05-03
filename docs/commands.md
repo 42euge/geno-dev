@@ -259,6 +259,60 @@ Use Ignition when you're starting from a rough goal and need the first working s
 
 ---
 
+## Control Tower Loop
+
+**`/geno-dev-loops-control-tower [task] [--brief <file>] [--for <duration>] [--max <n>] [--prefer <loop>]`**
+
+Meta orchestration loop. It chooses the best execution loop for the current task, supervises that lane while it runs, and intervenes when the task becomes under-informed, under-specified, or clearly off the rails.
+
+### Input
+
+- A task pattern to fuzzy-match against geno-notes tasks (optional)
+- `--brief <file>` - optional issue brief, notes file, or seed artifact
+- `--for <duration>` - target orchestration window (default: `4h`)
+- `--max <n>` - maximum supervision cycles
+- `--prefer <loop>` - preferred starting loop, used only when it does not conflict with the evidence
+
+### Routing Rubric
+
+Control Tower routes by task shape:
+
+- **Turbocharge** when a spec or acceptance criteria already exist
+- **Cruise** when there is a clear ordered plan
+- **Ignition** when the work is a cold start and needs a blueprint
+- **Drift** when unanswered questions are the bottleneck
+- **NOS** when work items are independent and parallelizable
+- **Overdrive** when the task needs sustained multi-role execution over a long horizon
+- **Autopilot** when the work has become mostly monitoring and maintenance
+- **Boost** when time-boxed focus/reflection is the right constraint
+
+If the chosen loop is not installed, Control Tower falls back to the nearest compatible route and records degraded mode.
+
+### Workflow
+
+1. **Load context** - activates or creates a geno-notes task, captures repo state, and writes a session brief
+2. **Detect capabilities** - checks which loop skills and helpers (`geno-mon`, `geno-msg`, `geno-research`, `geno-specs`, `geno-agents`, `geno-notes`) are actually available
+3. **Score the task** - assesses spec strength, plan strength, question load, parallelism potential, monitoring intensity, and route volatility
+4. **Select the active lane** - chooses the best loop and records success/switch triggers
+5. **Supervise** - uses telemetry, checkpoints, and repo state to classify the lane as healthy, under-informed, under-specified, thrashing, passive, or complete
+6. **Intervene** - escalates to research, specs, specialist agents, or a route switch when needed
+7. **Log everything** - records route decisions, interventions, research/spec artifacts, and milestones in geno-notes when available
+8. **Complete or stop** - ends when the task is done, blocked on the user, or max supervision is reached
+
+### Helper Integrations
+
+- **`geno-mon`** - monitor a running lane for thrashing, repeated error recovery, hot files, and stalled progress
+- **`geno-msg`** - send a corrective nudge to a drifting lane when available
+- **`geno-research`** - gather missing context when understanding is the bottleneck
+- **`geno-specs`** - generate explicit acceptance criteria or contracts when implementation is under-specified
+- **`geno-agents`** - create specialized helper agents for bounded sidecar work such as research, verification, or merge coordination
+- **`geno-notes`** - persist route selection, switches, interventions, and outcomes
+
+!!! tip
+    Use Control Tower when the question is not just "how do I execute this?" but "what execution mode should I be in right now, and when should I switch?"
+
+---
+
 ## Check PRs
 
 **`/geno-dev-prs-check [repo|--all]`**
