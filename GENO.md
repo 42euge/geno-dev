@@ -14,6 +14,7 @@ Developer and infrastructure skills for AI coding agents: task execution from la
 | geno-dev-sessions-fork | sessions | /geno-dev-sessions-fork |
 | geno-dev-loops-turbocharge | loops | /geno-dev-loops-turbocharge |
 | geno-dev-loops-cruise | loops | /geno-dev-loops-cruise |
+| geno-dev-loops-nos | loops | /geno-dev-loops-nos |
 | geno-dev-prs-check | prs | /geno-dev-prs-check |
 | geno-dev-branches-audit | branches | /geno-dev-branches-audit |
 | geno-dev-scheduling-snooze | scheduling | /geno-dev-scheduling-snooze |
@@ -39,6 +40,7 @@ geno-dev/
 │   ├── geno-dev-worktrees-manage/
 │   ├── geno-dev-loops-turbocharge/
 │   ├── geno-dev-loops-cruise/
+│   ├── geno-dev-loops-nos/
 │   ├── geno-dev-prs-check/
 │   ├── geno-dev-branches-audit/
 │   ├── geno-dev-scheduling-snooze/
@@ -69,6 +71,7 @@ Pure markdown skillset — no Python package, no venv, no scripts. Each skill is
 - **sessions-fork**: Extracts full session context via geno-mon for continuation in a new session.
 - **loops-turbocharge**: Spec-driven convergence loop — iterates until all acceptance criteria pass.
 - **loops-cruise**: Plan-driven sequential loop — executes a plan one step at a time via agent subagents.
+- **loops-nos**: Burst parallel sprint — identifies independent items and spawns subagents in parallel.
 - **prs-check**: Checks open PRs, classifies by status (closeable/stale/blocked/draft/approved), renders a table with links.
 - **branches-audit**: Audits all branches across a workspace or repo, classifying by PR status and suggesting next actions.
 - **scheduling-snooze**: Delays session work until a specified time using natural language, with chained wakeups for long delays.

@@ -224,6 +224,34 @@ If no plan is provided, checks `geno-notes plans/` for the task's plan, then ask
 
 ---
 
+## NOS Loop
+
+**`/geno-dev-loops-nos [task] [--batch <file>] [--n <count>]`**
+
+Burst parallel sprint. Identifies independent work items and spawns multiple Agent subagents simultaneously for maximum throughput.
+
+### Input
+
+- A task pattern to fuzzy-match against geno-notes tasks (optional)
+- `--batch <file>` — path to a file containing a list of independent items (one per line)
+- `--n <count>` — number of parallel agents to spawn (default: 3, max: 5)
+
+If no batch file is provided, checks `geno-notes plans/` for the task's plan, or analyzes the task to identify independent sub-tasks.
+
+### Workflow
+
+1. **Load context** — finds geno-notes task, reads batch list, creates session directory at `.geno/loops/nos/<timestamp>/`
+2. **Batching** — groups items into waves of size `N`
+3. **Execute wave** — spawns `N` agent subagents in parallel. Each agent works on one item and writes result to `results/item_<id>.md`
+4. **Merge + log** — waits for wave completion, reads results, checks for merge conflicts, logs geno-notes milestone
+5. **Next wave** — if items remain, proceed to next wave
+6. **Completion** — writes final summary to session log, marks task done in geno-notes if appropriate
+
+!!! tip
+    Ideal for repetitive tasks across multiple files, like generating documentation, writing unit tests for independent modules, or creating configuration files.
+
+---
+
 ## Check PRs
 
 **`/geno-dev-prs-check [repo|--all]`**
