@@ -224,6 +224,30 @@ If no plan is provided, checks `geno-notes plans/` for the task's plan, then ask
 
 ---
 
+## Boost Loop
+
+**`/geno-dev-loops-boost [task] [--work <min>] [--reflect <min>]`**
+
+Time-boxed focus sessions (Pomodoro). Works for 25 minutes, then stops for 5 minutes of reflection and journal logging.
+
+### Input
+
+- A task pattern to fuzzy-match against geno-notes tasks (optional)
+- `--work <min>` — duration of the work phase in minutes (default: 25)
+- `--reflect <min>` — duration of the reflection phase in minutes (default: 5)
+
+### Workflow
+
+1. **Load context** — finds geno-notes task, creates session directory at `.geno/loops/boost/<timestamp>/`
+2. **Start Work Phase** — calls `ScheduleWakeup` for the work duration and starts autonomous work on the task
+3. **Reflect Phase** — triggered by wakeup. The agent summarizes accomplishments, identifies findings/decisions, and writes a reflection note to `geno-notes`
+4. **Continue or Finish** — updates the session log and asks the user whether to start another block, finish the session, or change tasks
+
+!!! tip
+    Perfect for open-ended exploration, debugging, or complex investigations where you want to ensure you don't lose track of progress and maintain a steady journal.
+
+---
+
 ## Ignition Loop
 
 **`/geno-dev-loops-ignition [goal] [--blueprint <file>] [--max <n>]`**

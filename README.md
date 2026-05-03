@@ -21,6 +21,7 @@ geno-tools install geno-dev
 | `/geno-dev-issue-work [number\|query\|URL]` | Pick a GitHub issue or JIRA ticket and work on it (normal or loop mode) |
 | `/geno-dev-loops-turbocharge [task] [--spec <file>]` | Spec-driven convergence loop — iterate until all acceptance criteria pass |
 | `/geno-dev-loops-cruise [task] [--plan <file>]` | Plan-driven sequential loop — execute a plan one step at a time |
+| `/geno-dev-loops-boost [task]` | Pomodoro focus loop — time-boxed work blocks with reflection |
 | `/geno-dev-loops-ignition [goal] [--blueprint <file>]` | Cold-start bootstrap loop — turn a high-level goal into a blueprint and verified first slice |
 | `/geno-dev-prs-check [repo\|--all]` | Check open PRs and flag ones that may need closing |
 | `/geno-dev-branches-audit [repo\|--all]` | Audit all branches — find ones needing PRs, ready to merge, or stale |
@@ -52,6 +53,8 @@ geno-dev/
 │   ├── geno-dev-loops-turbocharge/
 │   │   └── SKILL.md
 │   ├── geno-dev-loops-cruise/
+│   │   └── SKILL.md
+│   ├── geno-dev-loops-boost/
 │   │   └── SKILL.md
 │   ├── geno-dev-loops-ignition/
 │   │   └── SKILL.md
