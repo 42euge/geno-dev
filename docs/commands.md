@@ -321,6 +321,65 @@ Background monitoring loop. Watches a branch or PR over a long window and reacts
 
 ---
 
+## Boost Loop
+
+**`/geno-dev-loops-boost [task] [--work <min>] [--reflect <min>]`**
+
+Time-boxed focus sessions (Pomodoro). Works for 25 minutes, then stops for 5 minutes of reflection and journal logging.
+
+### Input
+
+- A task pattern to fuzzy-match against geno-notes tasks (optional)
+- `--work <min>` — duration of the work phase in minutes (default: 25)
+- `--reflect <min>` — duration of the reflection phase in minutes (default: 5)
+
+### Workflow
+
+1. **Load context** — finds geno-notes task, creates session directory at `.geno/loops/boost/<timestamp>/`
+2. **Start Work Phase** — calls `ScheduleWakeup` for the work duration and starts autonomous work on the task
+3. **Reflect Phase** — triggered by wakeup. The agent summarizes accomplishments, identifies findings/decisions, and writes a reflection note to `geno-notes`
+4. **Continue or Finish** — updates the session log and asks the user whether to start another block, finish the session, or change tasks
+
+!!! tip
+    Perfect for open-ended exploration, debugging, or complex investigations where you want to ensure you don't lose track of progress and maintain a steady journal.
+
+---
+
+## Ignition Loop
+
+**`/geno-dev-loops-ignition [goal] [--blueprint <file>] [--max <n>]`**
+
+Cold-start bootstrap loop. Takes a high-level goal, generates or loads a blueprint, then bootstraps the work in layers: structure, implementation, and verification.
+
+### Input
+
+- A high-level goal to bootstrap
+- An optional task pattern to fuzzy-match against geno-notes tasks
+- `--blueprint <file>` — start from an existing blueprint instead of generating one
+- `--max <n>` — maximum layers or iterations (default: 6)
+
+If no goal or blueprint is provided, the skill asks the user for one.
+
+### Workflow
+
+1. **Load or create task context** — finds or creates a geno-notes task, starts it, and creates a session directory at `.geno/loops/ignition/<timestamp>/`
+2. **Generate blueprint** — inspects the issue, repo, and constraints, then writes a living blueprint with deliverables, structure, layers, and verification plan
+3. **Pick next layer** — chooses the thinnest meaningful layer to bootstrap next, avoiding broad over-scaffolding
+4. **Scaffold** — a Scaffolder role creates the minimum structure and writes a checkpoint
+5. **Build** — a Builder role fills in the scaffold with a coherent first implementation and writes a checkpoint
+6. **Verify** — a Verifier role runs the lightest meaningful validation, records evidence, and recommends the next layer
+7. **Evolve blueprint** — updates the blueprint and session log with what became concrete during the layer
+8. **Loop or complete** — continues until there is a verified first slice or the max layer count is reached
+
+### Best Fit
+
+Use Ignition when you're starting from a rough goal and need the first working slice to take shape. If you already have a numbered plan, use Cruise. If you already have a testable spec, use Turbocharge.
+
+!!! tip
+    A good Ignition prompt is short and outcome-oriented: `/geno-dev-loops-ignition bootstrap a new skill for parsing deployment logs` is enough to start with blueprint generation.
+
+---
+
 ## Check PRs
 
 **`/geno-dev-prs-check [repo|--all]`**

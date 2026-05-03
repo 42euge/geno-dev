@@ -1,6 +1,6 @@
 # geno-dev — developer utilities skillset
 
-Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, issue-driven development, agentic loops, background monitoring, and scheduled snoozing.
+Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, agentic loops, background monitoring, PR checking and branch auditing, scheduled snoozing, and skill retrospectives.
 
 ## Skills
 
@@ -15,11 +15,14 @@ Developer and infrastructure skills for AI coding agents: task execution from la
 | geno-dev-loops-turbocharge | loops | /geno-dev-loops-turbocharge |
 | geno-dev-loops-cruise | loops | /geno-dev-loops-cruise |
 | geno-dev-loops-autopilot | loops | /geno-dev-loops-autopilot |
+| geno-dev-loops-boost | loops | /geno-dev-loops-boost |
+| geno-dev-loops-ignition | loops | /geno-dev-loops-ignition |
 | geno-dev-prs-check | prs | /geno-dev-prs-check |
 | geno-dev-branches-audit | branches | /geno-dev-branches-audit |
 | geno-dev-scheduling-snooze | scheduling | /geno-dev-scheduling-snooze |
 | geno-dev-feature-ship | feature-ship | /geno-dev-feature-ship |
 | geno-dev-issue-work | issue-work | /geno-dev-issue-work |
+| geno-dev-skills-retro | meta | /geno-dev-skills-retro |
 
 ## Repo structure
 
@@ -40,11 +43,14 @@ geno-dev/
 │   ├── geno-dev-loops-turbocharge/
 │   ├── geno-dev-loops-cruise/
 │   ├── geno-dev-loops-autopilot/
+│   ├── geno-dev-loops-boost/
+│   ├── geno-dev-loops-ignition/
 │   ├── geno-dev-prs-check/
 │   ├── geno-dev-branches-audit/
 │   ├── geno-dev-scheduling-snooze/
 │   ├── geno-dev-feature-ship/
-│   └── geno-dev-issue-work/
+│   ├── geno-dev-issue-work/
+│   └── geno-dev-skills-retro/
 ├── docs/                # MkDocs Material site
 │   ├── index.md
 │   ├── getting-started.md
@@ -72,9 +78,12 @@ Pure markdown skillset — no Python package, no venv, no scripts. Each skill is
 - **loops-turbocharge**: Spec-driven convergence loop — iterates until all acceptance criteria pass.
 - **loops-cruise**: Plan-driven sequential loop — executes a plan one step at a time via agent subagents.
 - **loops-autopilot**: Background monitoring loop — watches CI, tests, lint, and git state, auto-fixing low-risk issues or alerting when needed.
+- **loops-boost**: Pomodoro focus loop — time-boxed work blocks with periodic reflection and logging.
+- **loops-ignition**: Cold-start bootstrap loop — turns a high-level goal into a blueprint, scaffold, implementation, and verified first slice.
 - **prs-check**: Checks open PRs, classifies by status (closeable/stale/blocked/draft/approved), renders a table with links.
 - **branches-audit**: Audits all branches across a workspace or repo, classifying by PR status and suggesting next actions.
 - **scheduling-snooze**: Delays session work until a specified time using natural language, with chained wakeups for long delays.
+- **skills-retro**: Meta-harness — analyzes failed sessions, identifies root causes, and patches the responsible skill to prevent recurrence.
 
 ## Conventions
 
