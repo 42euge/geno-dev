@@ -19,6 +19,7 @@ Developer and infrastructure skills for AI coding agents: task execution from la
 | geno-dev-scheduling-snooze | scheduling | /geno-dev-scheduling-snooze |
 | geno-dev-feature-ship | feature-ship | /geno-dev-feature-ship |
 | geno-dev-issue-work | issue-work | /geno-dev-issue-work |
+| geno-dev-skills-retro | meta | /geno-dev-skills-retro |
 
 ## Repo structure
 
@@ -42,7 +43,8 @@ geno-dev/
 │   ├── geno-dev-branches-audit/
 │   ├── geno-dev-scheduling-snooze/
 │   ├── geno-dev-feature-ship/
-│   └── geno-dev-issue-work/
+│   ├── geno-dev-issue-work/
+│   └── geno-dev-skills-retro/
 ├── docs/                # MkDocs Material site
 │   ├── index.md
 │   ├── getting-started.md
@@ -70,6 +72,7 @@ Pure markdown skillset — no Python package, no venv, no scripts. Each skill is
 - **prs-check**: Checks open PRs, classifies by status (closeable/stale/blocked/draft/approved), renders a table with links.
 - **branches-audit**: Audits all branches across a workspace or repo, classifying by PR status and suggesting next actions.
 - **scheduling-snooze**: Delays session work until a specified time using natural language, with chained wakeups for long delays.
+- **skills-retro**: Meta-harness — analyzes failed sessions, identifies root causes, and patches the responsible skill to prevent recurrence.
 
 ## Conventions
 

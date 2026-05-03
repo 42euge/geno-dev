@@ -9,7 +9,7 @@ description: >-
   /geno-dev-worktrees-manage, /geno-dev-workspaces-init, /geno-dev-sessions-fork,
   /geno-dev-feature-ship, /geno-dev-issue-work, /geno-dev-loops-turbocharge,
   /geno-dev-loops-cruise, /geno-dev-prs-check, /geno-dev-branches-audit,
-  or /geno-dev-scheduling-snooze.
+  /geno-dev-scheduling-snooze, or /geno-dev-skills-retro.
 license: MIT
 metadata:
   author: 42euge
@@ -36,6 +36,7 @@ Dev and infrastructure skills for AI coding agents. Task execution, git history 
 | `/geno-dev-prs-check [repo\|--all]` | Check open PRs and flag ones that may need closing |
 | `/geno-dev-branches-audit [repo\|--all]` | Audit all branches — find ones needing PRs, ready to merge, or stale |
 | `/geno-dev-scheduling-snooze <time> [prompt]` | Snooze session until a specified time, then execute a prompt |
+| `/geno-dev-skills-retro [session] [--skill <name>]` | Meta-harness: analyze a failed session and patch the responsible skill |
 
 ## Runtime
 
