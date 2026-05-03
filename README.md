@@ -17,6 +17,7 @@ geno-tools install geno-dev
 | `/geno-dev-worktrees-manage [list\|create\|switch\|prune]` | Manage git worktrees — list, create, switch, and prune |
 | `/geno-dev-workspaces-init [config\|list\|<text>]` | Create development workspaces from issues, tickets, repos, or ideas |
 | `/geno-dev-sessions-fork [session]` | Fork an agent session — extract context to continue in a new session |
+| `/geno-dev-loops-drift [question]` | Question-driven exploration loop — maintains a prioritized question queue |
 | `/geno-dev-loops-turbocharge [task] [--spec <file>]` | Spec-driven convergence loop — iterate until all acceptance criteria pass |
 | `/geno-dev-loops-cruise [task] [--plan <file>]` | Plan-driven sequential loop — execute a plan one step at a time |
 | `/geno-dev-prs-check [repo\|--all]` | Check open PRs and flag ones that may need closing |
@@ -45,6 +46,8 @@ geno-dev/
 │   ├── geno-dev-worktrees-manage/
 │   │   └── SKILL.md
 │   ├── geno-dev-loops-turbocharge/
+│   │   └── SKILL.md
+│   ├── geno-dev-loops-drift/
 │   │   └── SKILL.md
 │   ├── geno-dev-loops-cruise/
 │   │   └── SKILL.md

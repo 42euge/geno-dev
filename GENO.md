@@ -13,6 +13,7 @@ Developer and infrastructure skills for AI coding agents: task execution from la
 | geno-dev-workspaces-init | workspaces | /geno-dev-workspaces-init |
 | geno-dev-sessions-fork | sessions | /geno-dev-sessions-fork |
 | geno-dev-loops-turbocharge | loops | /geno-dev-loops-turbocharge |
+| geno-dev-loops-drift | loops | /geno-dev-loops-drift |
 | geno-dev-loops-cruise | loops | /geno-dev-loops-cruise |
 | geno-dev-prs-check | prs | /geno-dev-prs-check |
 | geno-dev-branches-audit | branches | /geno-dev-branches-audit |
@@ -38,6 +39,7 @@ geno-dev/
 │   ├── geno-dev-workspaces-init/
 │   ├── geno-dev-worktrees-manage/
 │   ├── geno-dev-loops-turbocharge/
+│   ├── geno-dev-loops-drift/
 │   ├── geno-dev-loops-cruise/
 │   ├── geno-dev-prs-check/
 │   ├── geno-dev-branches-audit/
@@ -68,6 +70,7 @@ Pure markdown skillset — no Python package, no venv, no scripts. Each skill is
 - **workspaces-init**: Creates isolated development workspaces from GitHub issues, JIRA tickets, repo names, or feature ideas, with color-coded folder organization.
 - **sessions-fork**: Extracts full session context via geno-mon for continuation in a new session.
 - **loops-turbocharge**: Spec-driven convergence loop — iterates until all acceptance criteria pass.
+- **loops-drift**: Question-driven exploration loop — maintains a prioritized question queue for archaeology and debugging.
 - **loops-cruise**: Plan-driven sequential loop — executes a plan one step at a time via agent subagents.
 - **prs-check**: Checks open PRs, classifies by status (closeable/stale/blocked/draft/approved), renders a table with links.
 - **branches-audit**: Audits all branches across a workspace or repo, classifying by PR status and suggesting next actions.
