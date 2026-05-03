@@ -160,6 +160,33 @@ Workspace settings at `~/.geno/config.yaml` (auto-created on first use):
 
 ---
 
+## Drift Loop
+
+**`/geno-dev-loops-drift [question] [--max <n>]`**
+
+Question-driven exploration loop. Ideal for codebase archaeology, debugging complex issues, or understanding unfamiliar systems.
+
+### Input
+
+- **Starting question** — the initial inquiry to kick off exploration (optional)
+- **`--max <n>`** — maximum cycles (default: 10)
+
+If no starting question is provided, the skill asks what you want to explore.
+
+### Workflow
+
+1. **Load context** — finds active geno-notes task (if any), creates session directory at `.geno/loops/drift/<timestamp>/`
+2. **Initialize queue** — writes the starting question to a prioritized `questions.md` queue
+3. **Pick next question** — selects the highest priority open question from the queue
+4. **Explore and answer** — investigates the codebase to answer the question. Documents findings in `session.md`
+5. **Finalize answer** — marks the question as done, logs milestones to geno-notes
+6. **Loop or complete** — if more questions in queue and cycles < max, schedules next cycle (180–270s). Stops when all questions answered or max cycles reached
+
+!!! tip
+    Drift is a "journal-entry factory." Its primary value is the trail of findings, decisions, and bugs it leaves in your lab notes while following an exploratory thread.
+
+---
+
 ## Ship Feature
 
 **`/geno-dev-feature-ship [description|issue URL]`**
@@ -327,6 +354,98 @@ Long-horizon adaptive execution. Rotates through Planner, Implementer, and Revie
 
 !!! tip
     Use Overdrive when the work is too long or dynamic for Cruise, but still goal-oriented enough that each cycle should end with a concrete decision or verification result.
+
+---
+
+## Autopilot Loop
+
+**`/geno-dev-loops-autopilot [task] [--watch <tests|ci|lint|git|all>] [--every <15m|30m>] [--for <duration>]`**
+
+Background monitoring loop. Watches a branch or PR over a long window and reacts to regressions or maintenance opportunities.
+
+### Input
+
+- A task pattern to match against geno-notes (optional)
+- `--watch <tests|ci|lint|git|all>` — which signals to monitor
+- `--every <15m|30m>` — how often to wake up
+- `--for <duration>` — total monitoring window, up to the `CronCreate` 7-day limit
+
+### Workflow
+
+1. **Load context** — detect repo, branch, PR context, active task, and create `.geno/loops/autopilot/<timestamp>/`
+2. **Capture baseline** — record current test, lint, CI, and git state for the chosen watch set
+3. **Schedule monitoring** — use `CronCreate` for 15–30 minute recurring checks
+4. **React on each cycle** — re-check signals, retry transient failures once, apply safe deterministic fixes, or escalate
+5. **Journal outcomes** — log cycles to `session.md` and write bug notes, milestones, or follow-up tasks via geno-notes
+6. **Stop cleanly** — finish when the duration expires, the PR merges, or a human decision is needed
+
+### Safe auto-fixes
+
+- Formatter or lint autofix commands with immediate verification
+- Deterministic generated-file refreshes for repos that already track generated outputs
+- A single retry for likely transient CI or test failures
+
+!!! tip
+    Autopilot is for low-intensity background maintenance. If the work turns into active implementation, switch to Turbocharge or Cruise.
+
+---
+
+## Boost Loop
+
+**`/geno-dev-loops-boost [task] [--work <min>] [--reflect <min>]`**
+
+Time-boxed focus sessions (Pomodoro). Works for 25 minutes, then stops for 5 minutes of reflection and journal logging.
+
+### Input
+
+- A task pattern to fuzzy-match against geno-notes tasks (optional)
+- `--work <min>` — duration of the work phase in minutes (default: 25)
+- `--reflect <min>` — duration of the reflection phase in minutes (default: 5)
+
+### Workflow
+
+1. **Load context** — finds geno-notes task, creates session directory at `.geno/loops/boost/<timestamp>/`
+2. **Start Work Phase** — calls `ScheduleWakeup` for the work duration and starts autonomous work on the task
+3. **Reflect Phase** — triggered by wakeup. The agent summarizes accomplishments, identifies findings/decisions, and writes a reflection note to `geno-notes`
+4. **Continue or Finish** — updates the session log and asks the user whether to start another block, finish the session, or change tasks
+
+!!! tip
+    Perfect for open-ended exploration, debugging, or complex investigations where you want to ensure you don't lose track of progress and maintain a steady journal.
+
+---
+
+## Ignition Loop
+
+**`/geno-dev-loops-ignition [goal] [--blueprint <file>] [--max <n>]`**
+
+Cold-start bootstrap loop. Takes a high-level goal, generates or loads a blueprint, then bootstraps the work in layers: structure, implementation, and verification.
+
+### Input
+
+- A high-level goal to bootstrap
+- An optional task pattern to fuzzy-match against geno-notes tasks
+- `--blueprint <file>` — start from an existing blueprint instead of generating one
+- `--max <n>` — maximum layers or iterations (default: 6)
+
+If no goal or blueprint is provided, the skill asks the user for one.
+
+### Workflow
+
+1. **Load or create task context** — finds or creates a geno-notes task, starts it, and creates a session directory at `.geno/loops/ignition/<timestamp>/`
+2. **Generate blueprint** — inspects the issue, repo, and constraints, then writes a living blueprint with deliverables, structure, layers, and verification plan
+3. **Pick next layer** — chooses the thinnest meaningful layer to bootstrap next, avoiding broad over-scaffolding
+4. **Scaffold** — a Scaffolder role creates the minimum structure and writes a checkpoint
+5. **Build** — a Builder role fills in the scaffold with a coherent first implementation and writes a checkpoint
+6. **Verify** — a Verifier role runs the lightest meaningful validation, records evidence, and recommends the next layer
+7. **Evolve blueprint** — updates the blueprint and session log with what became concrete during the layer
+8. **Loop or complete** — continues until there is a verified first slice or the max layer count is reached
+
+### Best Fit
+
+Use Ignition when you're starting from a rough goal and need the first working slice to take shape. If you already have a numbered plan, use Cruise. If you already have a testable spec, use Turbocharge.
+
+!!! tip
+    A good Ignition prompt is short and outcome-oriented: `/geno-dev-loops-ignition bootstrap a new skill for parsing deployment logs` is enough to start with blueprint generation.
 
 ---
 

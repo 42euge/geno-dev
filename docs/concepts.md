@@ -1,6 +1,6 @@
 # Concepts
 
-geno-dev provides five skills that form a development lifecycle. This page explains the key abstractions and how they connect.
+geno-dev provides a set of skills that form a development lifecycle. This page explains the key abstractions and how they connect.
 
 ## The Development Lifecycle
 
