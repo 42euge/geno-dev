@@ -160,6 +160,70 @@ Workspace settings at `~/.geno/config.yaml` (auto-created on first use):
 
 ---
 
+## Ship Feature
+
+**`/geno-dev-feature-ship [description|issue URL]`**
+
+Take a feature idea from scoping through implementation to a pull request.
+
+### Input
+
+- A freeform feature description
+- An existing GitHub issue URL
+
+If no argument is provided, the skill asks what the user wants to build.
+
+### Workflow
+
+1. **Scope the feature** — clarify requirements with the user, or fetch the linked GitHub issue
+2. **Create the issue** — draft and create a GitHub issue when starting from a freeform idea
+3. **Create the branch** — branch from the default branch with a descriptive name
+4. **Implement** — explore, plan if needed, code, document, and verify
+5. **Open the PR** — create a pull request that links back to the issue
+6. **Wrap up** — summarize what shipped and note any follow-up scope
+
+!!! tip
+    Use this when the work starts as an idea. If the issue already exists and you want to execute it directly, use `/geno-dev-issue-work`.
+
+**See also:** [Issue to PR workflow](workflows.md#issue-to-pr)
+
+---
+
+## Work on Issue
+
+**`/geno-dev-issue-work [number|query|URL]`**
+
+Pick a GitHub issue or JIRA ticket and execute it with either interactive or autonomous flow.
+
+### Input
+
+- A GitHub issue number
+- A JIRA key like `PROJ-1234`
+- A GitHub or JIRA URL
+- A search query for finding the issue
+
+### Workflow
+
+1. **Detect source** — determine GitHub vs. JIRA from the argument
+2. **Select the issue** — fetch directly or search and let the user choose
+3. **Read context** — summarize the issue body, constraints, and comments
+4. **Choose execution mode** — normal interactive mode or autonomous loop mode
+5. **Choose workspace strategy** — worktree or in-place
+6. **Create the branch** — branch from the default branch using the issue number or ticket key
+7. **Implement and ship** — do the work, verify it, and open the PR
+
+### Modes
+
+- **Normal mode** — interactive back-and-forth, best for ambiguous work
+- **Loop mode** — autonomous execution with periodic check-ins, best for well-defined work
+
+!!! tip
+    Prefer a separate worktree when your current checkout is dirty or you want parallel issue work without disturbing the main clone.
+
+**See also:** [Issue to PR workflow](workflows.md#issue-to-pr) · [Manage Worktrees](#manage-worktrees)
+
+---
+
 ## Turbocharge Loop
 
 **`/geno-dev-loops-turbocharge [task] [--spec <file>] [--max <n>]`**
@@ -221,6 +285,39 @@ If no plan is provided, checks `geno-notes plans/` for the task's plan, then ask
 
 !!! tip
     Pairs well with plan mode: use `/geno-dev-tasks-start` to plan a complex task, then run `/geno-dev-loops-cruise --plan geno/geno-notes/plans/<task>.md` to execute it.
+
+---
+
+## Autopilot Loop
+
+**`/geno-dev-loops-autopilot [task] [--watch <tests|ci|lint|git|all>] [--every <15m|30m>] [--for <duration>]`**
+
+Background monitoring loop. Watches a branch or PR over a long window and reacts to regressions or maintenance opportunities.
+
+### Input
+
+- A task pattern to match against geno-notes (optional)
+- `--watch <tests|ci|lint|git|all>` — which signals to monitor
+- `--every <15m|30m>` — how often to wake up
+- `--for <duration>` — total monitoring window, up to the `CronCreate` 7-day limit
+
+### Workflow
+
+1. **Load context** — detect repo, branch, PR context, active task, and create `.geno/loops/autopilot/<timestamp>/`
+2. **Capture baseline** — record current test, lint, CI, and git state for the chosen watch set
+3. **Schedule monitoring** — use `CronCreate` for 15–30 minute recurring checks
+4. **React on each cycle** — re-check signals, retry transient failures once, apply safe deterministic fixes, or escalate
+5. **Journal outcomes** — log cycles to `session.md` and write bug notes, milestones, or follow-up tasks via geno-notes
+6. **Stop cleanly** — finish when the duration expires, the PR merges, or a human decision is needed
+
+### Safe auto-fixes
+
+- Formatter or lint autofix commands with immediate verification
+- Deterministic generated-file refreshes for repos that already track generated outputs
+- A single retry for likely transient CI or test failures
+
+!!! tip
+    Autopilot is for low-intensity background maintenance. If the work turns into active implementation, switch to Turbocharge or Cruise.
 
 ---
 
