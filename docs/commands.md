@@ -315,6 +315,48 @@ If no plan is provided, checks `geno-notes plans/` for the task's plan, then ask
 
 ---
 
+## Overdrive Loop
+
+**`/geno-dev-loops-overdrive [task] [--brief <file>] [--for <duration>] [--max <n>]`**
+
+Long-horizon adaptive execution. Rotates through Planner, Implementer, and Reviewer roles in fresh agents, using checkpoint handoffs to sustain multi-hour work without silent context drift.
+
+### Input
+
+- A task pattern to fuzzy-match against geno-notes tasks (optional)
+- `--brief <file>` — seed the loop from an issue brief, plan, spec, or notes file
+- `--for <duration>` — target run length; defaults to `4h` and typically ranges from `2h` to `12h`
+- `--max <n>` — maximum cycles; overrides the duration-derived default
+
+### Workflow
+
+1. **Load context** — activate the task, summarize or copy the brief, detect repo state, and create `.geno/loops/overdrive/<timestamp>/`
+2. **Capture baseline** — record current constraints, branch state, and verification targets
+3. **Planner cycle** — choose the next bounded sprint slice and define what success looks like
+4. **Implementer cycle** — make focused progress on that slice and log milestones
+5. **Reviewer cycle** — verify the actual changes, record findings, and decide whether to continue, stop, or re-plan
+6. **Repeat rotation** — continue Planner -> Implementer -> Reviewer until complete, blocked, or at max cycles
+
+### Role rotation
+
+- **Planner** — reads the active task and previous checkpoint, then picks the next 1-3 concrete slices
+- **Implementer** — executes the highest-priority slice and records what changed
+- **Reviewer** — validates the work, looks for regressions or scope drift, and drives the next handoff
+
+### Duration mapping
+
+| Duration | Default cycles |
+|---|---|
+| `2h` | 4 |
+| `4h` | 8 |
+| `8h` | 16 |
+| `12h` | 24 |
+
+!!! tip
+    Use Overdrive when the work is too long or dynamic for Cruise, but still goal-oriented enough that each cycle should end with a concrete decision or verification result.
+
+---
+
 ## Autopilot Loop
 
 **`/geno-dev-loops-autopilot [task] [--watch <tests|ci|lint|git|all>] [--every <15m|30m>] [--for <duration>]`**

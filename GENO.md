@@ -1,6 +1,6 @@
 # geno-dev — developer utilities skillset
 
-Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, agentic loops, background monitoring, PR checking and branch auditing, scheduled snoozing, and skill retrospectives.
+Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, agentic loops, long-horizon role rotation, background monitoring, PR checking and branch auditing, scheduled snoozing, and skill retrospectives.
 
 ## Skills
 
@@ -15,6 +15,7 @@ Developer and infrastructure skills for AI coding agents: task execution from la
 | geno-dev-loops-turbocharge | loops | /geno-dev-loops-turbocharge |
 | geno-dev-loops-drift | loops | /geno-dev-loops-drift |
 | geno-dev-loops-cruise | loops | /geno-dev-loops-cruise |
+| geno-dev-loops-overdrive | loops | /geno-dev-loops-overdrive |
 | geno-dev-loops-autopilot | loops | /geno-dev-loops-autopilot |
 | geno-dev-loops-boost | loops | /geno-dev-loops-boost |
 | geno-dev-loops-ignition | loops | /geno-dev-loops-ignition |
@@ -44,6 +45,7 @@ geno-dev/
 │   ├── geno-dev-loops-turbocharge/
 │   ├── geno-dev-loops-drift/
 │   ├── geno-dev-loops-cruise/
+│   ├── geno-dev-loops-overdrive/
 │   ├── geno-dev-loops-autopilot/
 │   ├── geno-dev-loops-boost/
 │   ├── geno-dev-loops-ignition/
@@ -80,6 +82,7 @@ Pure markdown skillset — no Python package, no venv, no scripts. Each skill is
 - **loops-turbocharge**: Spec-driven convergence loop — iterates until all acceptance criteria pass.
 - **loops-drift**: Question-driven exploration loop — maintains a prioritized question queue for archaeology and debugging.
 - **loops-cruise**: Plan-driven sequential loop — executes a plan one step at a time via agent subagents.
+- **loops-overdrive**: Long-horizon adaptive loop — rotates Planner, Implementer, and Reviewer roles with checkpoint handoffs.
 - **loops-autopilot**: Background monitoring loop — watches CI, tests, lint, and git state, auto-fixing low-risk issues or alerting when needed.
 - **loops-boost**: Pomodoro focus loop — time-boxed work blocks with periodic reflection and logging.
 - **loops-ignition**: Cold-start bootstrap loop — turns a high-level goal into a blueprint, scaffold, implementation, and verified first slice.

@@ -1,6 +1,6 @@
 # geno-dev
 
-Developer and infrastructure skills for AI coding agents. Task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, agentic loops, background monitoring, PR checking and branch auditing, scheduled snoozing, and skill retrospectives.
+Developer and infrastructure skills for AI coding agents. Task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, agentic loops, long-horizon role rotation, background monitoring, PR checking and branch auditing, scheduled snoozing, and skill retrospectives.
 
 ## Install
 
@@ -22,6 +22,7 @@ geno-tools install geno-dev
 | `/geno-dev-loops-drift [question]` | Question-driven exploration loop — maintains a prioritized question queue |
 | `/geno-dev-loops-turbocharge [task] [--spec <file>]` | Spec-driven convergence loop — iterate until all acceptance criteria pass |
 | `/geno-dev-loops-cruise [task] [--plan <file>]` | Plan-driven sequential loop — execute a plan one step at a time |
+| `/geno-dev-loops-overdrive [task] [--brief <file>]` | Long-horizon adaptive loop — Planner -> Implementer -> Reviewer rotation |
 | `/geno-dev-loops-autopilot [task] [--watch <tests\|ci\|lint\|git\|all>]` | Background monitoring loop — watch CI, tests, lint, and git state |
 | `/geno-dev-loops-boost [task]` | Pomodoro focus loop — time-boxed work blocks with reflection |
 | `/geno-dev-loops-ignition [goal] [--blueprint <file>]` | Cold-start bootstrap loop — turn a high-level goal into a blueprint and verified first slice |
@@ -57,6 +58,8 @@ geno-dev/
 │   ├── geno-dev-loops-drift/
 │   │   └── SKILL.md
 │   ├── geno-dev-loops-cruise/
+│   │   └── SKILL.md
+│   ├── geno-dev-loops-overdrive/
 │   │   └── SKILL.md
 │   ├── geno-dev-loops-autopilot/
 │   │   └── SKILL.md

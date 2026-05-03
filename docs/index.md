@@ -27,8 +27,10 @@ Or from within an agent session:
 | `/geno-dev-sessions-fork [session]` | Fork an agent session — extract context to continue in a new session |
 | `/geno-dev-feature-ship [description\|issue URL]` | End-to-end: scope, issue, branch, implement, and PR |
 | `/geno-dev-issue-work [number\|query\|URL]` | Pick a GitHub issue or JIRA ticket and work on it (normal or loop mode) |
+| `/geno-dev-loops-drift [question]` | Question-driven exploration loop — maintains a prioritized question queue |
 | `/geno-dev-loops-turbocharge [task] [--spec <file>]` | Spec-driven convergence loop — iterate until all acceptance criteria pass |
 | `/geno-dev-loops-cruise [task] [--plan <file>]` | Plan-driven sequential loop — execute a plan one step at a time |
+| `/geno-dev-loops-overdrive [task] [--brief <file>]` | Long-horizon adaptive loop — Planner -> Implementer -> Reviewer rotation |
 | `/geno-dev-loops-autopilot [task] [--watch <tests\|ci\|lint\|git\|all>]` | Background monitoring loop — watch CI, tests, lint, and git state |
 | `/geno-dev-loops-boost [task]` | Pomodoro focus loop — time-boxed work blocks with reflection |
 | `/geno-dev-loops-ignition [goal] [--blueprint <file>]` | Cold-start bootstrap loop — turn a high-level goal into a blueprint and verified first slice |
