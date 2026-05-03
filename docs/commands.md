@@ -160,6 +160,33 @@ Workspace settings at `~/.geno/config.yaml` (auto-created on first use):
 
 ---
 
+## Drift Loop
+
+**`/geno-dev-loops-drift [question] [--max <n>]`**
+
+Question-driven exploration loop. Ideal for codebase archaeology, debugging complex issues, or understanding unfamiliar systems.
+
+### Input
+
+- **Starting question** — the initial inquiry to kick off exploration (optional)
+- **`--max <n>`** — maximum cycles (default: 10)
+
+If no starting question is provided, the skill asks what you want to explore.
+
+### Workflow
+
+1. **Load context** — finds active geno-notes task (if any), creates session directory at `.geno/loops/drift/<timestamp>/`
+2. **Initialize queue** — writes the starting question to a prioritized `questions.md` queue
+3. **Pick next question** — selects the highest priority open question from the queue
+4. **Explore and answer** — investigates the codebase to answer the question. Documents findings in `session.md`
+5. **Finalize answer** — marks the question as done, logs milestones to geno-notes
+6. **Loop or complete** — if more questions in queue and cycles < max, schedules next cycle (180–270s). Stops when all questions answered or max cycles reached
+
+!!! tip
+    Drift is a "journal-entry factory." Its primary value is the trail of findings, decisions, and bugs it leaves in your lab notes while following an exploratory thread.
+
+---
+
 ## Ship Feature
 
 **`/geno-dev-feature-ship [description|issue URL]`**
