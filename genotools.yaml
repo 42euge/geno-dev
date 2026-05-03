@@ -3,4 +3,4 @@ version: "0.1.0"
 description: >-
   Developer and infrastructure utilities — task execution from lab notes,
   git commit history rewriting, worktree management, workspace creation,
-  session forking, and parallel loops.
+  session forking, issue-driven development, agentic loops, and parallel loops.

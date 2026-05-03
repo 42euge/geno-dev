@@ -1,6 +1,6 @@
 # geno-dev
 
-Developer and infrastructure skills for AI coding agents. Task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, agentic loops, and scheduled snoozing.
+Developer and infrastructure skills for AI coding agents. Task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, agentic loops, PR and branch auditing, scheduled snoozing, and skill retrospectives.
 
 ## Install
 
@@ -17,11 +17,16 @@ geno-tools install geno-dev
 | `/geno-dev-worktrees-manage [list\|create\|switch\|prune]` | Manage git worktrees — list, create, switch, and prune |
 | `/geno-dev-workspaces-init [config\|list\|<text>]` | Create development workspaces from issues, tickets, repos, or ideas |
 | `/geno-dev-sessions-fork [session]` | Fork an agent session — extract context to continue in a new session |
+| `/geno-dev-feature-ship [description\|issue URL]` | End-to-end: scope, issue, branch, implement, and PR |
+| `/geno-dev-issue-work [number\|query\|URL]` | Pick a GitHub issue or JIRA ticket and work on it (normal or loop mode) |
 | `/geno-dev-loops-turbocharge [task] [--spec <file>]` | Spec-driven convergence loop — iterate until all acceptance criteria pass |
 | `/geno-dev-loops-cruise [task] [--plan <file>]` | Plan-driven sequential loop — execute a plan one step at a time |
 | `/geno-dev-loops-nos [task] [--batch <file>]` | Burst parallel sprint — identifies independent items and spawns subagents in parallel |
+| `/geno-dev-loops-ignition [goal] [--blueprint <file>]` | Cold-start bootstrap loop — turn a high-level goal into a blueprint and verified first slice |
 | `/geno-dev-prs-check [repo\|--all]` | Check open PRs and flag ones that may need closing |
+| `/geno-dev-branches-audit [repo\|--all]` | Audit all branches — find ones needing PRs, ready to merge, or stale |
 | `/geno-dev-scheduling-snooze <time> [prompt]` | Snooze session until a specified time, then execute a prompt |
+| `/geno-dev-skills-retro [session] [--skill <name>]` | Meta-harness: analyze a failed session and patch the responsible skill |
 
 ## Repository structure
 
@@ -51,9 +56,19 @@ geno-dev/
 │   │   └── SKILL.md
 │   ├── geno-dev-loops-nos/
 │   │   └── SKILL.md
+│   ├── geno-dev-loops-ignition/
+│   │   └── SKILL.md
 │   ├── geno-dev-prs-check/
 │   │   └── SKILL.md
-│   └── geno-dev-scheduling-snooze/
+│   ├── geno-dev-branches-audit/
+│   │   └── SKILL.md
+│   ├── geno-dev-scheduling-snooze/
+│   │   └── SKILL.md
+│   ├── geno-dev-feature-ship/
+│   │   └── SKILL.md
+│   ├── geno-dev-issue-work/
+│   │   └── SKILL.md
+│   └── geno-dev-skills-retro/
 │       └── SKILL.md
 ├── docs/
 │   ├── index.md
