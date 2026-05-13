@@ -1,6 +1,6 @@
 site_name: geno-dev
-site_description: Developer utilities for AI coding agents — task execution and commit rewriting
-site_url: https://42euge.github.io/geno-dev
+site_description: Developer utilities for AI coding agents
+site_url: https://42euge.github.io/geno-dev/
 repo_url: https://github.com/42euge/geno-dev
 repo_name: 42euge/geno-dev
 
@@ -27,32 +27,43 @@ theme:
   icon:
     repo: fontawesome/brands/github
   features:
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.top
     - content.code.copy
+    - content.code.annotate
     - search.highlight
+    - search.suggest
     - toc.follow
 
 nav:
-  - Home: index.md
-  - Getting Started: getting-started.md
-  - Concepts: concepts.md
-  - Workflows: workflows.md
   - Commands: commands.md
+  - Concepts: concepts.md
+  - Getting Started: getting-started.md
+  - Home: index.md
+  - Workflows: workflows.md
+
+extra_css:
+  - stylesheets/extra.css
 
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.superfences
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.tabbed:
       alternate_style: true
   - attr_list
+  - md_in_html
+  - def_list
   - toc:
       permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/42euge
+  generator: false
