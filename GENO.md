@@ -1,6 +1,8 @@
 # geno-dev — developer utilities skillset
 
-Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, agentic loops, background monitoring, PR checking and branch auditing, scheduled snoozing, and skill retrospectives.
+Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, session forking, end-to-end feature shipping, issue-driven development, PR checking and branch auditing, scheduled snoozing, and skill retrospectives.
+
+> **Extracted skillsets**: Execution loops moved to [geno-loops](https://github.com/42euge/geno-loops). Workspace creation moved to [geno-ws](https://github.com/42euge/geno-ws). The `geno-dev-loops-*` and `geno-dev-workspaces-init` skills in this repo are kept for backwards compatibility but are no longer maintained here.
 
 ## Skills
 
@@ -10,20 +12,14 @@ Developer and infrastructure skills for AI coding agents: task execution from la
 | geno-dev-tasks-start | tasks | /geno-dev-tasks-start |
 | geno-dev-commits-rewrite | commits | /geno-dev-commits-rewrite |
 | geno-dev-worktrees-manage | worktrees | /geno-dev-worktrees-manage |
-| geno-dev-workspaces-init | workspaces | /geno-dev-workspaces-init |
 | geno-dev-sessions-fork | sessions | /geno-dev-sessions-fork |
-| geno-dev-loops-turbocharge | loops | /geno-dev-loops-turbocharge |
-| geno-dev-loops-drift | loops | /geno-dev-loops-drift |
-| geno-dev-loops-cruise | loops | /geno-dev-loops-cruise |
-| geno-dev-loops-autopilot | loops | /geno-dev-loops-autopilot |
-| geno-dev-loops-boost | loops | /geno-dev-loops-boost |
-| geno-dev-loops-ignition | loops | /geno-dev-loops-ignition |
 | geno-dev-prs-check | prs | /geno-dev-prs-check |
 | geno-dev-branches-audit | branches | /geno-dev-branches-audit |
 | geno-dev-scheduling-snooze | scheduling | /geno-dev-scheduling-snooze |
 | geno-dev-feature-ship | feature-ship | /geno-dev-feature-ship |
 | geno-dev-issue-work | issue-work | /geno-dev-issue-work |
 | geno-dev-skills-retro | meta | /geno-dev-skills-retro |
+| geno-dev-sessions-remote | sessions | /geno-dev-sessions-remote |
 
 ## Repo structure
 
@@ -36,23 +32,17 @@ geno-dev/
 ├── .geno-agents         # agent identity for auto-registration
 ├── skills/              # skill definitions
 │   ├── geno-dev/        #   umbrella
-│   ├── geno-dev-commits-rewrite/
-│   ├── geno-dev-sessions-fork/
-│   ├── geno-dev-tasks-start/
-│   ├── geno-dev-workspaces-init/
-│   ├── geno-dev-worktrees-manage/
-│   ├── geno-dev-loops-turbocharge/
-│   ├── geno-dev-loops-drift/
-│   ├── geno-dev-loops-cruise/
-│   ├── geno-dev-loops-autopilot/
-│   ├── geno-dev-loops-boost/
-│   ├── geno-dev-loops-ignition/
-│   ├── geno-dev-prs-check/
 │   ├── geno-dev-branches-audit/
-│   ├── geno-dev-scheduling-snooze/
+│   ├── geno-dev-commits-rewrite/
 │   ├── geno-dev-feature-ship/
 │   ├── geno-dev-issue-work/
-│   └── geno-dev-skills-retro/
+│   ├── geno-dev-prs-check/
+│   ├── geno-dev-scheduling-snooze/
+│   ├── geno-dev-sessions-fork/
+│   ├── geno-dev-sessions-remote/
+│   ├── geno-dev-skills-retro/
+│   ├── geno-dev-tasks-start/
+│   └── geno-dev-worktrees-manage/
 ├── docs/                # MkDocs Material site
 │   ├── index.md
 │   ├── getting-started.md
@@ -73,16 +63,9 @@ Pure markdown skillset — no Python package, no venv, no scripts. Each skill is
 - **tasks-start**: Integrates with geno-notes to pick up tasks, plan if needed, execute, and mark done.
 - **commits-rewrite**: Rewrites messy git history into clean narrative commits using soft reset and selective restaging.
 - **worktrees-manage**: Workspace-aware git worktree management with safety protections for Claude Code and geno-tools worktrees.
-- **workspaces-init**: Creates isolated development workspaces from GitHub issues, JIRA tickets, repo names, or feature ideas, with color-coded folder organization.
 - **sessions-fork**: Extracts full session context via geno-mon for continuation in a new session.
 - **feature-ship**: Takes a feature from scoped idea or issue through implementation and PR creation.
 - **issue-work**: Selects a GitHub issue or JIRA ticket, sets up a branch or worktree, and executes it in normal or loop mode.
-- **loops-turbocharge**: Spec-driven convergence loop — iterates until all acceptance criteria pass.
-- **loops-drift**: Question-driven exploration loop — maintains a prioritized question queue for archaeology and debugging.
-- **loops-cruise**: Plan-driven sequential loop — executes a plan one step at a time via agent subagents.
-- **loops-autopilot**: Background monitoring loop — watches CI, tests, lint, and git state, auto-fixing low-risk issues or alerting when needed.
-- **loops-boost**: Pomodoro focus loop — time-boxed work blocks with periodic reflection and logging.
-- **loops-ignition**: Cold-start bootstrap loop — turns a high-level goal into a blueprint, scaffold, implementation, and verified first slice.
 - **prs-check**: Checks open PRs, classifies by status (closeable/stale/blocked/draft/approved), renders a table with links.
 - **branches-audit**: Audits all branches across a workspace or repo, classifying by PR status and suggesting next actions.
 - **scheduling-snooze**: Delays session work until a specified time using natural language, with chained wakeups for long delays.
