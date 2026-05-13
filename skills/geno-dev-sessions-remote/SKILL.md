@@ -44,7 +44,18 @@ Launch a Claude Code session with remote access enabled in a target workspace. O
    end tell'
    ```
 
+   **To resume a previous session**, use `--continue` (not `--resume`, which opens an interactive picker that blocks in the background):
+   ```bash
+   clauded --continue --remote-control <session-name>
+   ```
+
 5. **Confirm** — tell the user the session is starting and to check the new Terminal window for the remote access URL.
+
+## Important
+
+- Use `--continue` (resumes most recent session in that directory) rather than `--resume` (interactive picker) since the Terminal may not be visible and interactive input blocks silently.
+- Always use `clauded` (skip permissions) not plain `claude`.
+- The process needs an interactive TTY — cannot run in the background or via `&`.
 
 ## Examples
 
