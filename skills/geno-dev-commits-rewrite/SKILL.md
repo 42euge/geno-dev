@@ -8,6 +8,18 @@ license: MIT
 metadata:
   author: 42euge
   version: "0.1.0"
+observability:
+  success_signal: Commit history rewritten with clean narrative; git diff against backup branch shows no content loss
+  failure_signals:
+    - git reset or restaging fails, leaving repo in inconsistent state
+    - Content diff between backup and rewritten branch is non-empty (changes lost)
+    - Force push rejected or user aborts during plan review
+  knowledge_reads:
+    - git log and diff for the commit range
+    - geno-notes journal and tasks (if present) for narrative context
+  knowledge_writes:
+    - backup-before-rewrite branch (safety backup)
+    - Rewritten git commit history on the target branch
 ---
 
 # Rewrite Commit History

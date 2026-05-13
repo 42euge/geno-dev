@@ -8,6 +8,16 @@ license: MIT
 metadata:
   author: 42euge
   version: "0.1.0"
+observability:
+  success_signal: Session context extracted and delivered (displayed or written to file)
+  failure_signals:
+    - geno-mon is not installed or not on PATH
+    - geno-mon fork command fails (invalid session, JSONL not found)
+    - No sessions available to fork
+  knowledge_reads:
+    - geno-mon session list and JSONL conversation logs
+  knowledge_writes:
+    - Fork context markdown file (when --output is used)
 ---
 
 # geno-dev-sessions-fork

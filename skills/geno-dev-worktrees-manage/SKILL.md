@@ -8,6 +8,19 @@ license: MIT
 metadata:
   author: 42euge
   version: "0.1.0"
+observability:
+  success_signal: Subcommand completed — worktrees listed, created, located, or pruned as requested
+  failure_signals:
+    - Not inside a git repository
+    - Worktree creation fails (branch conflict, path conflict, invalid base ref)
+    - Prune removes a worktree that was still needed (safety violation)
+  knowledge_reads:
+    - git worktree list (existing worktree state)
+    - .geno/workspace.yaml (workspace mode detection)
+    - git branch tracking info (for prune candidates)
+  knowledge_writes:
+    - New worktree directory and CLAUDE.local.md (on create)
+    - Removed worktree directories (on prune)
 ---
 
 # Manage Worktrees

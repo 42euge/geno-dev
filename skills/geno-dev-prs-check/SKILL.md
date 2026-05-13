@@ -8,6 +8,16 @@ license: MIT
 metadata:
   author: 42euge
   version: "0.1.0"
+observability:
+  success_signal: PR status table rendered with classification tags and summary for all resolved repos
+  failure_signals:
+    - No repos could be resolved from workspace, argument, or cwd
+    - gh pr list fails (auth issues, API errors)
+  knowledge_reads:
+    - .geno/workspace.yaml (repo list, when --all)
+    - GitHub PR metadata via gh CLI
+    - git ls-remote for branch existence checks
+  knowledge_writes: []
 ---
 
 # Check PRs

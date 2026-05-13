@@ -9,6 +9,17 @@ license: MIT
 metadata:
   author: 42euge
   version: "0.1.0"
+observability:
+  success_signal: Branch audit table rendered with status tags and suggested actions for all resolved repos
+  failure_signals:
+    - No repos could be resolved from workspace, argument, or cwd
+    - gh CLI fails to query PR status for one or more repos
+    - git commands fail (not a git repo, missing remotes)
+  knowledge_reads:
+    - .geno/workspace.yaml (repo list, when --all)
+    - git branch/worktree/remote state
+    - GitHub PR metadata via gh CLI
+  knowledge_writes: []
 ---
 
 # Audit Branches

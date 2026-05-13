@@ -10,6 +10,15 @@ license: MIT
 metadata:
   author: 42euge
   version: "0.1.0"
+observability:
+  success_signal: ScheduleWakeup called successfully with correct delay and prompt; confirmation shown to user
+  failure_signals:
+    - Time expression cannot be parsed from arguments
+    - ScheduleWakeup tool call fails or is unavailable
+    - Computed delay falls outside valid range and cannot be resolved
+  knowledge_reads:
+    - System clock (date command) for current time and timezone
+  knowledge_writes: []
 ---
 
 # Snooze
