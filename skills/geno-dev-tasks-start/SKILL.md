@@ -8,6 +8,18 @@ license: MIT
 metadata:
   author: 42euge
   version: "0.1.0"
+observability:
+  success_signal: "task marked done in geno-notes"
+  failure_signals:
+    - "user had to abandon task"
+    - "no geno-notes scope found"
+  knowledge_reads:
+    - "geno-notes tasks"
+    - "geno-notes journal"
+    - "geno-notes plans"
+  knowledge_writes:
+    - "geno-notes journal (milestones)"
+    - "geno-notes plans (if medium/large task)"
 ---
 
 # Start Task
@@ -79,3 +91,21 @@ When the task is finished:
 2. Add a final note to `notes.md` summarizing what was done
 3. If a plan file was created, leave it as-is for reference
 4. Tell the user what was accomplished and suggest what to work on next from the remaining tasks
+
+## Completion
+
+When this skill finishes (success, failure, or abandoned), emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-tasks-start \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors> \
+  --task <geno-notes task id, if any> \
+  --scope <project|global>
+```
+
+- `success` = task marked done
+- `failure` = task could not be completed (blocker, missing context)
+- `abandoned` = user chose to stop or switch tasks

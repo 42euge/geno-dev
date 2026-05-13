@@ -4,11 +4,26 @@ description: >-
   Meta-harness — analyze a failed session, identify root causes, and patch the
   responsible skill to prevent the same failure. Self-improving skill loop.
   Use when user says /geno-dev-skills-retro.
-argument-hint: "[session] [--skill <name>] [--dry-run]"
+argument-hint: "[session] [--skill <name>] [--dry-run] [--batch]"
 license: MIT
 metadata:
   author: 42euge
-  version: "0.1.0"
+  version: "0.2.0"
+observability:
+  success_signal: "patches applied and accepted by user"
+  failure_signals:
+    - "no actionable signals found in session"
+    - "user rejected all patches"
+    - "transcript not found or unreadable"
+  knowledge_reads:
+    - "~/.geno/traces/ (structured skill traces)"
+    - "~/.geno/health/ (skill health cards)"
+    - "~/.geno/retro/queue.jsonl (batch queue)"
+    - "~/.claude/projects/ (session transcripts)"
+  knowledge_writes:
+    - ".geno/retro/<session-id>/ (analysis artifacts)"
+    - "geno-notes journal (milestones)"
+    - "skill SKILL.md files (patches)"
 ---
 
 # Skills Retro
@@ -22,8 +37,9 @@ Parse `$ARGUMENTS` for:
 - **Session** — session ID (partial match OK), PID number, or JSONL path (optional — defaults to most recent session in this project)
 - **`--skill <name>`** — skip auto-detection and target a specific skill for patching
 - **`--dry-run`** — analyze and propose changes but don't write them
+- **`--batch`** — process the retro queue at `~/.geno/retro/queue.jsonl` instead of a single session. Each line contains a trace ID referencing a failed skill run. Process all queued items, deduplicate findings, and present a unified patch set.
 
-If no session is given, list the 5 most recent sessions for this project and ask the user to pick one.
+If no session is given and `--batch` is not set, list the 5 most recent sessions for this project and ask the user to pick one.
 
 ## When to Use
 
@@ -59,6 +75,25 @@ for f in glob.glob(os.path.expanduser('~/.claude/sessions/*.json')):
 ```
 
 If the user gave a partial ID or PID, match it. If ambiguous, show candidates and ask.
+
+### 1.5. Check for structured traces (preferred)
+
+Before parsing raw transcripts, check if structured traces exist for this session:
+
+```bash
+geno-trace list --json --limit 100
+```
+
+Filter traces matching the session. If traces are found:
+
+- Each trace gives you the skill name, outcome status, error type, tool call count, and thrashing score directly — no need to infer these from raw JSONL.
+- Use `geno-trace health --skill <name>` for each involved skill to see aggregate patterns (success rate, recurring error types, whether the skill already `needs_retro`).
+- For `--batch` mode: read `~/.geno/retro/queue.jsonl`, look up each trace ID via `geno-trace list`, and group findings by skill.
+- Traces with `outcome.status == "failure"` or `outcome.status == "partial"` are the primary retro targets.
+
+If traces exist and provide enough signal (skill name + error type are known), you can skip the raw transcript parsing (step 2) and jump directly to step 4 (trace to skill) with the trace metadata. Fall back to full transcript parsing only when:
+- No traces exist for this session (pre-trace-era sessions)
+- The trace lacks sufficient detail (`error_type` is null and you need to understand *why* it failed)
 
 ### 2. Parse the transcript
 
@@ -239,6 +274,29 @@ Use `AskUserQuestion` to confirm each change:
 
 For accepted changes, use the `Edit` tool to modify the skill's SKILL.md. Edit the **repo copy** (under `./skills/<name>/SKILL.md`) — the installed copy at `~/.agents/skills/` is a symlink or will be synced by `geno-tools update`.
 
+#### Mode-aware delivery
+
+After applying patches, create a local branch for the changes:
+
+```bash
+cd <skill-repo-root>
+git checkout -b retro/<skill-name>-$(date +%Y%m%d)
+git add skills/<skill-name>/SKILL.md
+git commit -m "retro: patch <skill-name> — <root-cause-category>"
+```
+
+**Dev mode** (check `$GENO_MODE` env var or if cwd is in a geno-* workspace):
+- Push the branch and create a PR with `gh pr create`
+- Scrub the PR body: strip absolute paths (`/Users/...` → `./...`), raw code snippets from user projects, and error messages that might contain secrets
+- PR body should describe *what* was patched and *why* (root cause category), not reproduce raw session content
+
+**User mode** (default):
+- Keep the branch local — do not push
+- Write a notification to `~/.geno/iso/inbox.jsonl`:
+  ```bash
+  echo '{"type":"retro","skill":"<name>","branch":"retro/<name>-<date>","summary":"<one-line>","timestamp":"<ISO>"}' >> ~/.geno/iso/inbox.jsonl
+  ```
+
 After applying:
 
 ```bash
@@ -309,6 +367,40 @@ Only save memories for patterns that transcend the specific skill being patched.
 - **Don't modify the transcript.** Transcripts are immutable records. Analysis goes in `.geno/retro/`, not the JSONL.
 - **Don't apply patches without user confirmation** (unless `--auto` is explicitly passed — not in v0.1).
 - **Don't patch external tools.** If the failure is in `geno-notes`, `git`, or a test runner, note it but don't try to fix their code.
+
+## Batch Mode
+
+When `--batch` is passed:
+
+1. Read `~/.geno/retro/queue.jsonl`. Each line is a JSON object with at minimum `{"trace_id": "..."}`.
+2. For each trace ID, look up the trace via `geno-trace list --json` and match by ID.
+3. Group traces by skill name. For each skill:
+   - Read the skill's health card: `geno-trace health --skill <name>`
+   - Collect all failure traces (status = failure or partial)
+   - Cross-reference with the raw transcript only if the trace lacks `error_type`
+4. Deduplicate findings — if the same root cause appears across multiple traces, present it once with a frequency annotation ("seen in N traces").
+5. Present a unified patch set per skill, prioritized by:
+   - Skills with `needs_retro: true` in their health card (success rate < 70%)
+   - Skills with the most failure traces
+   - Skills with declining success rates (recent failures outweigh older successes)
+6. After processing, truncate `~/.geno/retro/queue.jsonl` to remove processed entries.
+
+## Completion
+
+When this skill finishes, emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-skills-retro \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors> \
+  --produced ".geno/retro/<session-id>/retro.md"
+```
+
+- `success` = patches applied and accepted
+- `failure` = no actionable signals found, or analysis failed
+- `abandoned` = user rejected all patches or stopped early
 
 ## Runtime
 

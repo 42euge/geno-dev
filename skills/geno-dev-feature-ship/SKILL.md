@@ -8,6 +8,16 @@ license: MIT
 metadata:
   author: 42euge
   version: "0.1.0"
+observability:
+  success_signal: "PR created and URL presented to user"
+  failure_signals:
+    - "no GitHub remote available"
+    - "implementation blocked"
+  knowledge_reads:
+    - "GitHub issues (via gh CLI)"
+  knowledge_writes:
+    - "GitHub issue (created)"
+    - "GitHub PR (created)"
 ---
 
 # Ship Feature
@@ -74,3 +84,20 @@ Present the PR URL to the user.
 ### 6. Wrap up
 
 Summarize what was shipped: the issue, branch, PR, and key implementation decisions. If there are follow-up items (future scope from step 1), mention them so nothing is lost.
+
+## Completion
+
+When this skill finishes, emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-feature-ship \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors> \
+  --produced "github-issue github-pr"
+```
+
+- `success` = PR created
+- `failure` = could not complete implementation
+- `abandoned` = user stopped before PR

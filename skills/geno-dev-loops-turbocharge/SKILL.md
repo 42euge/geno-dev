@@ -8,6 +8,18 @@ license: MIT
 metadata:
   author: 42euge
   version: "0.1.0"
+observability:
+  success_signal: "all acceptance criteria pass"
+  failure_signals:
+    - "max iterations reached with failing criteria"
+    - "spec runner crashed twice"
+    - "same criterion fails 3 iterations in a row"
+  knowledge_reads:
+    - "geno-notes tasks (active, project scope)"
+    - "geno-notes plans"
+  knowledge_writes:
+    - "geno-notes journal (milestones per criterion)"
+    - ".geno/loops/turbocharge/*/session.md"
 ---
 
 # Turbocharge Loop
@@ -153,6 +165,25 @@ geno-notes note "Turbocharge: <criterion> now passing" --task <id> --kind milest
 - **Don't make unrelated changes.** If you notice other issues, log them as `geno-notes note --kind bug` but don't fix them in this loop.
 - **Don't continue past max iterations.** Respect the limit — infinite loops waste resources.
 - **Don't run without a spec.** If there's nothing to validate against, suggest Boost or Drift instead.
+
+## Completion
+
+When this skill finishes (success, failure, or abandoned), emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-loops-turbocharge \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors> \
+  --task <geno-notes task id, if any> \
+  --scope project \
+  --produced ".geno/loops/turbocharge/<session>/session.md"
+```
+
+- `success` = all criteria pass
+- `failure` = max iterations reached or spec runner broken
+- `abandoned` = user stopped the loop early
 
 ## Runtime
 
