@@ -35,12 +35,12 @@ Launch a Claude Code session with remote access enabled in a target workspace. O
 
 3. **Derive session name** — use `--name` if provided, otherwise use the directory basename.
 
-4. **Launch** — open a new Terminal window with:
+4. **Launch** — open a new Terminal window with `clauded` (alias for `claude --dangerously-skip-permissions`):
    ```bash
    osascript -e '
    tell application "Terminal"
        activate
-       do script "cd <resolved-path> && claude --remote-control <session-name>"
+       do script "cd <resolved-path> && clauded --remote-control <session-name>"
    end tell'
    ```
 
