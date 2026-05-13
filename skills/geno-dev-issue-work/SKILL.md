@@ -9,6 +9,15 @@ license: MIT
 metadata:
   author: 42euge
   version: "0.1.0"
+observability:
+  success_signal: "PR created linking the issue"
+  failure_signals:
+    - "step failed twice in loop mode"
+    - "no GitHub remote or JIRA access"
+  knowledge_reads:
+    - "GitHub issues or JIRA tickets"
+  knowledge_writes:
+    - "GitHub PR (created)"
 ---
 
 # Work on Issue
@@ -133,3 +142,20 @@ Work autonomously using `ScheduleWakeup` to self-pace:
 - Stop the loop and present the PR URL to the user
 
 Use `ScheduleWakeup` with the `/loop` prompt to continue each iteration. Choose delay based on the work: 60–90s for active implementation, 120–270s if waiting on a build or test run.
+
+## Completion
+
+When this skill finishes (in either normal or loop mode), emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-issue-work \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors> \
+  --produced "github-pr"
+```
+
+- `success` = PR created linking the issue
+- `failure` = could not complete (blocked, no access)
+- `abandoned` = user stopped before PR

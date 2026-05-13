@@ -8,6 +8,17 @@ license: MIT
 metadata:
   author: 42euge
   version: "0.1.0"
+observability:
+  success_signal: "all plan steps completed successfully"
+  failure_signals:
+    - "step failed twice consecutively"
+    - "user intervention required"
+  knowledge_reads:
+    - "geno-notes tasks (active, project scope)"
+    - "geno-notes plans"
+  knowledge_writes:
+    - "geno-notes journal (milestones per step)"
+    - ".geno/loops/cruise/*/session.md"
 ---
 
 # Cruise Loop
@@ -186,6 +197,25 @@ If verification fails:
 - **Don't parallelize steps.** Steps are sequential by design. If you notice independent steps, suggest NOS for next time.
 - **Don't modify the plan file.** The plan is the contract. Deviations go in `session.md` and geno-notes, not the plan itself.
 - **Don't continue after two failures on the same step.** Escalate to the user.
+
+## Completion
+
+When this skill finishes (success, failure, or abandoned), emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-loops-cruise \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors> \
+  --task <geno-notes task id, if any> \
+  --scope project \
+  --produced ".geno/loops/cruise/<session>/session.md"
+```
+
+- `success` = all plan steps completed
+- `failure` = step failed twice or user had to intervene on a blocker
+- `abandoned` = user stopped the loop early
 
 ## Runtime
 
