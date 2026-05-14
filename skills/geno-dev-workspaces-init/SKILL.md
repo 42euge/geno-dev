@@ -230,3 +230,15 @@ List all workspaces across all configured color folders.
 | `lottie-creator-ws` | code-purp | — | — | — | — | [unmanaged] |
 
 Sort: active workspaces first, then by creation date (newest first). Legacy and unmanaged at the end.
+
+## Completion
+
+When this skill finishes, emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-workspaces-init \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors>
+```

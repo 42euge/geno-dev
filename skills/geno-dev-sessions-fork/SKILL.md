@@ -79,3 +79,19 @@ The fork output is a structured markdown document with these sections:
 - **Handoff** — pass session context to a different model or agent configuration
 - **Knowledge transfer** — share what a session accomplished with other agents or team members
 - **Debugging** — extract a full record of what happened in a session for analysis
+
+## Completion
+
+When this skill finishes, emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-sessions-fork \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors>
+```
+
+- `success` = session context extracted and delivered (displayed or written to file)
+- `failure` = geno-mon not found, fork command failed, or no sessions available
+- `abandoned` = user stopped early or declined to select a session

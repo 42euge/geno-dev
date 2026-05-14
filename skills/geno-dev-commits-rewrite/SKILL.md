@@ -87,3 +87,19 @@ Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
 
 - Ask user if they want to delete the backup branch
 - If yes, delete it: `git branch -d backup-before-rewrite`
+
+## Completion
+
+When this skill finishes, emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-commits-rewrite \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors>
+```
+
+- `success` = commit history rewritten and verified (diff against backup is empty, no content lost)
+- `failure` = rewrite failed mid-way, repo left in inconsistent state, or content was lost
+- `abandoned` = user rejected the proposed commit plan or stopped early

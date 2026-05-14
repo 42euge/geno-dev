@@ -71,3 +71,15 @@ Launch a Claude Code session with remote access enabled in a target workspace. O
 - The session name is passed to `--remote-control` and used to identify the session in the remote control UI.
 - Remote sessions can be accessed from any device via the URL printed in the Terminal.
 - To stop the session, close the Terminal window or press Ctrl+C.
+
+## Completion
+
+When this skill finishes, emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-sessions-remote \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors>
+```
