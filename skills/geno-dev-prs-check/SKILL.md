@@ -104,3 +104,19 @@ If there are `CLOSEABLE` PRs, add:
 ### 6. Multi-repo output
 
 If `--all` was used, repeat steps 2–5 for each repo with an H2 header per repo. End with a combined summary across all repos.
+
+## Completion
+
+When this skill finishes, emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-prs-check \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors>
+```
+
+- `success` = PR status table rendered with classification tags and summary for all resolved repos
+- `failure` = no repos resolved, or gh CLI failed to fetch PR data
+- `abandoned` = user stopped early

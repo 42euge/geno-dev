@@ -36,6 +36,10 @@ Pick a GitHub issue or JIRA ticket and start working on it. Offers two execution
 
 ## Workflow
 
+### 0. Load knowledge context
+
+Run `geno-notes context --skill geno-dev-issue-work [--task <id>]` and review the returned bundle (active tasks, recent journal, relevant wiki, skill health). Use these to inform your approach — prior failures, relevant patterns, and active tasks provide context the user may not have stated explicitly.
+
 ### 1. Detect issue source
 
 Determine whether we're working with GitHub or JIRA based on the input:

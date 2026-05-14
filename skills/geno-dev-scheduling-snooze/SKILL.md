@@ -111,3 +111,19 @@ Report:
 - **Under 60 seconds**: ScheduleWakeup clamps to 60s minimum. Tell the user: "Minimum snooze is 60 seconds."
 - **Ambiguous time**: If the time expression is ambiguous (e.g., "3:30" without AM/PM), infer based on context — if it's currently 2 AM, "3:30" likely means 3:30 AM. If it's 2 PM, "3:30" likely means 3:30 PM. When uncertain, ask.
 - **No arguments**: Ask the user for a time expression.
+
+## Completion
+
+When this skill finishes, emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-scheduling-snooze \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors>
+```
+
+- `success` = ScheduleWakeup called with correct delay and prompt; confirmation displayed to user
+- `failure` = time expression unparseable, or ScheduleWakeup call failed
+- `abandoned` = user stopped early or declined to provide a wakeup prompt

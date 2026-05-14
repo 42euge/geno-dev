@@ -32,6 +32,10 @@ The user optionally provides a task description or number as `$ARGUMENTS`. If em
 
 ## Workflow
 
+### 0. Load knowledge context
+
+Run `geno-notes context --skill geno-dev-tasks-start [--task <id>]` and review the returned bundle (active tasks, recent journal, relevant wiki, skill health). Use these to inform your approach — prior failures, relevant patterns, and active tasks provide context the user may not have stated explicitly.
+
 ### 1. Load context
 
 - Read `geno-notes tasks` in the current working directory

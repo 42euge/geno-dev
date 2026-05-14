@@ -218,3 +218,19 @@ Ready to merge: PR #52 (docs/improve-site) — approved, no conflicts
 - Do NOT include the default branch (main/master) or `gh-pages` in the audit.
 - Do NOT show Claude Code worktrees (paths containing `/.claude/worktrees/`) — these are managed by Claude Code's isolation system.
 - Do NOT prompt the user for input during the audit. Run to completion and present results.
+
+## Completion
+
+When this skill finishes, emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-branches-audit \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors>
+```
+
+- `success` = audit table rendered with status tags and suggested actions for all resolved repos
+- `failure` = no repos resolved, or git/gh commands failed before producing a usable table
+- `abandoned` = user stopped early

@@ -133,3 +133,19 @@ Note: The agent cannot change the user's shell working directory. This subcomman
    - If the branch was merged, offer to delete it: `git branch -d <branch>`
 7. Run `git worktree prune` to clean up stale administrative files.
 8. Show summary of what was removed.
+
+## Completion
+
+When this skill finishes, emit a trace:
+
+```bash
+geno-trace emit \
+  --skill geno-dev-worktrees-manage \
+  --status <success|failure|abandoned> \
+  --tool-calls <approximate count> \
+  --errors <count of tool/command errors>
+```
+
+- `success` = subcommand completed (worktrees listed, created, located, or pruned as requested)
+- `failure` = not a git repo, worktree creation/removal failed, or safety violation encountered
+- `abandoned` = user cancelled prune operation or stopped early

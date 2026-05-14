@@ -30,6 +30,10 @@ Take a feature idea from discussion through to a pull request: scope the work wi
 
 ## Workflow
 
+### 0. Load knowledge context
+
+Run `geno-notes context --skill geno-dev-feature-ship [--task <id>]` and review the returned bundle (active tasks, recent journal, relevant wiki, skill health). Use these to inform your approach — prior failures, relevant patterns, and active tasks provide context the user may not have stated explicitly.
+
 ### 1. Scope the feature
 
 If `$ARGUMENTS` is a GitHub issue URL, fetch it with `gh issue view` and skip to step 2.
