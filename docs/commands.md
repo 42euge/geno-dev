@@ -66,7 +66,7 @@ Rewrite git commit history so it tells a clear, logical narrative — as if the 
 
 **`/geno-dev-worktrees-manage [list|create|switch|prune] [args...]`**
 
-Manage git worktrees for the current repository. Workspace-aware — if you're inside a workspace created by `/geno-dev-workspaces-init`, worktrees are placed at `<workspace>/.geno/worktrees/<repo>/<branch>/`. Otherwise, inline at `<repo>/.geno/worktrees/<branch>/`.
+Manage git worktrees for the current repository. Worktrees are placed inline at `<repo>/.geno/worktrees/<branch>/`.
 
 ### Subcommands
 
@@ -84,7 +84,7 @@ The skill automatically detects and protects:
 
 This skill never edits a project's `.gitignore`, `CLAUDE.md`, or any tracked files.
 
-**See also:** [Worktrees concept](concepts.md#worktrees) · [Multi-repo workspace workflow](workflows.md#multi-repo-workspace) · [Worktree cleanup workflow](workflows.md#worktree-cleanup)
+**See also:** [Worktrees concept](concepts.md#worktrees) · [Worktree cleanup workflow](workflows.md#worktree-cleanup)
 
 ---
 
@@ -117,46 +117,6 @@ Fork an agent session — extract the full context (environment, files touched, 
     The fork output includes environment, files modified/read, commands run, and full conversation history — everything a new session needs to continue where the original left off.
 
 **See also:** [Sessions concept](concepts.md#sessions) · [Session handoff workflow](workflows.md#session-handoff)
-
----
-
-## Create Workspace
-
-**`/geno-dev-workspaces-init [config|list|<freeform text>]`**
-
-Create isolated development workspaces by cloning repos into color-coded folders. Accepts freeform text — the skill infers whether it's a GitHub issue, JIRA ticket, repo names, or a feature idea.
-
-### Input modes (inferred from freeform text)
-
-- **GitHub issue** — input contains a `github.com` URL → fetches issue, clones the repo
-- **JIRA ticket** — input matches `[A-Z]+-\d+` → uses as naming label, prompts for repos
-- **Repos** — input looks like repo names or URLs → clones them
-- **Idea** — anything else → AI scans `.geno-agents` files and suggests relevant repos
-
-### Naming
-
-| Source | Format | Example |
-|---|---|---|
-| GitHub issue | `GH-{repo}-{n}-{slug}-ws` | `GH-geno-dev-42-fix-auth-token-ws` |
-| JIRA ticket | `{PROJ-N}-{slug}-ws` | `PROJ-1234-migrate-db-schema-ws` |
-| Repos / Idea | `{slug}-ws` | `voice-coding-assist-ws` |
-
-### Config
-
-Workspace settings at `~/.geno/config.yaml` (auto-created on first use):
-
-- `config` — view current settings
-- `config default <color>` — set default color folder
-- `config add <color>` — add a color folder
-
-### Listing
-
-`list` scans all configured color folders for workspaces. Shows metadata from `.geno/workspace.yaml`, tags legacy `*-WS/` dirs and unmanaged `*-ws/` dirs.
-
-!!! tip
-    Workspaces and worktrees work together: create a workspace with `/geno-dev-workspaces-init`, then use `/geno-dev-worktrees-manage` inside it for branch-level isolation.
-
-**See also:** [Workspaces concept](concepts.md#workspaces) · [Structuring code folders](concepts.md#structuring-code-folders) · [Issue to PR workflow](workflows.md#issue-to-pr)
 
 ---
 

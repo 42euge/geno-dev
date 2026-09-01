@@ -2,7 +2,7 @@
 
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://42euge.github.io/geno-dev/)
 
-Developer and infrastructure skills for AI coding agents. Task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, agentic loops, background monitoring, PR checking and branch auditing, scheduled snoozing, and skill retrospectives.
+Developer and infrastructure skills for AI coding agents. Task execution from lab notes, git commit history rewriting, worktree management, session forking, end-to-end feature shipping, issue-driven development, agentic loops, background monitoring, PR checking and branch auditing, scheduled snoozing, and skill retrospectives.
 
 ## Install
 
@@ -17,7 +17,6 @@ geno-tools install geno-dev
 | `/geno-dev-tasks-start [description]` | Pick up a task from lab notes, assess scope, plan if needed, execute, and mark done |
 | `/geno-dev-commits-rewrite` | Rewrite git commit history into a clean narrative (backup branch + soft reset + restage) |
 | `/geno-dev-worktrees-manage [list\|create\|switch\|prune]` | Manage git worktrees — list, create, switch, and prune |
-| `/geno-dev-workspaces-init [config\|list\|<text>]` | Create development workspaces from issues, tickets, repos, or ideas |
 | `/geno-dev-sessions-fork [session]` | Fork an agent session — extract context to continue in a new session |
 | `/geno-dev-feature-ship [description\|issue URL]` | End-to-end: scope, issue, branch, implement, and PR |
 | `/geno-dev-issue-work [number\|query\|URL]` | Pick a GitHub issue or JIRA ticket and work on it (normal or loop mode) |
@@ -49,8 +48,6 @@ geno-dev/
 │   ├── geno-dev-sessions-fork/
 │   │   └── SKILL.md
 │   ├── geno-dev-tasks-start/
-│   │   └── SKILL.md
-│   ├── geno-dev-workspaces-init/
 │   │   └── SKILL.md
 │   ├── geno-dev-worktrees-manage/
 │   │   └── SKILL.md

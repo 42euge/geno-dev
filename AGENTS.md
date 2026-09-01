@@ -1,6 +1,6 @@
 # geno-dev — developer utilities skillset
 
-Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, PR checking and branch auditing, scheduled snoozing, and skill retrospectives. Loop patterns (turbocharge, cruise, autopilot, etc.) are provided by the geno-loops skillset.
+Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, session forking, end-to-end feature shipping, issue-driven development, PR checking and branch auditing, scheduled snoozing, and skill retrospectives. Loop patterns (turbocharge, cruise, autopilot, etc.) are provided by the geno-loops skillset.
 
 ## Skills
 
@@ -10,7 +10,6 @@ Developer and infrastructure skills for AI coding agents: task execution from la
 | geno-dev-tasks-start | tasks | /geno-dev-tasks-start |
 | geno-dev-commits-rewrite | commits | /geno-dev-commits-rewrite |
 | geno-dev-worktrees-manage | worktrees | /geno-dev-worktrees-manage |
-| geno-dev-workspaces-init | workspaces | /geno-dev-workspaces-init |
 | geno-dev-sessions-fork | sessions | /geno-dev-sessions-fork |
 | geno-dev-prs-check | prs | /geno-dev-prs-check |
 | geno-dev-branches-audit | branches | /geno-dev-branches-audit |
@@ -33,7 +32,6 @@ geno-dev/
 │   ├── geno-dev-commits-rewrite/
 │   ├── geno-dev-sessions-fork/
 │   ├── geno-dev-tasks-start/
-│   ├── geno-dev-workspaces-init/
 │   ├── geno-dev-worktrees-manage/
 │   ├── geno-dev-prs-check/
 │   ├── geno-dev-branches-audit/
@@ -61,7 +59,6 @@ Pure markdown skillset — no Python package, no venv, no scripts. Each skill is
 - **tasks-start**: Integrates with geno-notes to pick up tasks, plan if needed, execute, and mark done.
 - **commits-rewrite**: Rewrites messy git history into clean narrative commits using soft reset and selective restaging.
 - **worktrees-manage**: Workspace-aware git worktree management with safety protections around Claude Code and geno-tools worktrees.
-- **workspaces-init**: Creates isolated development workspaces from GitHub issues, JIRA tickets, repo names, or feature ideas, with color-coded folder organization.
 - **sessions-fork**: Extracts full session context via geno-mon for continuation in a new session.
 - **feature-ship**: Takes a feature from scoped idea or issue through implementation and PR creation.
 - **issue-work**: Selects a GitHub issue or JIRA ticket, sets up a branch or worktree, and executes it in normal or loop mode.
