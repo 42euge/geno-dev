@@ -1,6 +1,5 @@
 name: geno-dev
 version: "0.1.0"
-description: >-
-  Developer and infrastructure utilities — task execution from lab notes,
-  git commit history rewriting, worktree management, workspace creation,
-  session forking, issue-driven development, and agentic loops.
+description: Developer workflow skills for coding agents.
+skills:
+  source: skills/

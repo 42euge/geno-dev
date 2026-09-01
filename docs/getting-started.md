@@ -2,45 +2,24 @@
 
 ## Prerequisites
 
-- A supported coding CLI (Claude Code, Gemini CLI, Codex, or OpenCode)
-- [geno-tools](https://42euge.github.io/geno-tools) installed
+- [geno-tools](https://github.com/42euge/geno-tools)
 
-### Optional (for specific skills)
-
-| Tool | Needed by | What it is | Install |
-|------|-----------|-----------|---------|
-| [geno-notes](https://github.com/42euge/geno-notes) | `/geno-dev-tasks-start` | Project journal — tasks, notes, plans | `geno-tools install geno-notes` |
-| [geno-mon](https://github.com/42euge/geno-mon) | `/geno-dev-sessions-fork` | Claude Code session monitor | See [geno-mon docs](https://github.com/42euge/geno-mon) |
-
-## Installation
+## Install
 
 ```bash
 geno-tools install geno-dev
 ```
 
-Or from within an agent session:
+## Current surface
 
-```
-/geno-tools install geno-dev
-```
+Invoke `/geno-dev` to inspect the skillset.
 
-## First use
+Run `/meta-mine-skill-creator` when you want to analyze local Claude Code and Codex sessions for:
 
-Once installed, the geno-dev skills are available as slash commands in your agent session:
+- repeatable workflows that should become skills;
+- repeated corrections that should patch a skill or repository rule;
+- broader agent or product improvements that do not belong in a skill.
 
-- `/geno-dev-tasks-start` — pick up a task from lab notes and execute it
-- `/geno-dev-commits-rewrite` — rewrite messy git history into a clean narrative
-- `/geno-dev-worktrees-manage` — create, list, switch, and prune git worktrees
-- `/geno-dev-workspaces-init` — create isolated development workspaces
-- `/geno-dev-sessions-fork` — fork a session to continue work in a new context
+Mining is read-only. The skill asks which candidates to materialize before editing the repository.
 
-## Runtime
-
-geno-dev is a pure markdown skillset — no Python venv, no scripts, no external dependencies beyond git. All skills are self-contained SKILL.md files with structured agent instructions.
-
-## What's next
-
-- [Concepts](concepts.md) — understand workspaces, worktrees, and tasks
-- [Workflows](workflows.md) — end-to-end examples
-- [Commands](commands.md) — detailed reference for each slash command
-- [geno-tools docs](https://42euge.github.io/geno-tools) — the broader ecosystem
+New capabilities belong in independent `skills/<skill-name>/SKILL.md` leaf directories and should be added to the umbrella skill and repository documentation.

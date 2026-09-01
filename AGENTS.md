@@ -1,79 +1,42 @@
-# geno-dev — developer utilities skillset
+# geno-dev
 
-Developer and infrastructure skills for AI coding agents: task execution from lab notes, git commit history rewriting, worktree management, workspace creation, session forking, end-to-end feature shipping, issue-driven development, PR checking and branch auditing, scheduled snoozing, and skill retrospectives. Loop patterns (turbocharge, cruise, autopilot, etc.) are provided by the geno-loops skillset.
+`geno-dev` is a geno-tools skillset for focused developer workflows. Add capabilities as independent leaf skills when their interfaces are defined.
 
 ## Skills
 
-| Skill | Sub-skillset | Slash command |
-|-------|-------------|---------------|
-| geno-dev | — | — (umbrella) |
-| geno-dev-tasks-start | tasks | /geno-dev-tasks-start |
-| geno-dev-commits-rewrite | commits | /geno-dev-commits-rewrite |
-| geno-dev-worktrees-manage | worktrees | /geno-dev-worktrees-manage |
-| geno-dev-workspaces-init | workspaces | /geno-dev-workspaces-init |
-| geno-dev-sessions-fork | sessions | /geno-dev-sessions-fork |
-| geno-dev-prs-check | prs | /geno-dev-prs-check |
-| geno-dev-branches-audit | branches | /geno-dev-branches-audit |
-| geno-dev-scheduling-snooze | scheduling | /geno-dev-scheduling-snooze |
-| geno-dev-feature-ship | feature-ship | /geno-dev-feature-ship |
-| geno-dev-issue-work | issue-work | /geno-dev-issue-work |
-| geno-dev-skills-retro | meta | /geno-dev-skills-retro |
+| Skill | Purpose |
+|---|---|
+| `geno-dev` | Umbrella entry point for the skillset. |
+| `meta-mine-skill-creator` | Mine coding-agent sessions for candidate skills and system improvements. |
 
-## Repo structure
+## Structure
 
-```
+```text
 geno-dev/
-├── AGENTS.md            # repository-specific agent instructions
-├── SKILL.md             # symlink to the umbrella skill manifest
-├── genotools.yaml       # geno-tools manifest
-├── package.json         # npm/skills metadata
-├── .geno-agents         # agent identity for auto-registration
-├── skills/              # skill definitions
-│   ├── geno-dev/        #   umbrella
-│   ├── geno-dev-commits-rewrite/
-│   ├── geno-dev-sessions-fork/
-│   ├── geno-dev-tasks-start/
-│   ├── geno-dev-workspaces-init/
-│   ├── geno-dev-worktrees-manage/
-│   ├── geno-dev-prs-check/
-│   ├── geno-dev-branches-audit/
-│   ├── geno-dev-scheduling-snooze/
-│   ├── geno-dev-feature-ship/
-│   ├── geno-dev-issue-work/
-│   └── geno-dev-skills-retro/
-├── docs/                # MkDocs Material site
-│   ├── index.md
-│   ├── getting-started.md
-│   ├── concepts.md
-│   ├── workflows.md
-│   └── commands.md
-├── config/defaults/     # default configuration files
-│   └── colab.json
-└── mkdocs.yml           # MkDocs configuration
+├── AGENTS.md
+├── SKILL.md -> skills/geno-dev/SKILL.md
+├── genotools.yaml
+├── skills/geno-dev/SKILL.md
+├── skills/meta-mine-skill-creator/
+│   ├── SKILL.md
+│   └── references/
+├── docs/index.md
+├── docs/getting-started.md
+└── mkdocs.yml
 ```
 
-## Architecture
+## Repository rules
 
-Pure markdown skillset — no Python package, no venv, no scripts. Each skill is a SKILL.md file containing the full workflow as structured instructions for the agent.
+- Put each focused capability in `skills/<skill-name>/SKILL.md`.
+- Keep every skill directory a leaf; do not nest another `SKILL.md` below it.
+- Start descriptions with the conditions that should trigger the skill.
+- Use canonical source command names, never installation-specific aliases.
+- Keep `.geno/` and `CLAUDE.local.md` untracked.
+- Add runtime code only when a workflow needs deterministic reusable behavior, and add tests with it.
 
-### Key skills
+## Verification
 
-- **tasks-start**: Integrates with geno-notes to pick up tasks, plan if needed, execute, and mark done.
-- **commits-rewrite**: Rewrites messy git history into clean narrative commits using soft reset and selective restaging.
-- **worktrees-manage**: Workspace-aware git worktree management with safety protections around Claude Code and geno-tools worktrees.
-- **workspaces-init**: Creates isolated development workspaces from GitHub issues, JIRA tickets, repo names, or feature ideas, with color-coded folder organization.
-- **sessions-fork**: Extracts full session context via geno-mon for continuation in a new session.
-- **feature-ship**: Takes a feature from scoped idea or issue through implementation and PR creation.
-- **issue-work**: Selects a GitHub issue or JIRA ticket, sets up a branch or worktree, and executes it in normal or loop mode.
-- **prs-check**: Checks open PRs, classifies by status (closeable/stale/blocked/draft/approved), renders a table with links.
-- **branches-audit**: Audits all branches across a workspace or repo, classifying by PR status and suggesting next actions.
-- **scheduling-snooze**: Delays session work until a specified time using natural language, with chained wakeups for long delays.
-- **skills-retro**: Meta-harness — analyzes failed sessions, identifies root causes, and patches the responsible skill to prevent recurrence.
-
-## Conventions
-
-- Skill directories live under `skills/` and must contain a `SKILL.md` with valid frontmatter.
-- The `.geno/` directory and `CLAUDE.local.md` are never committed — they hold machine-local state.
-- This skill never modifies a project's `.gitignore` or tracked config files.
-- **Prefix aliasing**: Slash commands use the canonical `geno-` prefix in source (e.g., `/geno-dev-tasks-start`). Short aliases are configured per-install by geno-tools and are not part of the skill source.
-- **Adding a new skill**: Create a directory under `skills/` named after the skill, add a `SKILL.md` with valid frontmatter (name, description, argument-hint, license, metadata), then register the skill in the skills table and repo structure tree in this file.
+```bash
+geno-tools audit check .
+mkdocs build --strict
+```
