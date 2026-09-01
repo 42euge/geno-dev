@@ -14,6 +14,31 @@ metadata:
 
 Turn session history into evidence-backed improvement proposals. Mining is read-only by default; creating or changing a skill is a separate, approval-gated phase.
 
+## Input modes
+
+Treat text supplied with the explicit invocation as an optional remembered
+pattern. Use the syntax of the agent hosting the current session:
+
+- Codex: `$meta-mine-skill-creator [remembered pattern]`
+- Claude Code: `/meta-mine-skill-creator [remembered pattern]`
+
+Determine the syntax from the current runtime, not from which providers are in
+the mining scope. When the host cannot be identified, accept the accompanying
+text without requiring either prefix and label both forms in any invocation
+guidance.
+
+- **Targeted:** When a pattern is present, treat it as a hypothesis rather than
+  proof. Search for semantically equivalent workflow and correction signals,
+  score the evidence, and recommend whether to create, patch, watch, redirect,
+  or discard it.
+- **Discovery:** When no pattern is present, mine broadly and return the single
+  highest-ranked candidate that has not already been created, rejected, or
+  redirected in the current conversation. This is the default "find the next
+  skill" mode.
+
+In either mode, present the evidence-backed dossier before materializing the
+skill. A follow-up such as `create it` passes the creation gate.
+
 ## Scope
 
 Accept any combination of provider, project or working directory, date range, session IDs, and maximum session count.
