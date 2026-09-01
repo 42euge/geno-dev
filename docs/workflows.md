@@ -6,25 +6,17 @@ Practical examples showing how geno-dev skills work together in real development
 
 The complete lifecycle from GitHub issue to shipped pull request.
 
-### 1. Create a workspace from the issue
+### 1. Clone the repo for the issue
 
 ```
-/geno-dev-workspaces-init https://github.com/42euge/geno-dev/issues/42
-```
-
-The skill fetches the issue, clones the repo, and creates a workspace:
-
-```
-~/code-purp/GH-geno-dev-42-fix-auth-token-ws/
-  .geno/workspace.yaml
-  CLAUDE.local.md
-  geno-dev/
+gh repo clone 42euge/geno-dev
+cd geno-dev
 ```
 
 ### 2. Set up task tracking
 
 ```
-cd ~/code-purp/GH-geno-dev-42-fix-auth-token-ws/geno-dev/
+geno-notes init --project
 ```
 
 ```
@@ -64,58 +56,6 @@ The skill analyzes the messy commits, proposes a clean narrative (e.g., 4 commit
 git push -u origin feature/fix-auth-token
 gh pr create --title "Fix auth token expiry" --body "Closes #42"
 ```
-
----
-
-## Multi-repo Workspace
-
-Working on a feature that spans multiple repositories.
-
-### 1. Create workspace from an idea
-
-```
-/geno-dev-workspaces-init add worktree awareness to geno-dev and geno-tools
-```
-
-The skill scans known repos, suggests relevant ones, and lets you pick:
-
-```
-~/code-red/worktree-awareness-ws/
-  geno-dev/
-  geno-tools/
-```
-
-### 2. Create worktrees in each repo
-
-```
-cd ~/code-red/worktree-awareness-ws/geno-dev/
-```
-
-```
-/geno-dev-worktrees-manage create feature/worktree-awareness
-```
-
-Then switch to the other repo and do the same:
-
-```
-cd ~/code-red/worktree-awareness-ws/geno-tools/
-```
-
-```
-/geno-dev-worktrees-manage create feature/worktree-awareness
-```
-
-Both worktrees live under the workspace's `.geno/worktrees/`, grouped by repo:
-
-```
-.geno/worktrees/
-  geno-dev/feature/worktree-awareness/
-  geno-tools/feature/worktree-awareness/
-```
-
-### 3. Work and ship each repo separately
-
-Each repo gets its own commits, rewrite, and PR. The workspace just keeps them together on disk.
 
 ---
 
@@ -193,9 +133,6 @@ Not sure what will be removed? Use `--dry-run`:
 ---
 
 ## Tips
-
-!!! tip "You don't need a workspace"
-    Worktrees, tasks, and commit rewriting all work without a workspace. Workspaces add value when you're juggling multiple repos for one feature or want clean isolation from your main checkout.
 
 !!! tip "Set up geno-notes early"
     If you plan to use `/geno-dev-tasks-start`, run `geno-notes init --project` in your repo before starting. The skill will prompt you if it's missing, but it's smoother to have it ready.

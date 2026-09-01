@@ -31,7 +31,6 @@ Once installed, the geno-dev skills are available as slash commands in your agen
 - `/geno-dev-tasks-start` — pick up a task from lab notes and execute it
 - `/geno-dev-commits-rewrite` — rewrite messy git history into a clean narrative
 - `/geno-dev-worktrees-manage` — create, list, switch, and prune git worktrees
-- `/geno-dev-workspaces-init` — create isolated development workspaces
 - `/geno-dev-sessions-fork` — fork a session to continue work in a new context
 
 ## Runtime

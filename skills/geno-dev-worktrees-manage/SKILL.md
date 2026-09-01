@@ -55,7 +55,6 @@ When operating inside a worktree created by this skill (whether workspace or inl
 - Run `git rev-parse --git-dir` to confirm we are in a git repo. If not, tell the user and stop.
 - Run `git worktree list --porcelain` to get structured worktree data.
 - Classify each worktree per the Safety rules above.
-- **Workspace detection**: check if `../.geno/workspace.yaml` exists (current repo is inside a workspace) or if `.geno/workspace.yaml` exists in cwd (cwd IS the workspace root). If found, set workspace mode and record the workspace path.
 
 ### 2. Route to subcommand
 
@@ -75,9 +74,7 @@ Show a table of all worktrees:
 | Status | Clean or dirty — run `git -C <path> status --porcelain` |
 | Category | `[user]`, `[claude-code]`, or `[geno-tools]` |
 
-If in workspace mode, also scan `<workspace>/.geno/worktrees/` for worktrees belonging to other repos in the workspace and show them grouped by repo.
-
-If there are no worktrees beyond the main one, say so and suggest `create` to get started. If no workspace is set up, mention that `/geno-dev-workspaces-init` can create one.
+If there are no worktrees beyond the main one, say so and suggest `create` to get started.
 
 ---
 
@@ -87,12 +84,9 @@ If there are no worktrees beyond the main one, say so and suggest `create` to ge
 2. Determine the base:
    - If `--from <base>` is given, use that ref.
    - Otherwise, use HEAD.
-3. Choose the worktree path based on mode:
-   - **Workspace mode** (`../.geno/workspace.yaml` exists): place at `<workspace>/.geno/worktrees/<repo>/<branch>/`
-     - The `<repo>/` prefix groups worktrees by repo in multi-repo workspaces.
-   - **Inline mode** (no workspace): place at `<repo>/.geno/worktrees/<branch>/`
-     - Create `.geno/worktrees/` if it doesn't exist.
-     - Do NOT edit `.gitignore`. Remind the user that `.geno/` should not be committed and that agent rules are active to prevent accidental staging.
+3. Place the worktree at `<repo>/.geno/worktrees/<branch>/`:
+   - Create `.geno/worktrees/` if it doesn't exist.
+   - Do NOT edit `.gitignore`. Remind the user that `.geno/` should not be committed and that agent rules are active to prevent accidental staging.
 4. Run: `git worktree add <path> -b <branch> <base>`
    - If the branch already exists (but has no worktree), use `git worktree add <path> <branch>` without `-b`.
 5. Create a `CLAUDE.local.md` in the new worktree with:
