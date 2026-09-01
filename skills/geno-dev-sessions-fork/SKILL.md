@@ -1,9 +1,8 @@
 ---
 name: geno-dev-sessions-fork
 description: >-
-  Fork an agent session — extract its full context and start a new session
-  that continues where the original left off.
-  Use when user says /geno-dev-sessions-fork.
+  Use when forking an agent session by extracting its full context and starting
+  a continuation session, or when the user says /geno-dev-sessions-fork.
 license: MIT
 metadata:
   author: 42euge

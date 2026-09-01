@@ -1,9 +1,9 @@
 ---
 name: geno-dev-skills-retro
 description: >-
-  Meta-harness — analyze a failed session, identify root causes, and patch the
-  responsible skill to prevent the same failure. Self-improving skill loop.
-  Use when user says /geno-dev-skills-retro.
+  Use when analyzing a failed session, identifying root causes, and patching
+  the responsible skill to prevent recurrence, or when the user says
+  /geno-dev-skills-retro. This is a self-improving meta-harness.
 argument-hint: "[session] [--skill <name>] [--dry-run] [--batch]"
 license: MIT
 metadata:

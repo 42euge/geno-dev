@@ -1,9 +1,10 @@
 ---
 name: geno-dev-workspaces-init
 description: >-
-  Create development workspaces from GitHub issues, JIRA tickets, repo names, or feature ideas.
-  Clone repos into color-coded folders with metadata and agent rules.
-  Use when user says /geno-dev-workspaces-init.
+  Use when creating development workspaces from GitHub issues, JIRA tickets,
+  repository names, or feature ideas, or when the user says
+  /geno-dev-workspaces-init. Clones repositories into color-coded folders with
+  metadata and agent rules.
 argument-hint: "[config|list|<freeform text>]"
 license: MIT
 metadata:

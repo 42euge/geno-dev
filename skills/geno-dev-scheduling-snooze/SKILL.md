@@ -1,10 +1,9 @@
 ---
 name: geno-dev-scheduling-snooze
 description: >-
-  Snooze the current session — delay work until a specified time using natural
-  language ("3:30 AM", "in 2 hours", "tomorrow at 9am"). Wraps ScheduleWakeup
-  with smart time parsing.
-  Use when user says /geno-dev-scheduling-snooze.
+  Use when snoozing the current session until a natural-language time such as
+  "3:30 AM", "in 2 hours", or "tomorrow at 9am", or when the user says
+  /geno-dev-scheduling-snooze. Wraps ScheduleWakeup with smart time parsing.
 argument-hint: "<time expression> [prompt]"
 license: MIT
 metadata:

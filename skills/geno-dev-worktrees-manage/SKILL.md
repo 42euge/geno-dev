@@ -1,8 +1,8 @@
 ---
 name: geno-dev-worktrees-manage
 description: >-
-  Manage git worktrees — list, create, switch, and prune.
-  Use when user says /geno-dev-worktrees-manage.
+  Use when listing, creating, switching, or pruning git worktrees, or when the
+  user says /geno-dev-worktrees-manage.
 argument-hint: "[list|create|switch|prune] [args...]"
 license: MIT
 metadata:

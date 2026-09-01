@@ -1,8 +1,9 @@
 ---
 name: geno-dev-feature-ship
 description: >-
-  End-to-end feature shipping — discuss scope, create a GitHub issue, branch,
-  implement, and open a PR. Use when user says /geno-dev-feature-ship.
+  Use when shipping a feature end to end by discussing scope, creating a GitHub
+  issue and branch, implementing the change, and opening a PR, or when the user
+  says /geno-dev-feature-ship.
 argument-hint: "<feature description or issue URL>"
 license: MIT
 metadata:
