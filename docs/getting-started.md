@@ -14,6 +14,14 @@ geno-tools install geno-dev
 
 Invoke `/geno-dev` to inspect the skillset.
 
+Run `/feature-acceptance-test` after implementation when you want to:
+
+- exercise the exact branch or artifact through its real user-facing entry point;
+- receive a brief Markdown runbook with actions and expected observations;
+- test a shared or hardware environment with explicit safety and cleanup gates.
+
+The skill automatically records its invocation through `geno-dev usage`.
+
 Skills can record invocations through the installed CLI:
 
 ```bash
@@ -30,6 +38,18 @@ Run `/meta-mine-skill-creator` when you want to analyze local Claude Code and Co
 - repeatable workflows that should become skills;
 - repeated corrections that should patch a skill or repository rule;
 - broader agent or product improvements that do not belong in a skill.
+
+Target a pattern you already remember:
+
+```text
+/meta-mine-skill-creator I repeatedly ask agents to test features through the real user path
+```
+
+Or leave it empty to find the next best candidate:
+
+```text
+/meta-mine-skill-creator
+```
 
 Mining is read-only. The skill asks which candidates to materialize before editing the repository.
 

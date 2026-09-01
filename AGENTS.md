@@ -7,6 +7,7 @@
 | Skill | Purpose |
 |---|---|
 | `geno-dev` | Umbrella entry point for the skillset. |
+| `feature-acceptance-test` | Validate a feature through its real user-facing path. |
 | `meta-mine-skill-creator` | Mine coding-agent sessions for candidate skills and system improvements. |
 
 ## Structure
@@ -21,6 +22,8 @@ geno-dev/
 │   ├── cli.py
 │   └── usage.py
 ├── skills/geno-dev/SKILL.md
+├── skills/feature-acceptance-test/
+│   └── SKILL.md
 ├── skills/meta-mine-skill-creator/
 │   ├── SKILL.md
 │   └── references/
