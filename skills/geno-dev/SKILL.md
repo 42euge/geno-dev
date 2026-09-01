@@ -1,7 +1,7 @@
 ---
 name: geno-dev
 description: >-
-  Use when the user invokes /geno-dev to inspect available developer workflows
+  Use when the user invokes geno-dev to inspect available developer workflows
   or route a request to a focused skill in this skillset.
 license: MIT
 metadata:
@@ -12,6 +12,10 @@ metadata:
 # geno-dev
 
 This is the umbrella skill for `geno-dev`.
+
+When showing explicit invocation examples, use `$skill-name` in Codex and
+`/skill-name` in Claude Code. Determine the syntax from the current agent
+runtime; if it is unknown, label both forms.
 
 ## Skills
 

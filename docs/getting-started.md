@@ -12,9 +12,14 @@ geno-tools install geno-dev
 
 ## Current surface
 
-Invoke `/geno-dev` to inspect the skillset.
+Explicit invocation depends on the agent hosting the session:
 
-Run `/feature-acceptance-test` after implementation when you want to:
+| Agent | Syntax | Umbrella example |
+|---|---|---|
+| Codex | `$skill-name` | `$geno-dev` |
+| Claude Code | `/skill-name` | `/geno-dev` |
+
+Invoke `feature-acceptance-test` after implementation when you want to:
 
 - exercise the exact branch or artifact through its real user-facing entry point;
 - receive a brief Markdown runbook with actions and expected observations;
@@ -33,7 +38,7 @@ The local database at `~/.geno/skill-usage.sqlite3` stores only skill name, UTC
 timestamp, and whether the skill was invoked explicitly, selected
 automatically, or could not determine its trigger.
 
-Run `/meta-mine-skill-creator` when you want to analyze local Claude Code and Codex sessions for:
+Invoke `meta-mine-skill-creator` when you want to analyze local Claude Code and Codex sessions for:
 
 - repeatable workflows that should become skills;
 - repeated corrections that should patch a skill or repository rule;
@@ -41,11 +46,27 @@ Run `/meta-mine-skill-creator` when you want to analyze local Claude Code and Co
 
 Target a pattern you already remember:
 
+Codex:
+
+```text
+$meta-mine-skill-creator I repeatedly ask agents to test features through the real user path
+```
+
+Claude Code:
+
 ```text
 /meta-mine-skill-creator I repeatedly ask agents to test features through the real user path
 ```
 
 Or leave it empty to find the next best candidate:
+
+Codex:
+
+```text
+$meta-mine-skill-creator
+```
+
+Claude Code:
 
 ```text
 /meta-mine-skill-creator

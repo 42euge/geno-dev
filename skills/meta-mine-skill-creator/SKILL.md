@@ -16,8 +16,16 @@ Turn session history into evidence-backed improvement proposals. Mining is read-
 
 ## Input modes
 
-Treat the text after `/meta-mine-skill-creator` as an optional remembered
-pattern:
+Treat text supplied with the explicit invocation as an optional remembered
+pattern. Use the syntax of the agent hosting the current session:
+
+- Codex: `$meta-mine-skill-creator [remembered pattern]`
+- Claude Code: `/meta-mine-skill-creator [remembered pattern]`
+
+Determine the syntax from the current runtime, not from which providers are in
+the mining scope. When the host cannot be identified, accept the accompanying
+text without requiring either prefix and label both forms in any invocation
+guidance.
 
 - **Targeted:** When a pattern is present, treat it as a hypothesis rather than
   proof. Search for semantically equivalent workflow and correction signals,
