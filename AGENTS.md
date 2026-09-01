@@ -16,10 +16,15 @@ geno-dev/
 ├── AGENTS.md
 ├── SKILL.md -> skills/geno-dev/SKILL.md
 ├── genotools.yaml
+├── pyproject.toml
+├── geno_dev/
+│   ├── cli.py
+│   └── usage.py
 ├── skills/geno-dev/SKILL.md
 ├── skills/meta-mine-skill-creator/
 │   ├── SKILL.md
 │   └── references/
+├── tests/test_skill_usage.py
 ├── docs/index.md
 ├── docs/getting-started.md
 └── mkdocs.yml
@@ -38,5 +43,6 @@ geno-dev/
 
 ```bash
 geno-tools audit check .
+pytest
 mkdocs build --strict
 ```
