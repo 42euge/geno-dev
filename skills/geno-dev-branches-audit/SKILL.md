@@ -1,9 +1,9 @@
 ---
 name: geno-dev-branches-audit
 description: >-
-  Audit all branches across a workspace or repo — find branches needing PRs,
-  PRs ready to merge, and stale branches to clean up.
-  Use when user says /geno-dev-branches-audit.
+  Use when auditing branches across a workspace or repository to find branches
+  needing PRs, PRs ready to merge, and stale branches to clean up, or when the
+  user says /geno-dev-branches-audit.
 argument-hint: "[repo|--all]"
 license: MIT
 metadata:
@@ -153,7 +153,7 @@ Example output:
 | chore/cleanup | 1 | 60d | — | — | STALE |
 | feat/new-auth | 5 | 2d | ~/.geno/worktrees/geno-dev/feat/new-auth | — | NEEDS PR |
 | docs/improve-site | 8 | 1d | — | [#52](url) | PR OPEN |
-| feat/gt-snooze | 12 | 3d | ~/.geno/worktrees/geno-dev/feat/gt-snooze | [#55](url) | PR DRAFT |
+| feat/geno-dev-snooze | 12 | 3d | ~/.geno/worktrees/geno-dev/feat/geno-dev-snooze | [#55](url) | PR DRAFT |
 | stale-experiment | 0 | 90d | — | — | NO CHANGES |
 ```
 

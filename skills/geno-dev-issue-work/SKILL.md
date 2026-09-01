@@ -1,9 +1,9 @@
 ---
 name: geno-dev-issue-work
 description: >-
-  Select a GitHub issue or JIRA ticket and start working on it, with a choice
-  of normal interactive mode or autonomous loop mode.
-  Use when user says /geno-dev-issue-work.
+  Use when selecting and starting work on a GitHub issue or JIRA ticket in
+  interactive or autonomous loop mode, or when the user says
+  /geno-dev-issue-work.
 argument-hint: "[issue number, JIRA key, search query, or URL]"
 license: MIT
 metadata:

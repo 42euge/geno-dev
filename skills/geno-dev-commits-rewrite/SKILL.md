@@ -1,8 +1,9 @@
 ---
 name: geno-dev-commits-rewrite
 description: >-
-  Rewrite git commit history into a clean narrative (backup + soft reset + restage).
-  Use when user says /geno-dev-commits-rewrite.
+  Use when rewriting git commit history into a clean narrative with a backup,
+  soft reset, and selective restaging, or when the user says
+  /geno-dev-commits-rewrite.
 argument-hint: "[branch] [--onto <base>]"
 license: MIT
 metadata:

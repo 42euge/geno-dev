@@ -1,8 +1,9 @@
 ---
 name: geno-dev-prs-check
 description: >-
-  Check open PRs for repos in the current session and show which ones
-  may need to be closed. Use when user says /geno-dev-prs-check or /gt-pr.
+  Use when checking open PRs for repositories in the current session and
+  identifying which ones may need to be closed, or when the user says
+  /geno-dev-prs-check.
 argument-hint: "[repo|--all]"
 license: MIT
 metadata:

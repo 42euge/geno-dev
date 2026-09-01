@@ -1,9 +1,9 @@
 ---
 name: geno-dev-sessions-remote
 description: >-
-  Start a Claude Code session with remote access in a workspace directory.
-  Opens a new Terminal window with claude --remote-control.
-  Use when user says /geno-dev-sessions-remote.
+  Use when starting a Claude Code session with remote access in a workspace, or
+  when the user says /geno-dev-sessions-remote. Opens a new Terminal window
+  with claude --remote-control.
 argument-hint: "[workspace-path] [--name <session-name>]"
 license: MIT
 metadata:

@@ -164,6 +164,6 @@ The output includes:
 Start a new session with this document and it picks up where the original left off.
 
 !!! info "Prerequisite"
-    `/geno-dev-sessions-fork` requires [geno-mon](https://github.com/42euge/geno-mon), a session monitor for Claude Code. It must be installed and available on `$PATH`.
+    `/geno-dev-sessions-fork` requires [geno-mon](https://github.com/42euge/geno-mon), a Claude Code session monitor. It must be installed and available on `$PATH`.
 
 **Managed by:** [`/geno-dev-sessions-fork`](commands.md#fork-session)

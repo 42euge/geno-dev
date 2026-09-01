@@ -1,11 +1,11 @@
 ---
 name: geno-dev
 description: >-
-  Developer and infrastructure utilities — task execution from lab notes,
-  git commit history rewriting, worktree management, workspace creation,
-  session forking, end-to-end feature shipping, issue-driven development,
-  PR checking and branch auditing, scheduled snoozing, and skill retrospectives.
-  Use when user says /geno-dev-tasks-start, /geno-dev-commits-rewrite,
+  Use when the user needs developer or infrastructure workflows for task
+  execution, commit rewriting, worktree or workspace management, session
+  forking, feature shipping, issue work, PR and branch review, scheduling, or
+  skill retrospectives. Also use when the user says /geno-dev-tasks-start,
+  /geno-dev-commits-rewrite,
   /geno-dev-worktrees-manage, /geno-dev-workspaces-init, /geno-dev-sessions-fork,
   /geno-dev-feature-ship, /geno-dev-issue-work, /geno-dev-prs-check,
   /geno-dev-branches-audit, /geno-dev-scheduling-snooze, or /geno-dev-skills-retro.

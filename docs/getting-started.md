@@ -10,7 +10,7 @@
 | Tool | Needed by | What it is | Install |
 |------|-----------|-----------|---------|
 | [geno-notes](https://github.com/42euge/geno-notes) | `/geno-dev-tasks-start` | Project journal — tasks, notes, plans | `geno-tools install geno-notes` |
-| [geno-mon](https://github.com/42euge/geno-mon) | `/geno-dev-sessions-fork` | Session monitor for Claude Code | See [geno-mon docs](https://github.com/42euge/geno-mon) |
+| [geno-mon](https://github.com/42euge/geno-mon) | `/geno-dev-sessions-fork` | Claude Code session monitor | See [geno-mon docs](https://github.com/42euge/geno-mon) |
 
 ## Installation
 

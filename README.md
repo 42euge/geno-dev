@@ -36,8 +36,8 @@ geno-tools install geno-dev
 
 ```
 geno-dev/
-├── GENO.md               # agent instructions (single source of truth)
-├── SKILL.md              # umbrella skill manifest
+├── AGENTS.md             # repository-specific agent instructions
+├── SKILL.md              # symlink to the umbrella skill manifest
 ├── genotools.yaml        # geno-tools manifest
 ├── package.json          # npm/skills metadata
 ├── .geno-agents          # agent identity for auto-registration
