@@ -1,4 +1,4 @@
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 import io
 import json
 from pathlib import Path
@@ -190,6 +190,46 @@ class SkillEvalCliTests(unittest.TestCase):
         report = json.loads(output.getvalue())
         self.assertFalse(report["passed"])
         self.assertEqual(report["pass_rate"], 0.0)
+
+    def test_run_returns_two_for_invalid_configuration(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            skill_path = root / "SKILL.md"
+            skill_path.write_text("# Explore\nAlways create branches.\n")
+            case_path = root / "branching.json"
+            case_path.write_text(
+                json.dumps(
+                    {
+                        "schema_version": 1,
+                        "name": "branch after selection",
+                        "prompt": "C is closest. Keep exploring.",
+                        "criteria": [
+                            {
+                                "name": "multiple-options",
+                                "description": "Proposes at least three options.",
+                            }
+                        ],
+                    }
+                )
+            )
+            errors = io.StringIO()
+
+            with redirect_stderr(errors):
+                exit_status = main(
+                    [
+                        "eval",
+                        "run",
+                        str(case_path),
+                        "--skill",
+                        str(skill_path),
+                        "--runs",
+                        "0",
+                    ],
+                    eval_agent_factory=PassingEvalAgent,
+                )
+
+        self.assertEqual(exit_status, 2)
+        self.assertIn("runs must be positive", errors.getvalue())
 
 
 if __name__ == "__main__":
