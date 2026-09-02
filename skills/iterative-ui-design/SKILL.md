@@ -2,9 +2,9 @@
 name: iterative-ui-design
 description: >-
   Use when the user will recognize the right UI when shown alternatives and
-  wants multiple browser-reviewable mockups or several rounds of visual
-  refinement before implementation. Do not use when the design is already
-  settled and the user only wants it implemented.
+  wants multiple browser-reviewable options at each refinement round before
+  explicit convergence. Do not use when the design is already settled and the
+  user only wants it implemented.
 license: MIT
 metadata:
   author: 42euge
@@ -57,6 +57,10 @@ genuinely different thesis. Give each a stable label and a one-sentence design
 thesis. The variants should disagree about structure, hierarchy, or primary
 interaction—not just color, copy, or decoration.
 
+**Branching invariant:** while exploration is active, every presented round
+contains multiple options. A selected variant is the seed for another branch
+set, not permission to collapse the workflow into one refined artifact.
+
 Make comparison cheap: provide one launcher, route switcher, or compact set of
 links so the user can move among every option without rebuilding the project.
 
@@ -68,7 +72,8 @@ After each response, maintain a compact internal ledger:
 - **Rejected:** approaches that should not quietly return;
 - **Active axis:** the one question the next round will vary;
 - **Fidelity gaps:** interactions or real-world behavior the current mockup
-  cannot yet answer.
+  cannot yet answer;
+- **Round state:** `exploring` until the user explicitly converges.
 
 Treat partial choices as useful signal. “B with A's navigation” locks B's base,
 adds A's navigation, and rejects the remaining differences. “None, but C is
@@ -85,9 +90,20 @@ Generate the next round from the locked state, varying the active axis while
 preserving prior decisions. Later variants should be closer together than the
 first round because the design space is narrowing.
 
-Use another contrasting round while a meaningful choice remains. If the user
-requests one exact correction or the space has converged, update the chosen
-prototype directly instead of manufacturing alternatives.
+Treat the user's requested changes as the shared baseline for the next branch
+set. Apply them to every new option, then vary another consequential dimension
+related to the feedback. The user does not need to repeat “show me options” or
+“continue exploring” after each selection. A selection plus a list of concrete
+deltas is still an exploration turn.
+
+If the next axis is not stated, infer one from the unresolved design space and
+name it when presenting the round. Do not refine one artifact and ask for
+approval merely because the requested deltas were precise.
+
+Collapse to a single revision only when the user explicitly opts out of more
+branches, for example “make only this correction,” “no more options,” or
+“finalize this one.” A mechanical clarification can be applied across the next
+branch set without ending exploration.
 
 ### 4. Raise fidelity only to unlock feedback
 
@@ -106,8 +122,10 @@ increase the appearance of fidelity.
 
 ## Converge and hand off
 
-Stop the loop when the user explicitly approves a direction, says it is good
-enough to implement, or no longer asks for alternatives. Record:
+Stop the loop only when the user explicitly approves or finalizes a direction,
+says it is good enough to implement, or explicitly asks to stop seeing
+alternatives. Selecting a favorite, giving detailed deltas, or omitting the
+word “options” does not establish convergence. Record:
 
 - the chosen variant and why it won;
 - locked elements gathered from other variants;
@@ -131,6 +149,7 @@ Correct course when:
 - the artifact cannot be reviewed in the medium the user requested;
 - options are cosmetic siblings rather than distinct design theses;
 - a locked or rejected decision reappears without new evidence;
+- one refined artifact replaces a branch set before explicit convergence;
 - a round varies several uncoupled axes and makes feedback uninterpretable;
 - static placeholders are presented as working interactions;
 - prototype code starts accumulating production obligations;
