@@ -27,6 +27,24 @@ Invoke `feature-acceptance-test` after implementation when you want to:
 
 The skill automatically records its invocation through `geno-dev usage`.
 
+Invoke `iterative-ui-design` when you know the product surface that needs work
+but expect to recognize the right design more easily than you can specify it:
+
+Codex:
+
+```text
+$iterative-ui-design Show me several browser-reviewable directions for this editor and refine my selection over multiple rounds
+```
+
+Claude Code:
+
+```text
+/iterative-ui-design Show me several browser-reviewable directions for this editor and refine my selection over multiple rounds
+```
+
+The skill keeps mockups isolated from production code and stops at an approved
+prototype and decision summary unless implementation is also requested.
+
 Skills can record invocations through the installed CLI:
 
 ```bash
