@@ -18,13 +18,18 @@ geno-dev/
 ├── genotools.yaml
 ├── pyproject.toml
 ├── geno_dev/
+│   ├── anthropic_eval.py
 │   ├── cli.py
+│   ├── evals.py
 │   └── usage.py
 ├── skills/geno-dev/SKILL.md
 ├── skills/meta-mine-skill-creator/
 │   ├── SKILL.md
 │   └── references/
 ├── tests/test_skill_usage.py
+├── tests/test_anthropic_eval.py
+├── tests/test_skill_eval_cli.py
+├── tests/test_skill_evals.py
 ├── docs/index.md
 ├── docs/getting-started.md
 └── mkdocs.yml

@@ -25,6 +25,26 @@ The local database at `~/.geno/skill-usage.sqlite3` stores only skill name, UTC
 timestamp, and whether the skill was invoked explicitly, selected
 automatically, or could not determine its trigger.
 
+Validate a skill evaluation case without making an API call:
+
+```bash
+geno-dev eval validate docs/examples/branch-after-selection.eval.json --json
+```
+
+Run it through an Anthropic actor and judge:
+
+```bash
+export ANTHROPIC_API_KEY=...
+geno-dev eval run docs/examples/branch-after-selection.eval.json \
+  --skill path/to/SKILL.md \
+  --model claude-sonnet-5 \
+  --json
+```
+
+See [Skill evaluations](skill-evals.md) before putting private material in a
+case; live runs send the skill, prompt, criteria, and actor response to
+Anthropic.
+
 Run `/meta-mine-skill-creator` when you want to analyze local Claude Code and Codex sessions for:
 
 - repeatable workflows that should become skills;
