@@ -14,6 +14,13 @@ geno-tools install geno-dev
 
 Invoke `/geno-dev` to inspect the skillset.
 
+Invoke `$autocad-drawing` in Codex or `/autocad-drawing` in Claude Code when a
+task requires a native, editable AutoCAD drawing built from a DWT or existing
+DWG. The workflow covers template inspection and protection, preflight,
+generation, audit, review exports, visual inspection, and provenance checks. It
+does not treat a clean AutoCAD audit as proof that the engineering content is
+correct.
+
 Run `/meta-mine-skill-creator` when you want to analyze local Claude Code and Codex sessions for:
 
 - repeatable workflows that should become skills;

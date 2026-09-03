@@ -17,6 +17,7 @@ This is the umbrella skill for `geno-dev`.
 
 | Skill | Use when |
 |---|---|
+| `autocad-drawing` | Create, regenerate, or validate native template-derived AutoCAD drawings and review artifacts. |
 | `meta-mine-skill-creator` | Mine Claude Code and Codex sessions for candidate skills and system improvements. |
 
 Route requests to the narrowest matching skill. Do not mine session history merely because a request mentions a past interaction; use the focused skill only when the user wants history analyzed for durable improvements.
