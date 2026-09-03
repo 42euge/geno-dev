@@ -7,6 +7,7 @@
 | Skill | Purpose |
 |---|---|
 | `geno-dev` | Umbrella entry point for the skillset. |
+| `autocad-drawing` | Build and validate native template-derived AutoCAD drawings. |
 | `meta-mine-skill-creator` | Mine coding-agent sessions for candidate skills and system improvements. |
 
 ## Structure
@@ -17,6 +18,9 @@ geno-dev/
 ├── SKILL.md -> skills/geno-dev/SKILL.md
 ├── genotools.yaml
 ├── skills/geno-dev/SKILL.md
+├── skills/autocad-drawing/
+│   ├── SKILL.md
+│   └── references/
 ├── skills/meta-mine-skill-creator/
 │   ├── SKILL.md
 │   └── references/
