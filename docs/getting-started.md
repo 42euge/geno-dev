@@ -14,6 +14,17 @@ geno-tools install geno-dev
 
 Invoke `/geno-dev` to inspect the skillset.
 
+Skills can record invocations through the installed CLI:
+
+```bash
+geno-dev usage record example-skill --trigger explicit
+geno-dev usage report example-skill --days 30
+```
+
+The local database at `~/.geno/skill-usage.sqlite3` stores only skill name, UTC
+timestamp, and whether the skill was invoked explicitly, selected
+automatically, or could not determine its trigger.
+
 Run `/meta-mine-skill-creator` when you want to analyze local Claude Code and Codex sessions for:
 
 - repeatable workflows that should become skills;
