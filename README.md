@@ -13,6 +13,7 @@ geno-tools install geno-dev
 | Skill | Purpose |
 |---|---|
 | `feature-acceptance-test` | Test an implemented feature through the real UI, CLI, hardware, or user workflow and write a manual acceptance runbook. |
+| `iterative-ui-design` | Converge on an uncertain UI through repeated rounds of browser-reviewable variants. |
 | `meta-mine-skill-creator` | Mine local Claude Code and Codex sessions for reusable workflows, user corrections, candidate skills, and system improvements. |
 
 ## CLI

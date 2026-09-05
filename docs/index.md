@@ -24,6 +24,13 @@ Mines local Claude Code and Codex session history for recurring successful workf
 Pass a remembered pattern to test it against session evidence, or leave the
 argument empty to discover the next highest-ranked skill candidate.
 
+### `iterative-ui-design`
+
+Creates several distinct, browser-reviewable UI directions and carries the
+user's selections through progressively narrower rounds. It preserves locked
+and rejected decisions, adds interactivity only when needed for feedback, and
+hands the approved prototype to the normal implementation workflow.
+
 ## Local usage recording
 
 The `geno-dev usage` CLI records skill invocations in a privacy-minimal local

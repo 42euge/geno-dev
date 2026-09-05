@@ -8,6 +8,7 @@
 |---|---|
 | `geno-dev` | Umbrella entry point for the skillset. |
 | `feature-acceptance-test` | Validate a feature through its real user-facing path. |
+| `iterative-ui-design` | Converge on a UI through browser-reviewable design rounds. |
 | `meta-mine-skill-creator` | Mine coding-agent sessions for candidate skills and system improvements. |
 
 ## Structure
@@ -23,6 +24,8 @@ geno-dev/
 │   └── usage.py
 ├── skills/geno-dev/SKILL.md
 ├── skills/feature-acceptance-test/
+│   └── SKILL.md
+├── skills/iterative-ui-design/
 │   └── SKILL.md
 ├── skills/meta-mine-skill-creator/
 │   ├── SKILL.md
