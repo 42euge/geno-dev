@@ -21,3 +21,11 @@ SQLite database so adoption can be measured without storing prompts, paths, or
 project data.
 
 See [Getting Started](getting-started.md) for usage and the repository contract.
+
+## Skill evaluations
+
+The `geno-dev eval` CLI replays a scenario against a candidate skill with an
+Anthropic-powered actor and independent structured judge. It produces JSON and
+process exit statuses suitable for local iteration and CI.
+
+See [Skill evaluations](skill-evals.md) for the case format and execution model.

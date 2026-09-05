@@ -10,3 +10,4 @@ theme:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - Skill Evaluations: skill-evals.md

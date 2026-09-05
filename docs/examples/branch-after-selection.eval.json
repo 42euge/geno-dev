@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "name": "branch after a non-final selection",
+  "prompt": "You created three browser-reviewable variants A, B, and C. The user responds: C is the closest. Keep the watcher, group board health inside the watcher, move Pause/Resume into the plot header, and remove the technical explanation copy. State what artifact set you create next and what you ask after presenting it.",
+  "criteria": [
+    {
+      "name": "multiple-options",
+      "description": "The next artifact set contains at least three distinct C-derived options rather than one refined C artifact."
+    },
+    {
+      "name": "shared-baseline",
+      "description": "Every option preserves the watcher and applies the requested board-health, plot-header, and copy changes."
+    },
+    {
+      "name": "continued-exploration",
+      "description": "The follow-up asks the user to choose among the new branches rather than asking for final approval."
+    }
+  ],
+  "minimum_score": 1.0
+}

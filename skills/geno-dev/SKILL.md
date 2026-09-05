@@ -19,4 +19,12 @@ This is the umbrella skill for `geno-dev`.
 |---|---|
 | `meta-mine-skill-creator` | Mine Claude Code and Codex sessions for candidate skills and system improvements. |
 
+## Runtime commands
+
+Use `geno-dev eval validate <case>` to validate a versioned JSON evaluation
+case without calling a model. Use `geno-dev eval run <case> --skill <SKILL.md>`
+when the user wants to replay and score skill behavior through an Anthropic
+actor and independent judge. Live runs require `ANTHROPIC_API_KEY` and send the
+skill, case, criteria, and actor response to Anthropic.
+
 Route requests to the narrowest matching skill. Do not mine session history merely because a request mentions a past interaction; use the focused skill only when the user wants history analyzed for durable improvements.
